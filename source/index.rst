@@ -11,6 +11,8 @@ and annotation of metagenomic samples.
 
 Program:
 
+* Session 0
+    * :doc:`reqs`
 * Session 1
     * :doc:`reads-qc/index`
     * :doc:`assembly/index`
@@ -26,7 +28,8 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-
+   
+   reqs
    reads-qc/index
    assembly/index
    comparative-taxonomic-analysis/index
