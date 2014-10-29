@@ -3,22 +3,23 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to the Metagenomics Workshop at SciLifeLab, Stockholm
-=============================================================
+Welcome to the Metagenomics Workshop in Uppsala
+===============================================
 
-This is a three day metagenomics workshop. We will discuss assembly, binning
+This is a one day metagenomics workshop. We will discuss quality checking, assembly, taxonomic classification, binning
 and annotation of metagenomic samples.
 
 Program:
 
-* Day 1 Time 14-17
+* Session 1
+    * :doc:`reads-qc/index`
     * :doc:`assembly/index`
-    * :doc:`comparative-functional-analysis/index`
     * :doc:`comparative-taxonomic-analysis/index`
-* Day 2 Time 14-17
     * :doc:`binning/index`
-* Day 3 Time 13.30-17
-    * :doc:`annotation/index`
+* Session 2
+    * :doc:`tree/index`
+    * :doc:`comparative-functional-analysis/index`
+    * :doc:`sample-comparision/index` 
 
 
 Contents:
@@ -26,10 +27,12 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   reads-qc/index
    assembly/index
-   comparative-functional-analysis/index
    comparative-taxonomic-analysis/index
    binning/index
-   annotation/index
+   tree/index
+   comparative-functional-analysis/index
+   sample-comparison/index
 
 Enjoy!
