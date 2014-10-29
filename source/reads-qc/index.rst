@@ -10,7 +10,7 @@ The workshop has the following exercise:
 .. toctree::
    :maxdepth: 2
 
-   reqs   
+   fastqc
    qtrim
 
 At least a basic knowledge of how to work with the command line is required
