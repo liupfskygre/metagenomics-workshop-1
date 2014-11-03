@@ -66,7 +66,8 @@ mako:
 		--config mako/functional-annotation_config.yaml
 	python run_mako.py -o source/sample-comparison -t mako/templates/sample-comparison \
 		--config mako/sample-comparison_config.yaml
-	
+	python run_mako.py -o source -t mako/templates --config mako/index_config.yaml
+
 html: mako
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
