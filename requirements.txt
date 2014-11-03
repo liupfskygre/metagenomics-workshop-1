@@ -1,0 +1,4 @@
+mako==0.9.1
+PyYAML==3.11
+Sphinx==1.2.2
+
