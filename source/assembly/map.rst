@@ -102,3 +102,4 @@ contig::
 **Question: What is the contig with the highest coverage? Hint: use sort -k**
 
 .. _doc: https://docs.google.com/spreadsheet/ccc?key=0AvduvUOYAB-_dDdDSVhqUi1KQmJkTlZJcHVfMGI3a2c#gid=3
+

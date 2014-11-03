@@ -16,12 +16,12 @@ Program:
 * Session 1
     * :doc:`reads-qc/index`
     * :doc:`assembly/index`
-    * :doc:`comparative-taxonomic-analysis/index`
+    * :doc:`taxonomic-classification/index`
     * :doc:`binning/index`
 * Session 2
     * :doc:`tree/index`
-    * :doc:`comparative-functional-analysis/index`
-    * :doc:`sample-comparision/index` 
+    * :doc:`functional-annotation/index`
+    * :doc:`sample-comparison/index` 
 
 
 Contents:
@@ -32,10 +32,10 @@ Contents:
    reqs
    reads-qc/index
    assembly/index
-   comparative-taxonomic-analysis/index
+   taxonomic-classification/index
    binning/index
    tree/index
-   comparative-functional-analysis/index
+   functional-annotation/index
    sample-comparison/index
 
 Enjoy!

@@ -7,12 +7,6 @@ using a nice graphical summary output.
 This file needs to be written
 ============================
 
-Sickle
-======
-For quality trimming Illumina paired end reads we use the library sickle which
-trims reads from 3' end to 5' end using a sliding window. If the mean quality
-drops below a specified number the remaining part of the read will be trimmed.
-
 
 Downloading a test set
 ======================
@@ -47,41 +41,8 @@ Look at the top of the one of the pairs::
 
 **Question: Can you explain what the different parts of this header mean @HWI-EAS324_102408434:5:100:10055:13493/1?**
 
+Fastqc
+======
 
-Running sickle on a paired end library
-======================================
-I like to create directories for specific parts I'm working on and creating
-symbolic links (shortcuts in windows) to the input files. One can use the
-command ``ln`` for creating links. The difference between a symbolic link and a
-hard link can be found here:
-http://stackoverflow.com/questions/185899/what-is-the-difference-between-a-symbolic-link-and-a-hard-link.
-In this case I use symbolic links so I know what path the original reads have,
-which can help one remember what those reads were::
-    
-    mkdir -p ~/asm-workshop/sickle
-    cd ~/asm-workshop/sickle
-    ln -s ../data/SRS018585/SRS018585.denovo_duplicates_marked.trimmed.1.fastq pair1.fastq
-    ln -s ../data/SRS018585/SRS018585.denovo_duplicates_marked.trimmed.2.fastq pair2.fastq
 
-Now run sickle::
 
-    # check if sickle is in your PATH
-    which sickle
-    # Run sickle
-    sickle pe \
-        -f pair1.fastq \
-        -r pair2.fastq \
-        -t sanger \
-        -o qtrim1.fastq \
-        -p qtrim2.fastq \
-        -s qtrim.unpaired.fastq
-    # Check what files have been generated
-    ls
-
-Sickle states how many reads it trimmed, but it is always good to be
-suspicious! Check if the numbers correspond with the amount of reads you count.
-Hint: use ``wc -l``.
-
-**Question: How many paired reads are left after trimming? How many singletons?**
-
-**Question: What are the different quality scores that sickle can handle? Why do we specify -t sanger here?**

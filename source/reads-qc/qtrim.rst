@@ -65,13 +65,7 @@ Now run sickle::
     # check if sickle is in your PATH
     which sickle
     # Run sickle
-    sickle pe \
-        -f pair1.fastq \
-        -r pair2.fastq \
-        -t sanger \
-        -o qtrim1.fastq \
-        -p qtrim2.fastq \
-        -s qtrim.unpaired.fastq
+    sickle pe         -f pair1.fastq         -r pair2.fastq         -t sanger         -o qtrim1.fastq         -p qtrim2.fastq         -s qtrim.unpaired.fastq
     # Check what files have been generated
     ls
 
@@ -82,3 +76,11 @@ Hint: use ``wc -l``.
 **Question: How many paired reads are left after trimming? How many singletons?**
 
 **Question: What are the different quality scores that sickle can handle? Why do we specify -t sanger here?**
+
+Run fastqc again
+================
+We would like to see if sickle has done a good job, we do so by asserting the quality of the reads again with fastqc.
+
+ADD FASTQC COMMAND HERE AGAIN
+===============
+
