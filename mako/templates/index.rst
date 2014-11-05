@@ -15,14 +15,12 @@ Program:
     * :doc:`reqs`
 * Session 1
     * :doc:`reads-qc/index`
+    * :doc:`sortmerna/index`
     * :doc:`assembly/index`
+    * :doc:`mapping/index`
     * :doc:`taxonomic-classification/index`
-    * :doc:`binning/index`
-* Session 2
-    * :doc:`tree/index`
     * :doc:`functional-annotation/index`
-    * :doc:`sample-comparison/index` 
-
+    * :doc:`sample-comparision/index`
 
 Contents:
 
@@ -31,10 +29,10 @@ Contents:
    
    reqs
    reads-qc/index
+   sortmerna/index
    assembly/index
+   mapping/index
    taxonomic-classification/index
-   binning/index
-   tree/index
    functional-annotation/index
    sample-comparison/index
 
