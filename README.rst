@@ -1,16 +1,12 @@
-==================================
-Metagenomics Workshop SciLifeLab
-==================================
+=====================
+Metagenomics Workshop
+=====================
 
 This repository holds the code for the website of the metagenomics workshop
-held at SciLifeLab, Stockholm 21-23 May 2014. The website is written using
+held in Uppsala 25-26 November 2014. The website is written using
 Sphinx_. The webpage can be found at:
 
-http://inodb.github.io/2014-5-metagenomics-workshop/
-
-and
-
-http://2014-5-metagenomics-workshop.readthedocs.org/
+http://metagenomics-workshop.readthedocs.org/
 
 How does it work?
 -------------------------
@@ -23,7 +19,7 @@ start `Contributing`_.
 Contributing
 -------------
 We follow the Fork_ & pull_ model. It's not necessary to do anything on the
-command line. All you have to is click on fork. Then you can  edit the
+command line. All you have to is click on fork in the GitHub interface. Then you can  edit the
 ``*.rst`` files directly through the GitHub interface if you want. Only the
 Sphinx specific commands will not work, such as the table of contents command
 ``toctree``. You can also `add new files`_ by clicking on the plus symbol next
@@ -40,7 +36,7 @@ see the results in Github (GitHub shows ``*.rst`` files as they would look like
 in HTML by default). If you want to compile the files locally you would do::
     
     pip install sphinx  # install sphinx
-    git clone https://github.com/inodb/2014-5-metagenomics-workshop
+    git clone https://github.com/envgen/metagenomics-workshop
     make html
 
 The resulting HTML pages are in the folder ``build/``. You can open the files

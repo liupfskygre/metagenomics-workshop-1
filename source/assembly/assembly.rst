@@ -21,7 +21,7 @@ their likings - pick a random one if you haven't developed a preference yet.
 Write you and your partner's name down at a kmer on the
 Google doc_ for this workshop.
 
-.. _doc: https://docs.google.com/spreadsheet/ccc?key=0AvduvUOYAB-_dDdDSVhqUi1KQmJkTlZJcHVfMGI3a2c#gid=3 
+.. _doc: https://drive.google.com/open?id=0AvprCMxfYyv7dERlb0llbTJKbTJQZlYtUV9yWFhuVWc&authuser=0
 
 velveth
 =======
@@ -113,3 +113,4 @@ that gets the best score for the optimization function you designed in
 ``module load BioPerl``.
 
 .. _VelvetOptimiser: https://github.com/Victorian-Bioinformatics-Consortium/VelvetOptimiser
+
