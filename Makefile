@@ -55,20 +55,7 @@ milou:
 	@echo
 	@echo "Build finished. The HTML pages are in $(MILOU_EXPORT)"
 
-mako:
-	python run_mako.py -o source/binning -t mako/templates/binning --config mako/binning_config.yaml
-	python run_mako.py -o source/assembly -t mako/templates/assembly --config mako/assembly_config.yaml
-	python run_mako.py -o source/reads-qc -t mako/templates/reads-qc --config mako/reads-qc_config.yaml
-	python run_mako.py -o source/taxonomic-classification -t mako/templates/taxonomic-classification \
-		--config mako/taxonomic-classification_config.yaml
-	python run_mako.py -o source/tree -t mako/templates/tree --config mako/tree_config.yaml
-	python run_mako.py -o source/functional-annotation -t mako/templates/functional-annotation \
-		--config mako/functional-annotation_config.yaml
-	python run_mako.py -o source/sample-comparison -t mako/templates/sample-comparison \
-		--config mako/sample-comparison_config.yaml
-	python run_mako.py -o source -t mako/templates --config mako/index_config.yaml
-
-html: mako
+html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
