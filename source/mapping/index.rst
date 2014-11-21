@@ -49,14 +49,14 @@ Take an assembly and try to map the reads back using bowtie2. Do this on an
 interactive node again, and remember to change the 'out_21' part to the actual output directory that you generated::
 
     # Create a new directory and link files
-    mkdir -p ~/asm-workshop/bowtie2
-    cd ~/asm-workshop/bowtie2
-    ln -s ../velvet/out_21/contigs.fa contigs.fa
-    ln -s ../sickle/pair1.fastq pair1.fastq
-    ln -s ../sickle/pair2.fastq pair2.fastq
+    mkdir -p ~/asm-workshop/mapping/bowtie2
+    cd ~/asm-workshop/mapping/bowtie2
+    ln -s ../../assembly/velvet/out_31/$SAMPLE/contigs.fa contigs.fa
+    ln -s /proj/g2014113/nobackup/data/$SAMPLE/reads/"$SAMPLE_ID"_1M.1.fastq pair1.fastq
+    ln -s /proj/g2014113/nobackup/data/$SAMPLE/reads/"$SAMPLE_ID"_1M.2.fastq pair2.fastq
 
     # Run the everything in one go script. 
-    map-bowtie2-markduplicates.sh -t 1 -c pair1.fastq pair2.fastq pair contigs.fa contigs map > map.log 2> map.err
+    map-bowtie2-markduplicates.sh -t 8 -c pair1.fastq pair2.fastq pair contigs.fa contigs map > map.log 2> map.err
 
 Inspect the ``map.log`` output and see if all went well.
 
