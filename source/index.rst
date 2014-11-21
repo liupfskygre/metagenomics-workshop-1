@@ -11,9 +11,10 @@ and annotation of metagenomic samples.
 
 Program:
 
-* Session 0
+* Getting started
+    * :doc:`introduction`
     * :doc:`reqs`
-* Session 1
+* Sessions
     * :doc:`reads-qc/index`
     * :doc:`sortmerna/index`
     * :doc:`assembly/index`
@@ -27,7 +28,8 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-   
+
+   introduction
    reqs
    reads-qc/index
    sortmerna/index
