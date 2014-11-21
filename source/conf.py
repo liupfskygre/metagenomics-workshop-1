@@ -107,6 +107,11 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
     import sphinx_rtd_theme
     html_theme = 'sphinx_rtd_theme'
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+    
+    # Add any paths that contain custom themes here, relative to this directory.
+    #html_theme_path = []
+    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+
 
 # otherwise, readthedocs.org uses their theme by default, so no need to specify it
 
@@ -121,7 +126,6 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
 
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
