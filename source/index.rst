@@ -12,6 +12,7 @@ and annotation of metagenomic samples.
 Program:
 
 * Getting started
+    * :doc:`login_uppmax`
     * :doc:`introduction`
     * :doc:`reqs`
 * Sessions
