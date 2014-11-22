@@ -27,5 +27,5 @@ Some genes in your dataset should now contain annotations from several databases
 
 **Question: How many of the coding regions were given an enzyme identifier? How many were given a COG identifier?**
 
-In the downstream analyses we will quantify and compare the abundance of enzymes and metabolic pathways, as well as COGs in the different samples. To do this, we will first extract lists of the genes with enzyme and COG IDs from the Genbank file that was produced by PROKKA. Unfortunately, PROKKA 
-    
+In the downstream analyses we will quantify and compare the abundance of enzymes and metabolic pathways, as well as COGs in the different samples. To do this, we will first extract lists of the genes with enzyme and COG IDs from the GFF file that was produced by PROKKA.
+    grep "eC_number=" PROKKA_*.gff | head | cut -f9 | cut -f1,2 -d ';'| sed 's/ID=//g'| sed 's/;eC_number=/\t/g' > PROKKA.ec
