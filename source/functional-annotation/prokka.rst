@@ -1,5 +1,5 @@
 ==================
-Functional annotation
+Annotating the assembly using the PROKKA pipeline
 ==================
 Now that you have assembled the data into contigs the next natural step to do is
 annotation of the data, i.e. finding the genes and doing functional annotation
