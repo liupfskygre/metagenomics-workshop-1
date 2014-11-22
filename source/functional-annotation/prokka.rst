@@ -3,25 +3,13 @@ PROKKA annotation pipeline
 ==================
 Now that you have assembled the data into contigs the next natural step to do is
 annotation of the data, i.e. finding the genes and doing functional annotation
-of those. A range of programs are available for these tasks but here we will use PROKKA, which is essentially a pipeline comprising several open source bioinformatic tools and databases. PROKKA automates the process of locating open reading frames (ORFs) and RNA regions on contigs, translating ORFs to protein sequences, searching for protein homologs and producing standard output files.
+of those. A range of programs are available for these tasks but here we will use PROKKA, which is essentially a pipeline comprising several open source bioinformatic tools and databases. PROKKA automates the process of locating open reading frames (ORFs) and RNA regions on contigs, translating ORFs to protein sequences, searching for protein homologs and producing standard output files. For gene finding and translation, PROKKA makes use of the program Prodigal. Homology searching (BLAST, hmmscan) is then performed using the translated protein sequences as queries against a set of public databases (CDD, PFAM, TIGRFAM) as well as custom databases that come with PROKKA.
 
-    /proj/g2014113/metagenomics/comparative-functional-analysis/reads
+    /proj/g2014180/
 
-The first four numbers in the filename represent a date. All samples are from
-2012. R1 and R2 both contain one read of a pair. They are ordered, so the first
-four lines in R1 are paired with the read in the first four lines of R2. They
-are in CASAVA v1.8 format (http://en.wikipedia.org/wiki/FASTQ_format).
-
-A coassembly has already been made with Ray using all reads to save you some
-time. You can find the contigs from a combined assembly on reads from all
-samples here::
-
-    /proj/g2014113/metagenomics/cfa/assembly/baltic-sea-ray-noscaf-41.1000.fa
-
-They have been constructed with Ray using a kmer of 41 and no scaffolding. Only
-contigs >= 1000 are in this file. The reason a coassembly is used is that we
-can get an idea of the entire metagenome over multiple samples. By mapping the
-reads back per sample we can compare coverages of contigs between samples.
+PROKKA produces several types of output, such as:
+- the GFF file, which is a standardised, tab delimited, file type for showing annotations
+- the Genbank (GBK) file, which is a more detailed description of nucleotide sequences and the genes encoded on these.
 
 **Question: What could be a possible advantage/disadvantage for the assembly
 process when assembling multiple samples at one time?**
