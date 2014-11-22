@@ -44,7 +44,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Metagenomics Workshop SciLifeLab'
-copyright = u'2014, Johannes Alneberg, Johan Bengtsson-Palme, Ino de Bruijn, Luisa Hugerth, Mikael Huss, Thomas Svensson'
+copyright = u'2014, Johannes Alneberg, John Larsson, Ino de Bruijn, Luisa Hugerth, Anders Andersson'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
