@@ -1,5 +1,5 @@
 ==================
-PROKKA annotation pipeline
+Functional annotation
 ==================
 Now that you have assembled the data into contigs the next natural step to do is
 annotation of the data, i.e. finding the genes and doing functional annotation
@@ -35,3 +35,10 @@ First we extract enzyme numbers for genes using pattern matching:
 Then we do the same for COG identifiers:
 
     egrep "COG[0-9]{4}" PROKKA_*.gff | cut -f9 | sed 's/.\+COG\([0-9]\+\);locus_tag=\(PROKKA_[0-9]\+\);.\+/\2\tCOG\1/g' > PROKKA.cog
+
+The COG table we will save for later. Next up is to predict pathways in the sample based on the enzymes annotated by PROKKA. 
+
+===============
+Predicting metabolic pathways using MinPath
+===============
+Metabolic pathways are made up of enzymes that catalyze various reactions. Depending on how pathways are defined, they may contain any number of enzymes. Enzymes may also be part of 
