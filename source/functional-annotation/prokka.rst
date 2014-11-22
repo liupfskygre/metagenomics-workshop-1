@@ -60,3 +60,13 @@ Run MinPath with this command to predict Metacyc pathways
 And to predict KEGG pathways
 
     MinPath1.2.py -any PROKKA.$SAMPLE.ec -map data/db/kegg/ec.to.pwy -report PROKKA.$SAMPLE.kegg.minpath
+
+Take a look at the report files:
+
+    less -S PROKKA.$SAMPLE.metacyc.minpath
+    
+**Question: How many Metacyc and KEGG pathways did MinPath predict in your sample? How many were predicted if you had counted all possible pathways as being present? (HINT: look for the 'naive' and 'minpath' tags)**
+
+==================
+Mapping reads and quantifying genes
+==================
