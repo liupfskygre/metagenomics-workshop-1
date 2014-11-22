@@ -17,7 +17,7 @@ Program:
     * :doc:`reqs`
 * Sessions
     * :doc:`reads-qc/index`
-    * :doc:`sortmerna/index`
+    * :doc:`16S-analysis/index`
     * :doc:`assembly/index`
     * :doc:`mapping/index`
     * :doc:`taxonomic-classification/index`
@@ -33,7 +33,7 @@ Contents:
    introduction
    reqs
    reads-qc/index
-   sortmerna/index
+   16S-analysis/index
    assembly/index
    mapping/index
    taxonomic-classification/index
