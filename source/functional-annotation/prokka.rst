@@ -19,7 +19,7 @@ http://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html
 
 When your dataset has been annotated you can view the annotations directly in the GFF and GBK files, for instance by doing
 
-    less -S PROKKA_*.gbk
+    less -S PROKKA_11252014.gbk
 
 **Question: How many coding regions were found by Prodigal? Hint: use grep -c**
 
@@ -30,11 +30,11 @@ Some genes in your dataset should now contain annotations from several databases
 In the downstream analyses we will quantify and compare the abundance of enzymes and metabolic pathways, as well as COGs in the different samples. To do this, we will first extract lists of the genes with enzyme and COG IDs from the GFF file that was produced by PROKKA.
 First we extract enzyme numbers for genes using pattern matching:
 
-    grep "eC_number=" PROKKA_*.gff | cut -f9 | cut -f1,2 -d ';'| sed 's/ID=//g'| sed 's/;eC_number=/\t/g' > PROKKA.ec
+    grep "eC_number=" PROKKA_11252014.gff | cut -f9 | cut -f1,2 -d ';'| sed 's/ID=//g'| sed 's/;eC_number=/\t/g' > PROKKA.$SAMPLE.ec
 
 Then we do the same for COG identifiers:
 
-    egrep "COG[0-9]{4}" PROKKA_*.gff | cut -f9 | sed 's/.\+COG\([0-9]\+\);locus_tag=\(PROKKA_[0-9]\+\);.\+/\2\tCOG\1/g' > PROKKA.cog
+    egrep "COG[0-9]{4}" PROKKA_11252014.gff | cut -f9 | sed 's/.\+COG\([0-9]\+\);locus_tag=\(PROKKA_[0-9]\+\);.\+/\2\tCOG\1/g' > PROKKA.$SAMPLE.cog
 
 The COG table we will save for later. Next up is to predict pathways in the sample based on the enzymes annotated by PROKKA. 
 
@@ -44,3 +44,19 @@ Predicting metabolic pathways using MinPath
 Metabolic pathways are made up of enzymes that catalyze various reactions. Depending on how pathways are defined, they may contain any number of enzymes. A single enzyme may also be part of one or several pathways. One way of predicting metabolic pathways in a sample is to simply consider all the pathways that a set of enzymes are involved in. This may however overestimate pathways, for instance if only a few of the enzymes required for a pathway are annotated in the sample. 
 
 Here we will predict pathways using the program MinPath to get conservative estimate of the pathways present. MinPath only considers the minimum number of pathways required to explain the set of enzymes in the sample. As input, MinPath requires 1) a file with gene identifiers and enzyme numbers, separated by tabs, and 2) a file that links each enzyme to one or several pathways. The first of these we produced above using pattern matching from the PROKKA gff file. The second file exist in two versions, one that links enzymes to pathways defined in the Metacyc database and one that links enzymes to pathways defined in the KEGG database.
+
+Metacyc file
+
+    data/db/metacyc/ec.to.pwy
+    
+KEGG file
+
+    data/db/kegg/ec.to.pwy
+
+Run MinPath with this command to predict Metacyc pathways
+
+    MinPath1.2.py -any PROKKA.$SAMPLE.ec -map data/db/metacyc/ec.to.pwy -report PROKKA.$SAMPLE.metacyc.minpath
+
+And to predict KEGG pathways
+
+    MinPath1.2.py -any PROKKA.$SAMPLE.ec -map data/db/kegg/ec.to.pwy -report PROKKA.$SAMPLE.kegg.minpath
