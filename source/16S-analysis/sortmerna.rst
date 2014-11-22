@@ -1,13 +1,25 @@
 ==========================================
-Extracting rRNA seqeuences with SortMeRNA
+Community analysis using rRNA gene reads
 ==========================================
-In this exercise we will learn how to extract 16S (prokaryotes) and 18S (eukaryotes) 
-rRNA genes from metagenomic reads for analysing the taxonomic composition of your sample.
-We will extract rRNA encoding reads with the program sortmeRNA which is one of the fastest 
-softwares for this (the program rnammer that you will use tomorrow is not good for partial 
-rRNA sequences as those on short reads). The program sortmeRNA has built-in multithreading 
-support so this time we use that for parallelization instead of gnu parallel. 
-These are the commands to run:
+In this exercise we will learn how to extract 16S (prokaryotic) and 18S (eukaryotic) 
+rRNA encoding genes from metagenomic reads in order to analyse the taxonomic composition of 
+your sample. We will extract rRNA encoding reads with the program sortmeRNA which is one of 
+the fastest softwares for this (the program rnammer that you will use tomorrow is not good 
+for partial rRNA sequences as those on short reads). The program sortmeRNA has built-in multithreading 
+support so that we will use for parallelization.
+These are the commands to use::
+
+    mkdir -p ~/metagenomics_workshop/sortmerna
+    cd ~/metagenomics_workshop/sortmerna
+    sortmerna -n 2 --db ~inod/glob/src/sortmerna-1.9/rRNA_databases/silva-arc-16s-database-id95.fasta ~inod/glob/src/sortmerna-1.9/rRNA_databases/silva-bac-16s-database-id85.fasta --I /proj/g2013206/metagenomics/reads/${s}_pe.fasta --accept ${s}_rrna --other ${s}_nonrrna --bydbs -a 8 --log ${s}_bilan -m 5242880; done
+
+
+
+sortmeRNA outputs the reads or part of reads that encode rRNA in a fasta file. These rRNA 
+sequences can be classified in many ways, blasting them against a suitable database is one option. 
+Here we use a simple and fast method (unless you have too many samples), the classifier tool at RDP 
+(ribosomal database project). This uses a naive bayesian classifier trained on many sequences of defined taxonomies. It gives bootstrap support values for each taxonomic level; usually the support gets lower the further down the hierarchy you go. Genus level is the lowest level provided. You can use the web service if you prefer, and upload each file individually, or you can use the uppmax installation of RDP classifier like this (~4m):
+
 
 
 
