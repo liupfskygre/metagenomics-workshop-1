@@ -3,14 +3,7 @@ PROKKA annotation pipeline
 ==================
 Now that you have assembled the data into contigs the next natural step to do is
 annotation of the data, i.e. finding the genes and doing functional annotation
-of those. A range of programs are available for these tasks but here we will use PROKKA
-
-which is very fast and has recently been enhanced for metagenomics. We will use
-the -p flag which instructs Prodigal to use the algorithm suitable for
-metagenomic data. We will use a dataset consisting of 11 samples from a time
-series sampling of surface water in the Baltic Sea. Sequencing was done with
-Illumina MiSeq here generating on average 835,048 2 x 250 bp reads per sample.
-The reads can be found here::
+of those. A range of programs are available for these tasks but here we will use PROKKA, which is essentially a pipeline comprising several open source bioinformatic tools and databases. PROKKA automates the process of locating open reading frames (ORFs) and RNA regions on contigs, translating ORFs to protein sequences, searching for protein homologs and producing standard output files.
 
     /proj/g2014113/metagenomics/comparative-functional-analysis/reads
 
