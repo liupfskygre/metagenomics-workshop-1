@@ -8,8 +8,13 @@ of those. A range of programs are available for these tasks but here we will use
     /proj/g2014180/
 
 PROKKA produces several types of output, such as:
-- the GFF file, which is a standardised, tab delimited, file type for showing annotations
-- the Genbank (GBK) file, which is a more detailed description of nucleotide sequences and the genes encoded on these.
+
+- the **GFF** file, which is a standardised, tab delimited, file type for showing annotations
+- the Genbank (**GBK**) file, which is a more detailed description of nucleotide sequences and the genes encoded on these.
+
+When your dataset has been annotated you can view the annotations directly in the GFF and GBK files, for instance by doing
+
+    less -S PROKKA_*.gbk
 
 **Question: What could be a possible advantage/disadvantage for the assembly
 process when assembling multiple samples at one time?**
