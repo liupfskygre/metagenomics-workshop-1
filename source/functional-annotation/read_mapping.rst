@@ -48,6 +48,9 @@ Mapping reads with bowtie2
 Use this command to run the actual mapping of reads.
 
     # Create a new directory and link files
+    
     mkdir -p ~/mg-workshop/mapping/bowtie2
+    
     cd ~/mg-workshop/mapping/bowtie2
+    
     map-bowtie2-markduplicates.sh -t 2 -c ~/mg-workshop/data/reads/$SAMPLE_ID.1.fastq ~/mg-workshop/data/reads/$SAMPLE_ID.1.fastq $SAMPLE ~/mg-workshop/assembly/$SAMPLE/contigs.fa all ~/mg-workshop/mapping/bowtie2/ > map.log 2>map.err
