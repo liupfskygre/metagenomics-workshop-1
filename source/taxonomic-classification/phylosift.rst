@@ -3,27 +3,6 @@ Phylogenetic Classification using Phylosift
 ===========================================
 In this workshop we'll extract interesting bins from the concoct runs and investigate which species they consists of. We'll start by using a plain'ol BLASTN search and later we'll try a more sophisticated strategy with the program Phylosift.
 
-Extract bins from CONCOCT output
-================================
-The output from concoct is only a list of cluster id and contig ids respectively, so if we'd like to have fasta files for all our bins, we need to run the following script::
-    
-    extract_fasta_bins.py -h
-
-Running it will create a separate fasta file for each bin, so we'd first like to create a output directory where we can store these files::
-
-    mkdir -p ~/binning-workshop/concoct_output/3000_all_samples/fasta_bins
-    extract_fasta_bins.py ~/binning-workshop/data/Contigs_gt1000.fa ~/binning-workshop/concoct_output/3000_all_samples/clustering_gt3000.csv --output_path ~/binning-workshop/concoct_output/3000_all_samples/fasta_bins/
-
-Now you can see a number of bins in your output folder::
-
-    ls ~/binning-workshop/concoct_output/3000_all_samples/fasta_bins
-
-Using the graph downloaded in the previous part, decide one cluster you'd like to investigate further. We're going to use the web based BLASTN tool at ncbi, so lets first download the fasta file for the cluster you choose. Execute on a terminal not logged in to UPPMAX::
-    
-    scp username@milou.uppmax.uu.se:~/binning-workshop/concoct_output/3000_all_samples/fasta_bins/x.fa ~/Desktop/
-
-Before starting to blasting this cluster, lets begin with the next assignment, since the next assignment will include a long waiting time that suits for running the BLASTN search.
-
 Phylosift
 =========
 Phylosift is a software created for the purpose of determining the phylogenetic composition of your metagenomic data. It uses a defined set of genes to predict the taxonomy of each sequence in your dataset. You can read more about how this works here: http://phylosift.wordpress.com
