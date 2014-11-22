@@ -30,6 +30,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   login_uppmax   
    introduction
    reqs
    reads-qc/index
