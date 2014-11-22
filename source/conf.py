@@ -216,7 +216,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   ('index', 'MetagenomicsWorkshopSciLifeLab.tex', u'Metagenomics Workshop SciLifeLab Documentation',
-   u'Johannes Alneberg, Johan Bengtsson-Palme, Ino de Bruijn, Luisa Hugerth, Mikael Huss, Thomas Svensson', 'manual'),
+   u'Johannes Alneberg, John Larsson, Ino de Bruijn, Luisa Hugerth, Anders Andersson', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -246,7 +246,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'metagenomicsworkshopscilifelab', u'Metagenomics Workshop SciLifeLab Documentation',
-     [u'Johannes Alneberg, Johan Bengtsson-Palme, Ino de Bruijn, Luisa Hugerth, Mikael Huss, Thomas Svensson'], 1)
+     [u'Johannes Alneberg, John Larsson, Ino de Bruijn, Luisa Hugerth, Anders Andersson'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -260,7 +260,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'MetagenomicsWorkshopSciLifeLab', u'Metagenomics Workshop SciLifeLab Documentation',
-   u'Johannes Alneberg, Johan Bengtsson-Palme, Ino de Bruijn, Luisa Hugerth, Mikael Huss, Thomas Svensson', 'MetagenomicsWorkshopSciLifeLab', 'One line description of project.',
+   u'Johannes Alneberg, John Larsson, Ino de Bruijn, Luisa Hugerth, Anders Andersson', 'MetagenomicsWorkshopSciLifeLab', 'One line description of project.',
    'Miscellaneous'),
 ]
 
