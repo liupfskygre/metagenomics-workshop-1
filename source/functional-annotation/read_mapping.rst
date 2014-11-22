@@ -42,6 +42,12 @@ and then removing them?**
 
 **Question: What is the difference between samtools rmdup and Picard MarkDuplicates?**
 
+Mapping reads with bowtie2
+==========================
+
 Use this command to run the actual mapping of reads.
 
-    sbatch -A g2014180 -p core -n 2 -t 30:00 --wrap "map-bowtie2-markduplicates.sh -p '-f' -t 2 -c data/$SAMPLE/reads/$SAMPLE_ID.1.fastq data/$SAMPLE/reads/$SAMPLE_ID.1.fastq $SAMPLE results/assembly/$SAMPLE/contigs.fa all results/map/$SAMPLE/ > map.log 2>&1"
+    # Create a new directory and link files
+    mkdir -p ~/mg-workshop/mapping/bowtie2
+    cd ~/mg-workshop/mapping/bowtie2
+    map-bowtie2-markduplicates.sh -t 2 -c ~/mg-workshop/data/reads/$SAMPLE_ID.1.fastq ~/mg-workshop/data/reads/$SAMPLE_ID.1.fastq $SAMPLE ~/mg-workshop/assembly/$SAMPLE/contigs.fa all ~/mg-workshop/mapping/bowtie2/ > map.log 2>map.err
