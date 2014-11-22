@@ -22,7 +22,6 @@ Program:
     * :doc:`mapping/index`
     * :doc:`taxonomic-classification/index`
     * :doc:`functional-annotation/index`
-    * :doc:`sample-comparison/index` 
 
 
 Contents:
@@ -39,7 +38,6 @@ Contents:
    mapping/index
    taxonomic-classification/index
    functional-annotation/index
-   sample-comparison/index
 
 Enjoy!
 
