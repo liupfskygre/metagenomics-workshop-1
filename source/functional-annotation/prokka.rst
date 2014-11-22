@@ -11,10 +11,20 @@ PROKKA produces several types of output, such as:
 
 - the **GFF** file, which is a standardised, tab delimited, file type for showing annotations
 - the Genbank (**GBK**) file, which is a more detailed description of nucleotide sequences and the genes encoded on these.
+An explanation of the gff format can be found at
+http://genome.ucsc.edu/FAQ/FAQformat.html
+An explanation of the Genbank format can be found at
+http://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html
 
 When your dataset has been annotated you can view the annotations directly in the GFF and GBK files, for instance by doing
 
     less -S PROKKA_*.gbk
+
+**Question: How many coding regions were found by Prodigal? Hint: use grep -c**
+
+Some genes in your dataset should now contain annotations from several databases, for instance enzyme and COG (Clusters of Orthologous Groups) identifiers. 
+
+**Question: How many of the coding regions were given an enzyme identifier? How many were given a COG identifier?**
 
 **Question: What could be a possible advantage/disadvantage for the assembly
 process when assembling multiple samples at one time?**
