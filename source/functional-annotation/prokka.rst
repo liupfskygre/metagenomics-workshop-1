@@ -1,5 +1,5 @@
 ==================
-Gene finding
+PROKKA annotation pipeline
 ==================
 Now that you have assembled the data into contigs next natural step to do is
 annotation of the data, i.e. finding the genes and doing functional annotation
