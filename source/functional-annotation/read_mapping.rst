@@ -75,6 +75,6 @@ To summarize the coverage for each gene we will use a script that calculates cov
 We now have coverage values for all genes predicted and annotated by the PROKKA pipeline. Next, we will use the annotations and coverage values to summarize annotations for the sample. But first we will produce a file containing information on gene lengths in the sample. This will be used to normalize the gene coverage to make sure longer genes don't have higher coverage values just because of their length.
 Use the fastalength.py script for this::
 
-    fastalength.py -r -i ~/mg-workshop/results/$SAMPLE/functional_annotation/prokka/PROKKA_11252014.ffn > ~/mg-workshop/results/$SAMPLE/functional_annotation/prokka/PROKKA.genelengths
+    fastalength.py -r -i ~/mg-workshop/results/$SAMPLE/functional_annotation/prokka/PROKKA_11252014.ffn > ~/mg-workshop/results/$SAMPLE/functional_annotation/prokka/PROKKA.$SAMPLE.genelengths
     
 Now we can move on to summarizing the annotations and producing interactive plots.
