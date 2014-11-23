@@ -11,7 +11,7 @@ First we make sure that all the required files are available
     
     cd ~/mg-workshop/results/functional_annotation/minpath/
     
-    cp -r /pica/v7/g2014180_nobackup/metagenomics-workshop/data/db/ ~/mg-workshop/data/
+    cp -r /pica/v7/g2014180_nobackup/metagenomics-workshop/data/db/* ~/mg-workshop/data/
 
 Run MinPath with this command to predict Metacyc pathways
     
