@@ -44,11 +44,37 @@ and then removing them?**
 
 Mapping reads with bowtie2
 ==========================
-
-    # Create a new directory and link files
-    mkdir -p ~/mg-workshop/mapping/bowtie2
-    cd ~/mg-workshop/mapping/bowtie2
+First set up the files needed for mapping::
+    
+    mkdir -p ~/mg-workshop/results/functional_annotation/mapping/bowtie2
+    cd ~/mg-workshop/results/functional_annotation/mapping/bowtie2
     ln -s ~/mg-workshop/data/reads/$SAMPLE_ID.1.fastq pair1.fastq
     ln -s ~/mg-workshop/data/reads/$SAMPLE_ID.2.fastq pair2.fastq
-    ln -s ~/mg-workshop/assembly/$SAMPLE/contigs.fa
+    ln -s ~/mg-workshop/results/assembly/$SAMPLE/contigs.fa
+    
+Then run the script that performs the mapping::
+    
     map-bowtie2-markduplicates.sh -t 2 -c pair1.fastq pair2.fastq $SAMPLE contigs.fa all map > map.log 2>map.err
+
+Calculating coverage
+==========================
+We have now mapped reads back to the assembly and have information on how much of the assembly that is covered by the reads in the sample. What we are interested in is the coverage of the genes annotated in the previous steps by the PROKKA pipeline. To extract this information from the BAM file we first need to define the regions to calculate coverage for. This we will do by creating a custom GFF file defining the regions of interest (the PROKKA genes)::
+
+    make.mapping.gff.sh ~/mg-workshop/results/$SAMPLE/functional_annotation/prokka/PROKKA_11252014.gff > $SAMPLE.map.gff
+    
+Next we extract coverage information from the BAM file for each gene in the GFF file we just created. We will use the bedtools coverage command within the BEDTools suite (https://code.google.com/p/bedtools/) that can parse a SAM/BAM file and a gff file to extract coverage information for every gene::
+
+    bedtools -hist -abam map/contigs_pair-smds.bam $SAMPLE.map.gff | sed  "s/^M//g" > $SAMPLE.map.hist
+
+Have a look at the output file with less again. The final four columns give you the histogram i.e. coverage, number of bases with that coverage, length of the contig/feature/gene, bases with that coverage expressed as a ratio of the length of the contig/feature/gene.
+
+To summarize the coverage for each gene we will use a script that calculates coverage from the histogram file you just produced::
+
+    get_coverage_for_genes.py -i <(echo $SAMPLE.map.hist) > $SAMPLE.coverage
+
+We now have coverage values for all genes predicted and annotated by the PROKKA pipeline. Next, we will use the annotations and coverage values to summarize annotations for the sample. But first we will produce a file containing information on gene lengths in the sample. This will be used to normalize the gene coverage to make sure longer genes don't have higher coverage values just because of their length.
+Use the fastalength.py script for this::
+
+    fastalength.py -r -i ~/mg-workshop/results/$SAMPLE/functional_annotation/prokka/PROKKA_11252014.ffn > ~/mg-workshop/results/$SAMPLE/functional_annotation/prokka/PROKKA.genelengths
+    
+Now we can move on to summarizing the annotations and producing interactive plots.
