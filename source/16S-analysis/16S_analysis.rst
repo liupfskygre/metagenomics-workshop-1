@@ -39,7 +39,8 @@ KRONA
 =======
 To get a graphical representation of the taxonomic classifications you can use KRONA, which is an 
 excellent program for exploring data with hierarchical structures in general. The output file is an 
-html file that can be viewed in a browser. Again make a directory for KRONA::
+html file that can be viewed in a browser. 
+Again make a directory for KRONA::
 
     mkdir -p ~/metagenomics_workshop/krona
     cd ~/metagenomics_workshop/krona
