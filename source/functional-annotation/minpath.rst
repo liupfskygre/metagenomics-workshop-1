@@ -14,6 +14,11 @@ KEGG file
     data/db/kegg/ec.to.pwy
 
 Run MinPath with this command to predict Metacyc pathways
+    mkdir -p ~/mg-workshop/results/functional_annotation/minpath/
+    
+    cd ~/mg-workshop/results/functional_annotation/minpath/
+    
+    ln -s ~/mg-workshop/results/functional_annotation/prokka/PROKKA.$SAMPLE.ec
 
     MinPath1.2.py -any PROKKA.$SAMPLE.ec -map data/db/metacyc/ec.to.pwy -report PROKKA.$SAMPLE.metacyc.minpath
 
