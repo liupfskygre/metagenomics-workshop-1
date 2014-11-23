@@ -1,15 +1,12 @@
 =======================================================
 Functional Annotation
 =======================================================
-Run prokka that will do the following:
-
-- Find and annotate genes using PROKKA
-- Explore the annotation using Excel or Tablet
-
-The workshop has the following exercises:
+This part of the workshop has the following exercises:
 
 1. Gene annotation pipeline - PROKKA
-2. Explore gene annotation
+2. Quantify genes by mapping reads to the assembly
+3. Predict metabolic pathways using MinPath
+4. Explore gene annotation using KRONA
 
 Contents:
 
