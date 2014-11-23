@@ -17,15 +17,13 @@ These are the commands to use::
     cd ~/metagenomics_workshop/sortmerna
     sortmerna -n 2 --db ~inod/glob/src/sortmerna-1.9/rRNA_databases/silva-arc-16s-database-id95.fasta ~inod/glob/src/sortmerna-1.9/rRNA_databases/silva-bac-16s-database-id85.fasta --I /proj/g2013206/metagenomics/reads/${s}_pe.fasta --accept ${s}_rrna --other ${s}_nonrrna --bydbs -a 8 --log ${s}_bilan -m 5242880; done
 
-
-
 .. _sortmeRNA: http://bioinfo.lifl.fr/RNA/sortmerna/
 
 RDP classifier
 =======
 sortmeRNA outputs the reads or part of reads that encode rRNA in a fasta file. These rRNA 
 sequences can be classified in many ways, blasting them against a suitable database is one option. 
-Here we use a simple and fast method, the classifier tool at RDP (the ribosomal database project). 
+Here we use a simple and fast method, the classifier tool at RDP_ (the ribosomal database project). 
 This uses a naive bayesian classifier trained on kmer frequencies of many sequences of defined taxonomies. 
 It gives bootstrap support values for each taxonomic level; usually the support gets lower the further 
 down the hierarchy you go. Genus level is the lowest level provided. You can use the web service 
@@ -37,16 +35,18 @@ classifier like this (~4m)::
     for s in ../sortmerna/*_rrna*.fasta; do 
     java -Xmx1g -jar /gulo/glob/inod/src/rdp_classifier_2.6/dist/classifier.jar classify -g 16srrna -b ${s}.bootstrap -h ${s}.hier.tsv -o ${s}.class.tsv ${s}; done
 
+.. _RDP: http://rdp.cme.msu.edu/
 
 KRONA
 =======
-To get a graphical representation of the taxonomic classifications you can use KRONA, which is an 
+To get a graphical representation of the taxonomic classifications you can use KRONA_, which is an 
 excellent program for exploring data with hierarchical structures in general. The output file is an 
 html file that can be viewed in a browser. Again make a directory for KRONA::
 
     mkdir -p ~/metagenomics_workshop/krona
     cd ~/metagenomics_workshop/krona
 
+.. _KRONA: http://sourceforge.net/p/krona/home/krona/
 
 And run KRONA, concatenating the archaea and bacteria class files together at the same time like this 
 and providing the name of the sample::
