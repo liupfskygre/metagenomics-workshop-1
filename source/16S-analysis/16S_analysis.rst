@@ -9,7 +9,7 @@ will be visualised with the interactive program KRONA.
 
 SortmeRNA
 =======
-We will extract 16S rRNA encoding reads using sortmeRNA which is one of the fastest software for this. 
+We will extract 16S rRNA encoding reads using sortmeRNA_ which is one of the fastest software for this. 
 The program has built-in multithreading support that we will use for parallelization.
 These are the commands to use::
 
@@ -17,6 +17,9 @@ These are the commands to use::
     cd ~/metagenomics_workshop/sortmerna
     sortmerna -n 2 --db ~inod/glob/src/sortmerna-1.9/rRNA_databases/silva-arc-16s-database-id95.fasta ~inod/glob/src/sortmerna-1.9/rRNA_databases/silva-bac-16s-database-id85.fasta --I /proj/g2013206/metagenomics/reads/${s}_pe.fasta --accept ${s}_rrna --other ${s}_nonrrna --bydbs -a 8 --log ${s}_bilan -m 5242880; done
 
+
+
+.. _sortmeRNA: http://bioinfo.lifl.fr/RNA/sortmerna/
 
 RDP classifier
 =======
