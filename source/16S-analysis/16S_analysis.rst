@@ -39,8 +39,7 @@ KRONA
 =======
 To get a graphical representation of the taxonomic classifications you can use KRONA, which is an 
 excellent program for exploring data with hierarchical structures in general. The output file is an 
-html file that can be viewed in a browser. 
-Again make a directory for KRONA::
+html file that can be viewed in a browser. Again make a directory for KRONA::
 
     mkdir -p ~/metagenomics_workshop/krona
     cd ~/metagenomics_workshop/krona
@@ -56,7 +55,7 @@ The <() in bash can be used for process substitution (http://tldp.org/LDP/abs/ht
 cmd=`echo /gulo/glob/inod/src/KronaTools-2.4/bin/bin/ktImportRDP; for s in ${samplenames[*]}; do echo '<('cat ../rdp/${s}_rrna.silva-arc-16s-database-id95.fasta.class.tsv ../rdp/${s}_rrna.silva-bac-16s-database-id85.fasta.class.tsv')',$s; done`
 echo $cmd
 
-Copy the resulting file rdp.krona.html to your local computer with scp and open it in firefox.
+Copy the resulting file rdp.krona.html to your local computer with scp and open it in e.g. firefox.
 
 
 
