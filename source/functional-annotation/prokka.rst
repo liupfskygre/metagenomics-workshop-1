@@ -6,7 +6,9 @@ annotation of the data, i.e. finding the genes and doing functional annotation
 of those. A range of programs are available for these tasks but here we will use PROKKA, which is essentially a pipeline comprising several open source bioinformatic tools and databases. PROKKA automates the process of locating open reading frames (ORFs) and RNA regions on contigs, translating ORFs to protein sequences, searching for protein homologs and producing standard output files. For gene finding and translation, PROKKA makes use of the program Prodigal. Homology searching (BLAST, hmmscan) is then performed using the translated protein sequences as queries against a set of public databases (CDD, PFAM, TIGRFAM) as well as custom databases that come with PROKKA.
 
     cd ~/mg-workshop/results/$SAMPLE/prokka/
-    ln -s ~/mg-workshop/results/$SAMPLE/assembly/contigs.fa .
+    
+    ln -s ~/mg-workshop/results/$SAMPLE/assembly/contigs.fa
+    
     PROKKA COMMAND GOES HERE
 
 PROKKA produces several types of output, such as:
