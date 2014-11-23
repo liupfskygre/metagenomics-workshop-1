@@ -5,27 +5,23 @@ Metabolic pathways are made up of enzymes that catalyze various reactions. Depen
 
 Here we will predict pathways using the program MinPath to get conservative estimate of the pathways present. MinPath only considers the minimum number of pathways required to explain the set of enzymes in the sample. As input, MinPath requires 1) a file with gene identifiers and enzyme numbers, separated by tabs, and 2) a file that links each enzyme to one or several pathways. The first of these we produced above using pattern matching from the PROKKA gff file. The second file exist in two versions, one that links enzymes to pathways defined in the Metacyc database and one that links enzymes to pathways defined in the KEGG database.
 
-Metacyc file
+First we make sure that all the required files are available
 
-    data/db/metacyc/ec.to.pwy
-    
-KEGG file
-
-    data/db/kegg/ec.to.pwy
-
-Run MinPath with this command to predict Metacyc pathways
-
-    mkdir -p ~/mg-workshop/results/functional_annotation/minpath/
+    mkdir -p ~/mg-workshop/results/functional_annotation/minpath/ ~/mg-workshop/data/
     
     cd ~/mg-workshop/results/functional_annotation/minpath/
     
+    cp -r /pica/v7/g2014180_nobackup/metagenomics-workshop/data/db/ ~/mg-workshop/data/
+
+Run MinPath with this command to predict Metacyc pathways
+    
     ln -s ~/mg-workshop/results/functional_annotation/prokka/PROKKA.$SAMPLE.ec
 
-    MinPath1.2.py -any PROKKA.$SAMPLE.ec -map data/db/metacyc/ec.to.pwy -report PROKKA.$SAMPLE.metacyc.minpath
+    MinPath1.2.py -any PROKKA.$SAMPLE.ec -map ~/mg-workshop/data/db/metacyc/ec.to.pwy -report PROKKA.$SAMPLE.metacyc.minpath
 
 And to predict KEGG pathways
 
-    MinPath1.2.py -any PROKKA.$SAMPLE.ec -map data/db/kegg/ec.to.pwy -report PROKKA.$SAMPLE.kegg.minpath
+    MinPath1.2.py -any PROKKA.$SAMPLE.ec -map ~/mg-workshop/data/db/kegg/ec.to.pwy -report PROKKA.$SAMPLE.kegg.minpath
 
 Take a look at the report files:
 
