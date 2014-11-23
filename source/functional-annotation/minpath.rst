@@ -14,6 +14,7 @@ KEGG file
     data/db/kegg/ec.to.pwy
 
 Run MinPath with this command to predict Metacyc pathways
+
     mkdir -p ~/mg-workshop/results/functional_annotation/minpath/
     
     cd ~/mg-workshop/results/functional_annotation/minpath/
