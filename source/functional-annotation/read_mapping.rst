@@ -46,8 +46,8 @@ Mapping reads with bowtie2
 ==========================
 First set up the files needed for mapping::
     
-    mkdir -p ~/mg-workshop/results/functional_annotation/mapping/bowtie2
-    cd ~/mg-workshop/results/functional_annotation/mapping/bowtie2
+    mkdir -p ~/mg-workshop/results/$SAMPLE/functional_annotation/mapping/bowtie2
+    cd ~/mg-workshop/results/$SAMPLE/functional_annotation/mapping/bowtie2
     ln -s ~/mg-workshop/data/reads/$SAMPLE_ID.1.fastq pair1.fastq
     ln -s ~/mg-workshop/data/reads/$SAMPLE_ID.2.fastq pair2.fastq
     ln -s ~/mg-workshop/results/assembly/$SAMPLE/contigs.fa
