@@ -29,5 +29,4 @@ All of these files are interesting, but the most fun one is the html file, so le
     mkdir ~/mg-workshop/
     scp username@milou.uppmax.uu.se:~/mg-workshop/results/phylogeny/phylosift/phylosift_output/*.html ~/mg-workshop/
 
-Did the phylosift result correspond to any results in the BLAST output?
-
+**Question: Did the phylosift result correspond to any results in the BLAST output?**
