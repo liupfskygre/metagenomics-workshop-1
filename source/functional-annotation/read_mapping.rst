@@ -54,7 +54,7 @@ First set up the files needed for mapping::
     
 Then run the script that performs the mapping::
     
-    map-bowtie2-markduplicates.sh -t 16 -c pair1.fastq pair2.fastq $SAMPLE contigs.fa all map > map.log 2>map.err &
+    map-bowtie2-markduplicates.sh -t 16 -c pair1.fastq pair2.fastq $SAMPLE contigs.fa all map > map.log 2>map.err
 
 Calculating coverage
 ==========================
