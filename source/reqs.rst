@@ -12,7 +12,6 @@ The following programs are used in this workshop:
     - Bowtie2_
     - Velvet_
     - samtools_
-    - sickle_
     - Picard_
     - Ray_
     
@@ -64,22 +63,12 @@ Check all programs in one go with which
 ==================================================
 To check whether you have all programs installed in one go, you can use ``which``.
 
-    bowtie2
-    bowtie2-build
-    velveth
-    velvetg
-    shuffleSequences_fastq.pl
-    parallel
-    samtools
-    Ray
-
-
-We will now iterate over all the programs in calling ``which`` on each of them.
+In order to do so we will iterate over all the programs in calling ``which`` on each of them.
 First make a variable containing all programs separated by whitespace::
 
-    $ req_progs="bowtie2 bowtie2-build velveth velvetg parallel samtools shuffleSequences_fastq.pl Ray"
+    $ req_progs="bowtie2 bowtie2-build velveth velvetg parallel samtools interleave-reads.py Ray"
     $ echo $req_progs
-    bowtie2 bowtie2-build velveth velvetg parallel samtools shuffleSequences_fastq.pl
+    bowtie2 bowtie2-build velveth velvetg parallel samtools interleave-reads.py Ray
 
 Now iterate over the variable ``req_progs`` and call which::
 
@@ -90,7 +79,7 @@ Now iterate over the variable ``req_progs`` and call which::
     /proj/g2014180/metagenomics/virtenv/bin/velvetg
     /sw/parallel/gnuparallel/20140222/bin/parallel
     /proj/g2014180/metagenomics/virtenv/bin/samtools
-    /proj/g2014180/metagenomics/virtenv/bin/shuffleSequences_fastq.pl
+    /proj/g2014180/metagenomics/virtenv/bin/interleave-reads.py
     /proj/g2014180/metagenomics/virtenv/bin/Ray
 
 In Unix-like systems a program that sucessfully completes it tasks should
