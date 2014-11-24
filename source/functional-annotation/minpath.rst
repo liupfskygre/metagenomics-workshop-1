@@ -10,9 +10,9 @@ First we make sure that all the required files are available::
     mkdir -p ~/mg-workshop/results/functional_annotation/minpath/$SAMPLE/
     cd ~/mg-workshop/results/functional_annotation/minpath/$SAMPLE/
     mkdir -p ~/mg-workshop/reference_db/
-    cp -r /pica/v7/g2014180_nobackup/metagenomics-workshop/data/reference_db/cog ~/mg-workshop/reference_db/
-    cp -r /pica/v7/g2014180_nobackup/metagenomics-workshop/data/reference_db/kegg ~/mg-workshop/reference_db/
-    cp -r /pica/v7/g2014180_nobackup/metagenomics-workshop/data/reference_db/metacyc ~/mg-workshop/reference_db/
+    cp -r /proj/g2014180/nobackup/metagenomics-workshop/reference_db/cog ~/mg-workshop/reference_db/
+    cp -r /proj/g2014180/nobackup/metagenomics-workshop/reference_db/kegg ~/mg-workshop/reference_db/
+    cp -r /proj/g2014180/nobackup/metagenomics-workshop/reference_db/metacyc ~/mg-workshop/reference_db/
     ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.ec
     
 Run MinPath with this command to predict Metacyc pathways::
