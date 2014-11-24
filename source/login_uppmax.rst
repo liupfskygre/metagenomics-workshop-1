@@ -44,7 +44,7 @@ Load virtual environment
 We have already installed all programs for you, all you have to do is load the virtual
 environment for this workshop. Once you are logged in to the server run::
 
-    source /proj/g2014113/metagenomics/virt-env/mg-workshop/bin/activate
+    source /proj/g2014180/metagenomics/virtenv/bin/activate
 
 You deactivate the virtual environment with::
     
@@ -54,6 +54,33 @@ NOTE: This is a python virtual environment. The binary folder of the virtual
 environment has symbolic links to all programs used in this workshop so you
 should be able to run those without problems.
 
-Set sample varaibles
+Set sample variables
 ----------------------------
+You will now have to make your decision on which kind of dataset you want to work with during this workshop. 
+The choices you have are three different sampling sites on or within the human body:
+    - Gut
+    - Skin
+    - Teeth
 
+**Run only *one* of these commands in the terminal**
+
+Gut
+^^^
+::
+
+    SAMPLE=gut
+    SAMPLE_ID=SRS011405
+
+Teeth
+^^^^^
+::
+
+    SAMPLE=teeth
+    SAMPLE_ID=SRS014690
+
+Skin
+^^^^
+::
+    
+    SAMPLE=skin
+    SAMPLE_ID=SRS015381
