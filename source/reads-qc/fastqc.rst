@@ -6,25 +6,25 @@ using a nice graphical summary output.
 
 Retrieving your data
 ====================
-For the first step, make a workshop folder in your home directory and move into it:
+For the first step, make a workshop folder in your home directory and move into it::
 
-	mkdir metagen
-	cd metagen
+	mkdir mg-workshop
+	cd mg-workshop
 
 Inside it, make a folder for your input files:
 
-	mkdir reads
+	mkdir -p data/$SAMPLE/reads/1M/
+	cd data/$SAMPLE/
 
 Now make a copy of the files you want to work on: gut, skin or teeth datasets. These
 files were originally taken from the `Human Microbiome Project <http://hmpdacc.org/>`_ and then subsampled
 to include only 1 million reads each. You can copy these files from the project directory:
 
-	cp /proj/g2014180/nobackup/metagenomics-workshop/data/<sample>/reads/1M/\*1.fastq reads/reads.1.fastq
-	cp /proj/g2014180/nobackup/metagenomics-workshop/data/<sample>/reads/1M/\*2.fastq reads/reads.2.fastq
+	cp /proj/g2014180/nobackup/metagenomics-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1.fastq reads/1M/
+	cp /proj/g2014180/nobackup/metagenomics-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_2.fastq reads/1M/
 
-Please notice that you have to replace <sample> for either gut, skin or teeth to get the
-right files. You will now have two files in your reads directory: one for the forward reads
-(reads.1.fastq) and one for the reverse reads (reads.2.fastq).
+You will now have two files in your reads directory: one for the forward reads
+(*_1.fastq) and one for the reverse reads (*_2.fastq).
 
 Fastqc
 ======
@@ -35,17 +35,17 @@ and we'll show you only a few of those.
 
 First, make a folder to keep your quality control results:
 
-	mkdir qc
+	mkdir -p ~/mg-workshop/results/quality_check/$SAMPLE/
 
 Now, run fastqc for each file:
 
-	fastqc -o qc/ --nogroup reads/reads.1.fastq reads/reads.2.fastq
+	fastqc -o ~/mg-workshop/results/quality_check/$SAMPLE/ --nogroup reads/1M/${SAMPLE_ID}_1.fastq reads/1M/${SAMPLE_ID}_2.fastq
 
 FastQC will generate two files for each input file, one compressed, and one not. To view
 your files, copy the html results into your local computer and open them with a browser.
 From your own shell (not inside Uppmax!):
 
-	scp -r username@milou.uppmax.uu.se:~/metagen/qc/\*html .
+	scp -r username@milou.uppmax.uu.se:~/mg-workshop/results/quality_check/$SAMPLE/\*html .
 
 Instead of username, type your own username!
 
