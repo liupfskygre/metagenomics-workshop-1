@@ -38,10 +38,10 @@ down the hierarchy you go. Genus level is the lowest level provided. You can use
 if you prefer, and upload each file individually, or you can use the uppmax installation of RDP 
 classifier like this::
 
-    for file in *_rrna*.fastq; do 
-	name=$(basename $file)
-	java -Xmx1g -jar /proj/g2014180/metagenomics/virtenv/rdp_classifier_2.6/dist/classifier.jar classify -g 16srrna -b $name.bootstrap -h $name.hier.tsv -o $name.class.tsv $file
-	done
+    for file in *_rrna*.fastq; 
+    do name=$(basename $file);
+    java -Xmx1g -jar /proj/g2014180/metagenomics/virtenv/rdp_classifier_2.6/dist/classifier.jar classify -g 16srrna -b $name.bootstrap -h $name.hier.tsv -o $name.class.tsv $file;
+    done
 
 .. _RDP: http://rdp.cme.msu.edu/
 
