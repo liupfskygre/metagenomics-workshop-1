@@ -139,5 +139,5 @@ The data files::
     │   └── silva-euk-18s-database-id95.fasta.index.stats
     └── teeth
         ├── contigs
-            ├── README
-                └── reads
+        ├── README
+        └── reads
