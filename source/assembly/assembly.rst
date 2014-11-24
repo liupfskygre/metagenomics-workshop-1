@@ -16,12 +16,11 @@ For this workshop we will work with the kmer length of 31.
 
 velveth
 =======
-Create the graph data structure with ``velveth``. Again like we did with
-``sickle``, first create a directory with symbolic links to the pairs that you
+Create the graph data structure with ``velveth``. First create a directory with symbolic links to the pairs that you
 want to use::
 
-    mkdir -p ~/mg-workshop/results/assembly
-    cd ~/mg-workshop/results/assembly
+    mkdir -p ~/mg-workshop/results/assembly/$SAMPLE/
+    cd ~/mg-workshop/results/assembly/$SAMPLE/
     ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq pair1.fastq
     ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq pair2.fastq
 
