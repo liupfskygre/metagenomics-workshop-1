@@ -23,8 +23,15 @@ won't be further processed.
 
 Run sickle::
 
-	sickle pe -f reads/reads.1.fastq -r reads/reads.2.fastq -t sanger -o qc/qtrim.1.fastq -p qtrim.2.fastq -s qtrim.unpaired.fastq -q <minqual> -l <minlen>
-
+	mkdir -p ~/mg-workshop/results/quality_check/sickle/$SAMPLE
+	sickle pe \
+	        -f ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq \
+	        -r ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq \
+	        -t sanger \
+		-o ~/mg-workshop/results/quality_check/sickle/$SAMPLE/qtrim.1.fastq \
+		-p ~/mg-workshop/results/quality_check/sickle/$SAMPLE/qtrim.2.fastq \
+		-s ~/mg-workshop/results/quality_check/sickle/$SAMPLE/qtrim.unpaired.fastq \
+		-q 20 -l 20
 
 Chek what files have been generated. Do you understand each of them?
 
