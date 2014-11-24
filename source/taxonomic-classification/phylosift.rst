@@ -7,9 +7,9 @@ Phylosift
 =========
 Phylosift is a software created for the purpose of determining the phylogenetic composition of your metagenomic data. It uses a defined set of genes to predict the taxonomy of each sequence in your dataset. You can read more about how this works here: http://phylosift.wordpress.com. Running phylosift will take some time (roughly 45 min) so lets start running phylosift on the cluster you choose::
 
-    mkdir -p ~/mg-workshop/phylogeny/phylosift/$SAMPLE
-    cd ~/mg-workshop/phylogeny/phylosift/$SAMPLE
-    ln -s ~/mg-workshop/assembly/$SAMPLE/contigs.fa .
+    mkdir -p ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE
+    cd ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE
+    ln -s ~/mg-workshop/results/assembly/$SAMPLE/contigs.fa .
     phylosift all -f --output phylosift_output contigs.fa
 
 While this command is running, go to ncbi web blast service: 
@@ -21,11 +21,13 @@ Browse through the result and try and see if you can do a taxonomic classificati
 
 When the phylosift run is completed, browse the output directory::
 
-    ls ~/binning-workshop/phylosift_output/
+    ls ~/mg-workshop/results/phylogeny/phylosift/phylosift_output/
 
-All of these files are interesting, but the most fun one is the html file, so lets download this to your own computer and have a look. Again, switch to a terminal where you're not logged in to UPPMAX::
+All of these files are interesting, but the most fun one is the html file, so lets download this to your own computer and have a look.
+**Again, switch to a terminal where you're not logged in to UPPMAX**::
 
-    scp username@milou.uppmax.uu.se:~/binning-workshop/phylosift_output/x.fa.html ~/Desktop/
+    mkdir ~/mg-workshop/
+    scp username@milou.uppmax.uu.se:~/mg-workshop/results/phylogeny/phylosift/phylosift_output/*.html ~/mg-workshop/
 
 Did the phylosift result correspond to any results in the BLAST output?
 
