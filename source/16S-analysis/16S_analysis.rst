@@ -39,8 +39,8 @@ if you prefer, and upload each file individually, or you can use the uppmax inst
 classifier like this::
 
     for file in *_rrna*.fastq; do 
-		name = $(basename $file)
-	    java -Xmx1g -jar /proj/g2014180/metagenomics/virtenv/rdp_classifier_2.6/dist/classifier.jar classify -g 16srrna -b $name.bootstrap -h $name.hier.tsv -o $name.class.tsv $file
+	name=$(basename $file)
+	java -Xmx1g -jar /proj/g2014180/metagenomics/virtenv/rdp_classifier_2.6/dist/classifier.jar classify -g 16srrna -b $name.bootstrap -h $name.hier.tsv -o $name.class.tsv $file
 	done
 
 .. _RDP: http://rdp.cme.msu.edu/
@@ -56,10 +56,10 @@ html file that can be viewed in a browser. Again make a directory for Krona
 And run Krona, specifycing the name of the output file (-o), the minimum bootstrap support to use (-m)
 and that the two input files should be treated as only one (-c)::
 
-	ktImportRDP -o 16S.tax.html -m 50 -c SRS011405_10M.1.fastq.fastq.class.tsv  SRS011405_1M.2.fastq.fastq.class.tsv
+	ktImportRDP -o 16S.tax.html -m 50 -c reads.1.fastq_rrna.fastq.class.tsv  reads.2.fastq_rrna.fastq.class.tsv
 
 The <() in bash can be used for process substitution: http://tldp.org/LDP/abs/html/process-sub.html.
 
-Copy the resulting file rdp.krona.html to your local computer with scp and open it a browser,
+Copy the resulting file 16S.tax.html to your local computer with scp and open it a browser,
 like you did for the FastQC output.
 	
