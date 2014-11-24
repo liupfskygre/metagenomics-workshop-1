@@ -9,7 +9,7 @@ Phylosift is a software created for the purpose of determining the phylogenetic 
 
     mkdir -p ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE
     cd ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE
-    ln -s ~/mg-workshop/results/assembly/$SAMPLE/$SAMPLE/${SAMPLE}_31/contigs.fa .
+    ln -s ~/mg-workshop/results/assembly/$SAMPLE/${SAMPLE}_31/contigs.fa .
     phylosift all -f --output phylosift_output contigs.fa
 
 You can check the progress of the phylosift run by browsing the file*::
