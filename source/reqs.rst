@@ -84,13 +84,14 @@ First make a variable containing all programs separated by whitespace::
 Now iterate over the variable ``req_progs`` and call which::
 
     $ for p in $req_progs; do which $p || echo $p not in PATH; done
-    /proj/g2014113/metagenomics/virt-env/mg-workshop/bin/bowtie2
-    /proj/g2014113/metagenomics/virt-env/mg-workshop/bin/bowtie2-build
-    /proj/g2014113/metagenomics/virt-env/mg-workshop/bin/velveth
-    /proj/g2014113/metagenomics/virt-env/mg-workshop/bin/velvetg
-    /proj/g2014113/metagenomics/virt-env/mg-workshop/bin/parallel
-    /proj/g2014113/metagenomics/virt-env/mg-workshop/bin/samtools
-    /proj/g2014113/metagenomics/virt-env/mg-workshop/bin/shuffleSequences_fastq.pl
+    /proj/g2014180/metagenomics/virtenv/bin/bowtie2
+    /proj/g2014180/metagenomics/virtenv/bin/bowtie2-build
+    /proj/g2014180/metagenomics/virtenv/bin/velveth
+    /proj/g2014180/metagenomics/virtenv/bin/velvetg
+    /sw/parallel/gnuparallel/20140222/bin/parallel
+    /proj/g2014180/metagenomics/virtenv/bin/samtools
+    /proj/g2014180/metagenomics/virtenv/bin/shuffleSequences_fastq.pl
+    /proj/g2014180/metagenomics/virtenv/bin/Ray
 
 In Unix-like systems a program that sucessfully completes it tasks should
 return a zero exit status. For the program ``which`` that is the case if the
