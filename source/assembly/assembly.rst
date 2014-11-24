@@ -62,8 +62,3 @@ length.
 
 **Question: What are the important length statistics? Do we prefer sum over
 length? Should it be a combination?**
-
-Think of a formula that could indicate the best preferred
-length distribution where you express the optimization function in terms of the
-column names from the doc_. For instance only ``n50_len`` or ``sum *
-n50_len``.
