@@ -28,13 +28,17 @@ want to use::
     ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq pair1.fastq
     ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq pair2.fastq
 
+Create a directory for the kmer of your choice. **Replace N with the kmer length below**::
+
+    mkdir ${SAMPLE}_N
+
 The reads need to be interleaved for ``velveth``::
 
-    interleave-reads.py -o interleaved.fastq pair1.fastq pair2.fastq
+    interleave-reads.py -o pair.fastq pair1.fastq pair2.fastq
 
-Run velveth, replacing <N> with the kmer length you chose::
+Run velveth, **replacing N with the kmer length you chose**::
 
-    velveth $SAMPLE <N> -fastq -shortPaired interleaved.fastq
+    velveth {$SAMPLE}_N N -fastq -shortPaired pair.fastq
 
 Check what directories have been created::
 
@@ -45,9 +49,9 @@ velvetg
 To get the actual contigs you will have to run ``velvetg`` on the created
 graph. You can vary options such expected coverage and the coverage cut-off if
 you want, but we do not do that in this tutorial. We only choose not to do
-scaffolding::
+scaffolding. Again **replace N for your current kmer length**::
 
-    velvetg $SAMPLE -scaffolding no
+    velvetg ${SAMPLE}_N -scaffolding no
 
 
 assemstats
@@ -55,7 +59,7 @@ assemstats
 After the assembly one wants to look at the length distributions of the
 resulting assemblies. You can use the ``assemstats`` script for that::
 
-    assemstats 100 $SAMPLE/contigs.fa
+    assemstats 100 ${SAMPLE}_N/contigs.fa
 
 Try to find out what each of the stats represent by varying the cut-off. One of
 the most often used statistics in assembly length distribution comparisons is
