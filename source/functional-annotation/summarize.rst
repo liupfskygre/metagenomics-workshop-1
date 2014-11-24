@@ -11,6 +11,7 @@ First we will create a new directory for the krona output and link to the necess
 
   mkdir -p ~/mg-workshop/results/functional_annotation/$SAMPLE/krona
   cd ~/mg-workshop/results/functional_annotation/$SAMPLE/krona
+  ln -s ~/mg-workshop/results/functional_annotation/mapping/$SAMPLE/$SAMPLE.coverage
   ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.ec
   ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.cog
   ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.genelengths
