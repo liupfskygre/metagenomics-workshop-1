@@ -43,8 +43,10 @@ Now, run fastqc for each file:
 
 FastQC will generate two files for each input file, one compressed, and one not. To view
 your files, copy the html results into your local computer and open them with a browser.
-From your own shell (not inside Uppmax!):
+From **your own shell (not inside Uppmax!)**::
 
+	mkdir ~/mg-workshop/
+	cd ~/mg-workshop/
 	scp -r username@milou.uppmax.uu.se:~/mg-workshop/results/quality_check/$SAMPLE/\*html .
 
 Instead of username, type your own username!
