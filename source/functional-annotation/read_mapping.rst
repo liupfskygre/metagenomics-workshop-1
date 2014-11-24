@@ -50,7 +50,7 @@ First set up the files needed for mapping::
     cd ~/mg-workshop/results/functional_annotation/mapping/$SAMPLE/
     ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq pair1.fastq
     ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq pair2.fastq
-    ln -s ~/mg-workshop/results/assembly/$SAMPLE/contigs.fa
+    ln -s ~/mg-workshop/results/assembly/$SAMPLE/${SAMPLE}_31/contigs.fa
     
 Then run the script that performs the mapping::
     
