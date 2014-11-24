@@ -1,7 +1,7 @@
-==========================================
+============================
 Assembling reads with Velvet
-==========================================
-In this exercise we will learn how to perform an assembly with Velvet. Velvet
+============================
+In this exercise you will learn how to perform an assembly with Velvet. Velvet
 takes your reads as input and turns them into contigs. It consists of two
 steps. In the first step, ``velveth``, the de Bruijn graph is created.
 Afterwards the graph is traversed and contigs are created with ``velvetg``.
@@ -10,9 +10,13 @@ cut up into pieces of length *k*, each representing a node in the graph, edges
 represent an overlap (some de Bruijn graph assemblers do this differently, but
 the idea is the same). The advantage of using kmer overlap instead of read
 overlap is that the computational requirements grow with the number of unique
-kmers instead of unique reads. A more detailled explanation can be found at
-http://www.nature.com/nbt/journal/v29/n11/full/nbt.2023.html.
-For this workshop we will work with the kmer length of 31.
+kmers instead of unique reads. A more detailed explanation can be found in
+`this paper <http://www.nature.com/nbt/journal/v29/n11/full/nbt.2023.html>`_.
+
+You can test different kmer lengths, as long as they're odd numbers. A good margin
+is to have the kmer length between 21 and 51. We'll then look at a few statistics
+on the assembly; if you're choice of kmer wasn't good, you might have to run another
+assembly (but this is very fast).
 
 velveth
 =======
@@ -26,11 +30,11 @@ want to use::
 
 The reads need to be interleaved for ``velveth``::
 
-    shuffleSequences_fastq.pl pair1.fastq pair2.fastq pair.fastq
+    interleave-reads.py -o interleaved.fastq pair1.fastq pair2.fastq
 
-Run velveth, using 31 as the kmer length::
+Run velveth, replacing <N> with the kmer length you chose::
 
-    velveth $SAMPLE 31 -fastq -shortPaired pair.fastq
+    velveth $SAMPLE <N> -fastq -shortPaired pair.fastq
 
 Check what directories have been created::
 
@@ -53,10 +57,10 @@ resulting assemblies. You can use the ``assemstats`` script for that::
 
     assemstats 100 $SAMPLE/contigs.fa
 
-Try to find-out what each of the stats represent by varying the cut-off. One of
+Try to find out what each of the stats represent by varying the cut-off. One of
 the most often used statistics in assembly length distribution comparisons is
-the *N50 length*, a weighted median, where you weight each contig by it's
-length. This way you assign more weight to larger contigs. Fifty procent of all
+the *N50 length*, a weighted median of the length, where you weigh each contig by its
+length. This way, you assign more weight to larger contigs. Fifty per cent of all
 the bases in the assembly are contained in contigs shorter or equal to N50
 length.
 
