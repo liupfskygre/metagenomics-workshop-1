@@ -12,8 +12,8 @@ and annotation of metagenomic samples.
 Program:
 
 * Getting started
-    * :doc:`login_uppmax`
     * :doc:`introduction`
+    * :doc:`login_uppmax`
     * :doc:`reqs`
 * Sessions
     * :doc:`reads-qc/index`
@@ -29,8 +29,8 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   login_uppmax   
    introduction
+   login_uppmax
    reqs
    reads-qc/index
    16S-analysis/index
