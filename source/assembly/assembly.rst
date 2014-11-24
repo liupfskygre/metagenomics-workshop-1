@@ -38,7 +38,7 @@ The reads need to be interleaved for ``velveth``::
 
 Run velveth, **replacing N with the kmer length you chose**::
 
-    velveth {$SAMPLE}_N N -fastq -shortPaired pair.fastq
+    velveth ${SAMPLE}_N N -fastq -shortPaired pair.fastq
 
 Check what directories have been created::
 
