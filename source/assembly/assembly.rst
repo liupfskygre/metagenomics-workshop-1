@@ -83,7 +83,6 @@ uses `MPI <http://en.wikipedia.org/wiki/Message_Passing_Interface>`_ to distribu
 over multiple computational nodes and/or cores. You can run Ray on 16 cores with the command::
     
     mkdir -p ~/mg-workshop/results/assembly/ray/$SAMPLE/
-    module load openmpi-1.7.5
     time mpiexec -n 16 -k N -p ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.{1,2}.fastq \
         -o ~/mg-workshop/results/assembly/ray/$SAMPLE/${SAMPLE}_N
     
