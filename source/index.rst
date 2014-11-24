@@ -19,7 +19,6 @@ Program:
     * :doc:`reads-qc/index`
     * :doc:`16S-analysis/index`
     * :doc:`assembly/index`
-    * :doc:`mapping/index`
     * :doc:`taxonomic-classification/index`
     * :doc:`functional-annotation/index`
 
@@ -35,7 +34,6 @@ Contents:
    reads-qc/index
    16S-analysis/index
    assembly/index
-   mapping/index
    taxonomic-classification/index
    functional-annotation/index
 
