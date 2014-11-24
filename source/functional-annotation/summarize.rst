@@ -11,7 +11,11 @@ First we will create a new directory for the krona output and link to the necess
 
   mkdir -p ~/mg-workshop/results/functional_annotation/$SAMPLE/krona
   cd ~/mg-workshop/results/functional_annotation/$SAMPLE/krona
-  ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.*
+  ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.ec
+  ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.cog
+  ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.genelengths
+  ln -s ~/mg-workshop/results/functional_annotation/minpath/$SAMPLE/PROKKA.$SAMPLE.kegg.minpath
+  ln -s ~/mg-workshop/results/functional_annotation/minpath/$SAMPLE/PROKKA.$SAMPLE.metacyc.minpath
   
 Next, use the genes.to.kronaTable.py script to produce the tabular output needed for KRONA.
 
