@@ -24,7 +24,7 @@ to include only 1 million reads each. You can copy these files from the project 
 	cp /proj/g2014180/nobackup/metagenomics-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_2.fastq reads/1M/
 
 You will now have two files in your reads directory: one for the forward reads
-(*_1.fastq) and one for the reverse reads (*_2.fastq).
+(\*_1.fastq) and one for the reverse reads (\*_2.fastq).
 
 Fastqc
 ======
