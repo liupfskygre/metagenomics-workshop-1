@@ -18,7 +18,7 @@ Inside it, make a folder for your input files::
 
 Now make a copy of the files you want to work on: gut, skin or teeth datasets. These
 files were originally taken from the `Human Microbiome Project <http://hmpdacc.org/>`_ and then subsampled
-to include only 1 million reads each. You can copy these files from the project directory:
+to include only 1 million reads each. You can copy these files from the project directory::
 
 	cp /proj/g2014180/nobackup/metagenomics-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq reads/1M/
 	cp /proj/g2014180/nobackup/metagenomics-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq reads/1M/
