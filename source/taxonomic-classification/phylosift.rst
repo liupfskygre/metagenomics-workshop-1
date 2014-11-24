@@ -14,11 +14,11 @@ Phylosift is software created for the purpose of determining the phylogenetic co
 
 You can check the progress of the phylosift run by browsing the file*::
     
-    cat ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output/contigs.fa/run_info.txt
+    cat ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output/run_info.txt
 
 *If the phylosift run is taking too long time*, copy the results from the project directory::
 
-    cp -r /proj/g2014180/nobackup/metagenomics-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output/contigs.fa ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE/
+    cp -r /proj/g2014180/nobackup/metagenomics-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE/
 
 When the phylosift run is completed, browse the output directory::
 
