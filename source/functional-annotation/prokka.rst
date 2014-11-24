@@ -7,6 +7,7 @@ of those. A range of programs are available for these tasks but here we will use
 
 Set up the necessary files and run PROKKA::
     
+    mkdir ~/mg-workshop/results/$SAMPLE/prokka/
     cd ~/mg-workshop/results/$SAMPLE/prokka/
     ln -s ~/mg-workshop/results/$SAMPLE/assembly/contigs.fa
     PROKKA COMMAND GOES HERE
