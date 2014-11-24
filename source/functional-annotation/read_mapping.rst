@@ -48,13 +48,13 @@ First set up the files needed for mapping::
     
     mkdir -p ~/mg-workshop/results/functional_annotation/mapping/$SAMPLE/
     cd ~/mg-workshop/results/functional_annotation/mapping/$SAMPLE/
-    ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/$SAMPLE_ID.1.fastq pair1.fastq
-    ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/$SAMPLE_ID.2.fastq pair2.fastq
-    ln -s ~/mg-workshop/results/assembly/$SAMPLE/contigs.fa
+    ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq pair1.fastq
+    ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq pair2.fastq
+    ln -s ~/mg-workshop/results/assembly/$SAMPLE/${SAMPLE}_31/contigs.fa
     
 Then run the script that performs the mapping::
     
-    map-bowtie2-markduplicates.sh -t 2 -c pair1.fastq pair2.fastq $SAMPLE contigs.fa all map > map.log 2>map.err &
+    map-bowtie2-markduplicates.sh -t 16 -c pair1.fastq pair2.fastq $SAMPLE contigs.fa all map > map.log 2>map.err &
 
 Calculating coverage
 ==========================
@@ -64,7 +64,7 @@ We have now mapped reads back to the assembly and have information on how much o
     
 Next we extract coverage information from the BAM file for each gene in the GFF file we just created. We will use the bedtools coverage command within the BEDTools suite (https://code.google.com/p/bedtools/) that can parse a SAM/BAM file and a gff file to extract coverage information for every gene::
 
-    bedtools -hist -abam map/contigs_pair-smds.bam $SAMPLE.map.gff | sed  "s/^M//g" > $SAMPLE.map.hist
+    bedtools coverage -hist -abam map/all_$SAMPLE-smds.bam -b $SAMPLE.map.gff | sed "s/^M//g" > $SAMPLE.map.hist
 
 Have a look at the output file with less again. The final four columns give you the histogram i.e. coverage, number of bases with that coverage, length of the contig/feature/gene, bases with that coverage expressed as a ratio of the length of the contig/feature/gene.
 

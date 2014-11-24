@@ -11,7 +11,12 @@ First we will create a new directory for the krona output and link to the necess
 
   mkdir -p ~/mg-workshop/results/functional_annotation/$SAMPLE/krona
   cd ~/mg-workshop/results/functional_annotation/$SAMPLE/krona
-  ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.*
+  ln -s ~/mg-workshop/results/functional_annotation/mapping/$SAMPLE/$SAMPLE.coverage
+  ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.ec
+  ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.cog
+  ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.genelengths
+  ln -s ~/mg-workshop/results/functional_annotation/minpath/$SAMPLE/PROKKA.$SAMPLE.kegg.minpath
+  ln -s ~/mg-workshop/results/functional_annotation/minpath/$SAMPLE/PROKKA.$SAMPLE.metacyc.minpath
   
 Next, use the genes.to.kronaTable.py script to produce the tabular output needed for KRONA.
 
@@ -32,3 +37,6 @@ Then use the ktImportText script to generate the HTML files::
   ktImportText -o $SAMPLE.krona.metacyc.minpath.html $SAMPLE.krona.metacyc.minpath.tab
   ktImportText -o $SAMPLE.krona.kegg.minpath.html $SAMPLE.krona.kegg.minpath.tab
   ktImportText -o $SAMPLE.krona.COG.html $SAMPLE.krona.COG.tab
+
+Copy the resulting html files to your local computer with scp and open it a browser, 
+like you did for the FastQC output.

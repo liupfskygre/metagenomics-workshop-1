@@ -12,14 +12,17 @@ SortmeRNA
 We will extract 16S rRNA encoding reads using sortmeRNA_ which is one of the fastest software for this. 
 We start by making the necessary folders and assigning all necessary databases to a variable called DB::
 
-	mkdir -p ~/mg-workshop/sortmerna
+	mkdir -p ~/mg-workshop/results/phylogeny/16S/$SAMPLE
+	cd ~/mg-workshop/results/phylogeny/16S/$SAMPLE
+	ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq reads.1.fastq
+	ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq reads.2.fastq
 	DB=/proj/g2013206/metagenomics/src/sortmerna-1.9/rRNA_databases/silva-arc-16s-database-id95.fasta,/proj/g2014180/nobackup/metagenomics-workshop/data/sortmerna/silva-arc-16s-database-id95.fasta.index:/proj/g2013206/metagenomics/src/sortmerna-1.9/rRNA_databases/silva-bac-16s-database-id85.fasta,/proj/g2014180/nobackup/metagenomics-workshop/data/sortmerna/silva-bac-16s-database-id85.fasta.index:/proj/g2013206/metagenomics/src/sortmerna-1.9/rRNA_databases/silva-euk-18s-database-id95.fasta,/proj/g2014180/nobackup/metagenomics-workshop/data/sortmerna/silva-euk-18s-database-id95.fasta.index
 
 SortMeRNA has built-in multithreading support that we will use for parallelization (-a).
 We still have to launch one sample at a time, though::
 
-	for readfile in reads/reads.*.fastq; do
-    	sortmerna --db $DB --I $readfile --accept sortmerna/${readfile}_rrna --fastx -v -a 2
+	for readfile in reads.*.fastq; do
+    	sortmerna --db $DB --I $readfile --accept ${readfile}_rrna --fastx -v -a 2
 	done
 
 .. _sortmeRNA: http://bioinfo.lifl.fr/RNA/sortmerna/
@@ -35,8 +38,7 @@ down the hierarchy you go. Genus level is the lowest level provided. You can use
 if you prefer, and upload each file individually, or you can use the uppmax installation of RDP 
 classifier like this::
 
-    mkdir -p ~/mg-workshop/rdp
-    for file in ../sortmerna/*_rrna*.fastq; do 
+    for file in *_rrna*.fastq; do 
 		name = $(basename $file)
 	    java -Xmx1g -jar /proj/g2014180/metagenomics/virtenv/rdp_classifier_2.6/dist/classifier.jar classify -g 16srrna -b $name.bootstrap -h $name.hier.tsv -o $name.class.tsv $file
 	done
@@ -47,9 +49,7 @@ Krona
 =======
 To get a graphical representation of the taxonomic classifications you can use Krona_, which is an 
 excellent program for exploring data with hierarchical structures in general. The output file is an 
-html file that can be viewed in a browser. Again make a directory for Krona::
-
-    mkdir -p ~/mg-workshop/krona
+html file that can be viewed in a browser. Again make a directory for Krona
 
 .. _KRONA: http://sourceforge.net/p/krona/home/krona/
 
