@@ -1,77 +1,32 @@
-==========================================
-Quality trimming Illumina paired-end reads
-==========================================
+====================================================
+Optional: Quality trimming Illumina paired-end reads
+====================================================
 In this excercise you will learn how to quality trim Illumina paired-end reads.
 The most common Next Generation Sequencing (NGS) technology for metagenomics.
+The reads from the HMP are already quality trimmed. However, if you have time
+and want to try it out for yourself, you can run some more stringent quality 
+trimming on them and see what happens.
 
-Sickle
-======
+Running sickle on a paired end library
+======================================
 For quality trimming Illumina paired end reads we use the library sickle which
 trims reads from 3' end to 5' end using a sliding window. If the mean quality
 drops below a specified number the remaining part of the read will be trimmed.
 
+As a default, sickle trims a read at the point needed to maintain its average
+quality over 20. It also discards reads that are shorter than 20 bp. These are
+very good default values, but in this extra exercice you're welcome to change the
+values of these parameters using the -q and -l flags.
 
-Downloading a test set
-======================
-Today we'll be working on a small metagenomic data set from the anterior nares
-(http://en.wikipedia.org/wiki/Anterior_nares).
+You can use the same qc directory as before for this step, since these reads 
+won't be further processed.
 
-.. image:: https://raw.github.com/inodb/2013-metagenomics-workshop-gbg/master/images/nostril.jpg
+Run sickle::
 
-
-So get ready for your first smell of metagenomic assembly - pun intended. Run
-all these commands in your shell::
-    
-    # Download the reads and extract them
-    mkdir -p ~/asm-workshop
-    mkdir -p ~/asm-workshop/data
-    cd ~/asm-workshop/data
-    wget http://downloads.hmpdacc.org/data/Illumina/anterior_nares/SRS018585.tar.bz2
-    tar -xjf SRS018585.tar.bz2
-
-If successfull you should have the files::
-
-    $ ls -lh ~/asm-workshop/data/SRS018585/
-    -rw-rw-r-- 1 inod inod  36M Apr 18  2011 SRS018585.denovo_duplicates_marked.trimmed.1.fastq
-    -rw-rw-r-- 1 inod inod  36M Apr 18  2011 SRS018585.denovo_duplicates_marked.trimmed.2.fastq
-    -rw-rw-r-- 1 inod inod 6.4M Apr 18  2011 SRS018585.denovo_duplicates_marked.trimmed.singleton.fastq
-
-If not, try to find out if one of the previous commands gave an error.
-
-Look at the top of the one of the pairs::
-
-    cat ~/asm-workshop/data/SRS018585/SRS018585.denovo_duplicates_marked.trimmed.1.fastq | head
-
-**Question: Can you explain what the different parts of this header mean @HWI-EAS324_102408434:5:100:10055:13493/1?**
+	sickle pe -f reads/reads.1.fastq -r reads/reads.2.fastq -t sanger -o qc/qtrim.1.fastq -p qtrim.2.fastq -s qtrim.unpaired.fastq -q <minqual> -l <minlen>
 
 
-Running sickle on a paired end library
-======================================
-I like to create directories for specific parts I'm working on and creating
-symbolic links (shortcuts in windows) to the input files. One can use the
-command ``ln`` for creating links. The difference between a symbolic link and a
-hard link can be found here:
-http://stackoverflow.com/questions/185899/what-is-the-difference-between-a-symbolic-link-and-a-hard-link.
-In this case I use symbolic links so I know what path the original reads have,
-which can help one remember what those reads were::
-    
-    mkdir -p ~/asm-workshop/sickle
-    cd ~/asm-workshop/sickle
-    ln -s ../data/SRS018585/SRS018585.denovo_duplicates_marked.trimmed.1.fastq pair1.fastq
-    ln -s ../data/SRS018585/SRS018585.denovo_duplicates_marked.trimmed.2.fastq pair2.fastq
-
-Now run sickle::
-
-    # check if sickle is in your PATH
-    which sickle
-    # Run sickle
-    sickle pe         -f pair1.fastq         -r pair2.fastq         -t sanger         -o qtrim1.fastq         -p qtrim2.fastq         -s qtrim.unpaired.fastq
-    # Check what files have been generated
-    ls
-
-Sickle states how many reads it trimmed, but it is always good to be
-suspicious! Check if the numbers correspond with the amount of reads you count.
-Hint: use ``wc -l``.
+Chek what files have been generated. Do you understand each of them?
 
 **Question: How many paired reads are left after trimming? How many singletons?**
 
@@ -79,8 +34,6 @@ Hint: use ``wc -l``.
 
 Run fastqc again
 ================
-We would like to see if sickle has done a good job, we do so by asserting the quality of the reads again with fastqc.
-
-ADD FASTQC COMMAND HERE AGAIN
-===============
+We would like to see if sickle has done a good job, we do so by asserting the quality of the
+reads again with fastqc. Please refer to the FastQC exercise for instructions on how to do this.
 
