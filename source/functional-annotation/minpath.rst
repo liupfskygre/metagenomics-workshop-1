@@ -13,7 +13,7 @@ First we make sure that all the required files are available::
     cp -r /proj/g2014180/nobackup/metagenomics-workshop/reference_db/cog ~/mg-workshop/reference_db/
     cp -r /proj/g2014180/nobackup/metagenomics-workshop/reference_db/kegg ~/mg-workshop/reference_db/
     cp -r /proj/g2014180/nobackup/metagenomics-workshop/reference_db/metacyc ~/mg-workshop/reference_db/
-    ln -s ~/mg-workshop/results/functional_annotation/prokka/prokka_skin/PROKKA.$SAMPLE.ec
+    ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.ec
     
 Run MinPath with this command to predict Metacyc pathways::
     
