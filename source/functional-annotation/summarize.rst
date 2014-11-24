@@ -9,28 +9,23 @@ KRONA is a tool that takes as input a table of abundance values and several hier
 
 First we will create a new directory for the krona output and link to the necessary files::
 
-  mkdir -p ~/mg-workshop/results/$SAMPLE/functional_annotation/krona
-  cd ~/mg-workshop/results/$SAMPLE/functional_annotation/krona
-  ln -s ~/mg-workshop/results/$SAMPLE/functional_annotation/prokka/PROKKA.$SAMPLE.ec
-  ln -s ~/mg-workshop/results/$SAMPLE/functional_annotation/prokka/PROKKA.$SAMPLE.cog
-  ln -s ~/mg-workshop/results/$SAMPLE/functional_annotation/minpath/PROKKA.$SAMPLE.metacyc.minpath
-  ln -s ~/mg-workshop/results/$SAMPLE/functional_annotation/minpath/PROKKA.$SAMPLE.kegg.minpath
-  ln -s ~/mg-workshop/results/$SAMPLE/functional_annotation/prokka/PROKKA.$SAMPLE.genelengths
-  ln -s ~/mg-workshop/results/$SAMPLE/functional_annotation/mapping/bowtie2/$SAMPLE.coverage
-
+  mkdir -p ~/mg-workshop/results/functional_annotation/$SAMPLE/krona
+  cd ~/mg-workshop/results/functional_annotation/$SAMPLE/krona
+  ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.*
+  
 Next, use the genes.to.kronaTable.py script to produce the tabular output needed for KRONA.
 
 For Metacyc pathways (from enzymes, only considering pathways predicted by MinPath)::
 
-  genes.to.kronaTable.py -i PROKKA.$SAMPLE.ec -m ~/mg-workshop/data/db/metacyc/ec.to.pwy -H ~/mg-workshop/data/db/metacyc/pwy.hierarchy -n $SAMPLE -l <(grep "minpath 1" PROKKA.$SAMPLE.metacyc.minpath) -c $SAMPLE.coverage -L PROKKA.$SAMPLE.genelengths -o $SAMPLE.krona.metacyc.minpath.tab
+  genes.to.kronaTable.py -i PROKKA.$SAMPLE.ec -m ~/mg-workshop/reference_db/metacyc/ec.to.pwy -H ~/mg-workshop/reference_db/metacyc/pwy.hierarchy -n $SAMPLE -l <(grep "minpath 1" PROKKA.$SAMPLE.metacyc.minpath) -c $SAMPLE.coverage -L PROKKA.$SAMPLE.genelengths -o $SAMPLE.krona.metacyc.minpath.tab
   
 For KEGG pathways (from enzymes, only considering pathways predicted by MinPath)::
 
-  genes.to.kronaTable.py -i PROKKA.$SAMPLE.ec -m ~/mg-workshop/data/db/kegg/ec.to.pwy -H ~/mg-workshop/data/db/kegg/pwy.hierarchy -n $SAMPLE -l <(grep "minpath 1" PROKKA.$SAMPLE.kegg.minpath) -c $SAMPLE.coverage -L PROKKA.$SAMPLE.genelengths -o $SAMPLE.krona.kegg.minpath.tab
+  genes.to.kronaTable.py -i PROKKA.$SAMPLE.ec -m ~/mg-workshop/reference_db/kegg/ec.to.pwy -H ~/mg-workshop/reference_db/kegg/pwy.hierarchy -n $SAMPLE -l <(grep "minpath 1" PROKKA.$SAMPLE.kegg.minpath) -c $SAMPLE.coverage -L PROKKA.$SAMPLE.genelengths -o $SAMPLE.krona.kegg.minpath.tab
 
 For COG annotations::
 
-  genes.to.kronaTable.py -i PROKKA.$SAMPLE.cog -m ~/mg-workshop/data/db/cog/cog.to.cat -H ~/mg-workshop/data/db/cog/cat.hierarchy -n $SAMPLE -c $SAMPLE.coverage -L PROKKA.$SAMPLE.genelengths -o $SAMPLE.krona.COG.tab
+  genes.to.kronaTable.py -i PROKKA.$SAMPLE.cog -m ~/mg-workshop/reference_db/cog/cog.to.cat -H ~/mg-workshop/reference_db/cog/cat.hierarchy -n $SAMPLE -c $SAMPLE.coverage -L PROKKA.$SAMPLE.genelengths -o $SAMPLE.krona.COG.tab
   
 Then use the ktImportText script to generate the HTML files::
 
