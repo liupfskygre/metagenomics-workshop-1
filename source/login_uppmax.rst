@@ -19,13 +19,8 @@ Usually you would do most of the work in this lab directly on one of the login n
 but we have arranged for you to have half of one node (=8 cores) each to avoid disturbances. To get this 
 reservation you need to use the salloc command like this::
 
-  salloc -A g2014180 -t 08:00:00 -p core -n 8 --no-shell --reservation=check_below &
+  salloc -A g2014180 -t 08:00:00 -p core -n 8 --no-shell --reservation=g2014180_tue &
 
-where you should substitute “check_below” with one of these alternatives depending on the day:
-
-  Tuesday: g2014180_tue
-  
-  Wednesday: g2014180_wed
 
 Now check which node you got (replace username with your uppmax user name) like this::
 
