@@ -5,7 +5,7 @@ In this section investigate our contigs with Phylosift to see which species they
 
 Phylosift
 =========
-Phylosift is a software created for the purpose of determining the phylogenetic composition of your metagenomic data. It uses a defined set of genes to predict the taxonomy of each sequence in your dataset. You can read more about how this works here: http://phylosift.wordpress.com. Running phylosift will take some time (roughly 45 min) so lets start running phylosift on the cluster you choose::
+Phylosift is software created for the purpose of determining the phylogenetic composition of your metagenomic data. It uses a defined set of genes to predict the taxonomy of each sequence in your dataset. You can read more about how this works here: http://phylosift.wordpress.com. Running phylosift will take some time (roughly 45 min) so lets start running phylosift::
 
     mkdir -p ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE
     cd ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE
@@ -18,7 +18,7 @@ You can check the progress of the phylosift run by browsing the file*::
 
 *If the phylosift run is taking too long time*, copy the results from the project directory::
 
-    cp -r /proj/g2014180/nobackup/metagenomics-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output/ ~/mg-workshop/phylogeny/phylosift/$SAMPLE/
+    cp -r /proj/g2014180/nobackup/metagenomics-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output/contigs.fa ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE/
 
 When the phylosift run is completed, browse the output directory::
 
@@ -30,4 +30,3 @@ All of these files are interesting, but the most fun one is the html file, so le
     mkdir ~/mg-workshop/
     scp username@milou.uppmax.uu.se:~/mg-workshop/results/phylogeny/phylosift/phylosift_output/*.html ~/mg-workshop/
 
-**Question: Did the phylosift result correspond to any results in the BLAST output?**
