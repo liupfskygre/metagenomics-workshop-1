@@ -22,9 +22,9 @@ http://genome.ucsc.edu/FAQ/FAQformat.html.
 An explanation of the Genbank format can be found at
 http://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html
 
-When your dataset has been annotated you can view the annotations directly in the GFF and GBK files, for instance by doing::
+When your dataset has been annotated you can view the annotations directly in the GFF file by doing::
     
-    less -S PROKKA_11252014.gbk
+    less -S PROKKA_11252014.gff
 
 **Question: How many coding regions were found by Prodigal? Hint: use grep -c**
 
