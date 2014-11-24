@@ -21,8 +21,8 @@ We start by making the necessary folders and assigning all necessary databases t
 SortMeRNA has built-in multithreading support that we will use for parallelization (-a).
 We still have to launch one sample at a time, though::
 
-	for readfile in reads.*.fastq; do
-    	sortmerna --db $DB --I $readfile --accept ${readfile}_rrna --fastx -v -a 2
+	for readfile in reads.*.fastq; 
+	do sortmerna --reads $readfile --ref $DB --fastx --aligned ${readfile}_rrna -v -a 2;
 	done
 
 .. _sortmeRNA: http://bioinfo.lifl.fr/RNA/sortmerna/
