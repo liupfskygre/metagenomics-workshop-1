@@ -29,10 +29,10 @@ Create the graph data structure with ``velveth``. Again like we did with
 ``sickle``, first create a directory with symbolic links to the pairs that you
 want to use::
 
-    mkdir -p ~/asm-workshop/velvet
-    cd ~/asm-workshop/velvet
-    ln -s ../sickle/qtrim1.fastq pair1.fastq
-    ln -s ../sickle/qtrim2.fastq pair2.fastq
+    mkdir -p ~/mg-workshop/results/assembly
+    cd ~/mg-workshop/results/assembly
+    ln -s ~/mg-workshop/data/$SAMPLE/$SAMPLE_ID.1.fastq pair1.fastq
+    ln -s ~/mg-workshop/data/$SAMPLE/$SAMPLE_ID.2.fastq pair2.fastq
 
 The reads need to be interleaved for ``velveth``::
 
@@ -87,22 +87,6 @@ Think of a formula that could indicate the best preferred
 length distribution where you express the optimization function in terms of the
 column names from the doc_. For instance only ``n50_len`` or ``sum *
 n50_len``.
-
-
-(Optional exercise) Ray
-=======================
-Try to create an assembly with Ray over the same kmer. Ray is an assembler that
-uses MPI to distribute the assembly over multiple cores and nodes. The latest
-version of Ray was made to work well with metagenomics data as well::
-
-    mkdir -p ~/asm-workshop/ray
-    cd ~/asm-workshop/ray
-    ln -s ../sickle/qtrim1.fastq pair1.fastq
-    ln -s ../sickle/qtrim2.fastq pair2.fastq
-    mpiexec -n 1 Ray -k 21 -p pair1.fastq pair2.fastq -o out_21
-
-Add the ``assemstats`` results to the doc_ as you did for Velvet. There is a
-separate tab for the Ray assemblies, compare the results with Velvet.
 
 (Optional exercise) VelvetOptimiser
 ===================================
