@@ -85,6 +85,7 @@ over multiple computational nodes and/or cores. You can run Ray on 16 cores with
     mkdir -p ~/mg-workshop/results/assembly/ray/$SAMPLE/
     module unload intel
     module load gcc openmpi/1.7.5
+    rm -rf ~/mg-workshop/results/assembly/ray/$SAMPLE/${SAMPLE}_N
     time mpiexec -n 16 Ray -k N -p ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.{1,2}.fastq \
         -o ~/mg-workshop/results/assembly/ray/$SAMPLE/${SAMPLE}_N
     module unload gcc
