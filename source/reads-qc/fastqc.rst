@@ -11,7 +11,7 @@ For the first step, make a workshop folder in your home directory and move into 
 	mkdir mg-workshop
 	cd mg-workshop
 
-Inside it, make a folder for your input files:
+Inside it, make a folder for your input files::
 
 	mkdir -p data/$SAMPLE/reads/1M/
 	cd data/$SAMPLE/
