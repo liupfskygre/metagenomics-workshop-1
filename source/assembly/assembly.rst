@@ -90,6 +90,7 @@ over multiple computational nodes and/or cores. You can run Ray on 16 cores with
     module unload gcc
     module load intel
     
+
 Replace N again with your chosen kmer. There is another `sheet`_ where you can add the Ray assembly results.
 
 **Question: How do Ray's results compare to those from Velvet?**
