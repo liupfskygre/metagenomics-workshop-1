@@ -7,11 +7,11 @@ of those. A range of programs are available for these tasks but here we will use
 
 Set up the necessary files and run PROKKA::
     
-    mkdir -p ~/mg-workshop/results/functional_annotation/$SAMPLE/prokka/
-    cd ~/mg-workshop/results/functional_annotation/$SAMPLE/prokka/
+    mkdir -p ~/mg-workshop/results/functional_annotation/prokka/
+    cd ~/mg-workshop/results/functional_annotation/prokka/
     ln -s ~/mg-workshop/results/assembly/$SAMPLE/${SAMPLE}_31/contigs.fa
-    prokka contigs.fa --outdir prokka_$SAMPLE --norrna --notrna --metagenome --cpus 16
-    cd prokka_$SAMPLE
+    prokka contigs.fa --outdir $SAMPLE --norrna --notrna --metagenome --cpus 16
+    cd $SAMPLE
 
 PROKKA produces several types of output, such as:
 
