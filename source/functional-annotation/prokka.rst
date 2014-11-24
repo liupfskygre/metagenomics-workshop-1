@@ -11,6 +11,7 @@ Set up the necessary files and run PROKKA::
     cd ~/mg-workshop/results/functional_annotation/$SAMPLE/prokka/
     ln -s ~/mg-workshop/results/assembly/$SAMPLE/${SAMPLE}_31/contigs.fa
     prokka contigs.fa --outdir prokka_$SAMPLE --norrna --notrna --metagenome --cpus 16
+    cd prokka_$SAMPLE
 
 PROKKA produces several types of output, such as:
 
