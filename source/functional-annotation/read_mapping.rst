@@ -64,7 +64,7 @@ We have now mapped reads back to the assembly and have information on how much o
     
 Next we extract coverage information from the BAM file for each gene in the GFF file we just created. We will use the bedtools coverage command within the BEDTools suite (https://code.google.com/p/bedtools/) that can parse a SAM/BAM file and a gff file to extract coverage information for every gene::
 
-    bedtools coverage -hist -abam map/contigs_pair-smds.bam $SAMPLE.map.gff | sed  "s/^M//g" > $SAMPLE.map.hist
+    bedtools coverage -hist -abam map/all_$SAMPLE-smds.bam -b $SAMPLE.map.gff | sed "s/^M//g" > $SAMPLE.map.hist
 
 Have a look at the output file with less again. The final four columns give you the histogram i.e. coverage, number of bases with that coverage, length of the contig/feature/gene, bases with that coverage expressed as a ratio of the length of the contig/feature/gene.
 
