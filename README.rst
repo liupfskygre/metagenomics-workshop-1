@@ -108,14 +108,9 @@ The result files::
     │   └── phylosift
     └── quality_check
         └── fastqc
-    
-    
-The data files::
 
-    ├── db
-    │   ├── cog
-    │   ├── kegg
-    │   └── metacyc
+The Data files::
+
     ├── gut
     │   ├── contigs
     │   ├── README
@@ -124,20 +119,8 @@ The data files::
     │   ├── contigs
     │   ├── README
     │   └── reads
-    ├── sortmerna
-    │   ├── silva-arc-16s-database-id95.fasta.index.bursttrie_0.dat
-    │   ├── silva-arc-16s-database-id95.fasta.index.kmer_0.dat
-    │   ├── silva-arc-16s-database-id95.fasta.index.pos_0.dat
-    │   ├── silva-arc-16s-database-id95.fasta.index.stats
-    │   ├── silva-bac-16s-database-id85.fasta.index.bursttrie_0.dat
-    │   ├── silva-bac-16s-database-id85.fasta.index.kmer_0.dat
-    │   ├── silva-bac-16s-database-id85.fasta.index.pos_0.dat
-    │   ├── silva-bac-16s-database-id85.fasta.index.stats
-    │   ├── silva-euk-18s-database-id95.fasta.index.bursttrie_0.dat
-    │   ├── silva-euk-18s-database-id95.fasta.index.kmer_0.dat
-    │   ├── silva-euk-18s-database-id95.fasta.index.pos_0.dat
-    │   └── silva-euk-18s-database-id95.fasta.index.stats
     └── teeth
         ├── contigs
         ├── README
         └── reads
+
