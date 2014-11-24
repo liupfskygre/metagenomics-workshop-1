@@ -47,7 +47,7 @@ From **your own shell (not inside Uppmax!)**::
 
 	mkdir ~/mg-workshop/
 	cd ~/mg-workshop/
-	scp -r username@milou.uppmax.uu.se:~/mg-workshop/results/quality_check/$SAMPLE/\*html .
+	scp -r username@milou.uppmax.uu.se:~/mg-workshop/results/quality_check/\*/\*html .
 
 Instead of username, type your own username!
 
