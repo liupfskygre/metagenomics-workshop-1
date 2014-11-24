@@ -85,3 +85,42 @@ changed ``*.rst`` files on the ``master`` branch was accepted.
 .. _GitHub Pages: https://pages.github.com/
 .. _add new files: https://github.com/blog/1327-creating-files-on-github
 .. _sphinx_to_github.sh: https://gist.github.com/brantfaircloth/791759
+
+The file structure
+------------------
+The result files::
+
+    ├── assembly
+    │   ├── gut_out_31
+    │   ├── gut.pair.fastq
+    │   ├── interleaved_reads
+    │   ├── out_10M_31
+    │   ├── skin_out_31
+    │   └── teeth_out_31
+    ├── functional_annotation
+    │   ├── krona
+    │   ├── minpath
+    │   └── prokka
+    ├── mapping
+    │   └── bowtie2
+    ├── phylogeny
+    │   ├── 16S
+    │   └── phylosift
+    └── quality_check
+        └── fastqc
+
+The Data files::
+
+    ├── gut
+    │   ├── contigs
+    │   ├── README
+    │   └── reads
+    ├── skin
+    │   ├── contigs
+    │   ├── README
+    │   └── reads
+    └── teeth
+        ├── contigs
+        ├── README
+        └── reads
+

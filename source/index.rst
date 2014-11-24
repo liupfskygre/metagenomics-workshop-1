@@ -12,14 +12,13 @@ and annotation of metagenomic samples.
 Program:
 
 * Getting started
-    * :doc:`login_uppmax`
     * :doc:`introduction`
+    * :doc:`login_uppmax`
     * :doc:`reqs`
 * Sessions
     * :doc:`reads-qc/index`
     * :doc:`16S-analysis/index`
     * :doc:`assembly/index`
-    * :doc:`mapping/index`
     * :doc:`taxonomic-classification/index`
     * :doc:`functional-annotation/index`
 
@@ -29,13 +28,12 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   login_uppmax   
    introduction
+   login_uppmax
    reqs
    reads-qc/index
    16S-analysis/index
    assembly/index
-   mapping/index
    taxonomic-classification/index
    functional-annotation/index
 

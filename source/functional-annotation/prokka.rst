@@ -7,9 +7,9 @@ of those. A range of programs are available for these tasks but here we will use
 
 Set up the necessary files and run PROKKA::
     
-    mkdir ~/mg-workshop/results/functional_annotation/prokka/
-    cd ~/mg-workshop/results/functional_annotation/prokka/
-    ln -s ~/mg-workshop/results/assembly/contigs.fa
+    mkdir ~/mg-workshop/results/functional_annotation/$SAMPLE/prokka/
+    cd ~/mg-workshop/results/functional_annotation/$SAMPLE/prokka/
+    ln -s ~/mg-workshop/results/assembly/$SAMPLE/contigs.fa
     PROKKA COMMAND GOES HERE
 
 PROKKA produces several types of output, such as:

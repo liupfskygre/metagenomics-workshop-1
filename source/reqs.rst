@@ -30,7 +30,7 @@ The following programs are used in this workshop:
 All programs are already installed, all you have to do is load the virtual
 environment for this workshop. Once you are logged in to the server run::
 
-    source /proj/g2014113/metagenomics/virt-env/mg-workshop/bin/activate
+    source /proj/g2014180/metagenomics/virtenv/bin/activate
 
 You deactivate the virtual environment with::
     
