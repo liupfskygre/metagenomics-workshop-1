@@ -8,20 +8,20 @@ Retrieving your data
 ====================
 For the first step, make a workshop folder in your home directory and move into it::
 
-	mkdir mg-workshop
-	cd mg-workshop
+	mkdir -p ~/mg-workshop
+	cd ~/mg-workshop
 
 Inside it, make a folder for your input files::
 
-	mkdir -p data/$SAMPLE/reads/1M/
-	cd data/$SAMPLE/
+	mkdir -p ~/mg-workshop/data/$SAMPLE/reads/1M/
+	cd ~/mg-workshop/data/$SAMPLE/
 
 Now make a copy of the files you want to work on: gut, skin or teeth datasets. These
 files were originally taken from the `Human Microbiome Project <http://hmpdacc.org/>`_ and then subsampled
 to include only 1 million reads each. You can copy these files from the project directory::
 
-	cp /proj/g2014180/nobackup/metagenomics-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq reads/1M/
-	cp /proj/g2014180/nobackup/metagenomics-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq reads/1M/
+	cp /proj/g2014180/nobackup/metagenomics-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq ~/mg-workshop/data/$SAMPLE/reads/1M/
+	cp /proj/g2014180/nobackup/metagenomics-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq ~/mg-workshop/data/$SAMPLE/reads/1M/
 
 You will now have two files in your reads directory: one for the forward reads
 (\*_1.fastq) and one for the reverse reads (\*_2.fastq).
@@ -46,7 +46,7 @@ your files, copy the html results into your local computer and open them with a 
 
 From **your own shell (not inside Uppmax!)**::
 
-	mkdir ~/mg-workshop/
+	mkdir -p ~/mg-workshop/
 	cd ~/mg-workshop/
 	scp -r username@milou.uppmax.uu.se:~/mg-workshop/results/quality_check/*/*html .
 
