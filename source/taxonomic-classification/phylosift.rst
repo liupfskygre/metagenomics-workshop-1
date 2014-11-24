@@ -5,15 +5,12 @@ In this workshop we'll extract interesting bins from the concoct runs and invest
 
 Phylosift
 =========
-Phylosift is a software created for the purpose of determining the phylogenetic composition of your metagenomic data. It uses a defined set of genes to predict the taxonomy of each sequence in your dataset. You can read more about how this works here: http://phylosift.wordpress.com
-I've yet to discover how to install phylosift into a common bin, so in order to execute phylosift, you'd have to cd into the phylosift directory::
+Phylosift is a software created for the purpose of determining the phylogenetic composition of your metagenomic data. It uses a defined set of genes to predict the taxonomy of each sequence in your dataset. You can read more about how this works here: http://phylosift.wordpress.com. Running phylosift will take some time (roughly 45 min) so lets start running phylosift on the cluster you choose::
 
-    cd /proj/g2014113/src/phylosift_v1.0.1
-
-Running phylosift will take some time (roughly 45 min) so lets start running phylosift on the cluster you choose::
-
-    mkdir -p ~/binning-workshop/phylosift_output/'
-    ./phylosift all -f --output ~/binning-workshop/phylosift_output/ ~/binning-workshop/concoct_output/3000_all_samples/fasta_bins/x.fa
+    mkdir -p ~/mg-workshop/phylogeny/phylosift/$SAMPLE
+    cd ~/mg-workshop/phylogeny/phylosift/$SAMPLE
+    ln -s ~/mg-workshop/assembly/$SAMPLE/contigs.fa .
+    phylosift all -f --output phylosift_output contigs.fa
 
 While this command is running, go to ncbi web blast service: 
 
