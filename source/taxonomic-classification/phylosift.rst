@@ -21,7 +21,7 @@ Browse through the result and try and see if you can do a taxonomic classificati
 
 When the phylosift run is completed, browse the output directory::
 
-    ls ~/mg-workshop/results/phylogeny/phylosift/phylosift_output/
+    ls ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output/
 
 All of these files are interesting, but the most fun one is the html file, so lets download this to your own computer and have a look.
 **Again, switch to a terminal where you're not logged in to UPPMAX**::
