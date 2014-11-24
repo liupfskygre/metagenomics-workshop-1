@@ -1,7 +1,7 @@
 ===========================================
 Phylogenetic Classification using Phylosift
 ===========================================
-In this workshop we'll extract interesting bins from the concoct runs and investigate which species they consists of. We'll start by using a plain'ol BLASTN search and later we'll try a more sophisticated strategy with the program Phylosift.
+In this section investigate our contigs with Phylosift to see which species they originate from.
 
 Phylosift
 =========
@@ -9,15 +9,16 @@ Phylosift is a software created for the purpose of determining the phylogenetic 
 
     mkdir -p ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE
     cd ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE
-    ln -s ~/mg-workshop/results/assembly/$SAMPLE/contigs.fa .
+    ln -s ~/mg-workshop/results/assembly/$SAMPLE/$SAMPLE/${SAMPLE}_31/contigs.fa .
     phylosift all -f --output phylosift_output contigs.fa
 
-While this command is running, go to ncbi web blast service: 
+You can check the progress of the phylosift run by browsing the file*::
+    
+    cat ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output/contigs.fa/run_info.txt
 
-http://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome
+*If the phylosift run is taking too long time*, copy the results from the project directory::
 
-Upload your fasta file that you downloaded in the previous step and submit a blast search against the nr/nt database.
-Browse through the result and try and see if you can do a taxonomic classification from these.
+    cp -r /proj/g2014180/nobackup/metagenomic-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_outputoutput/ ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE/
 
 When the phylosift run is completed, browse the output directory::
 
