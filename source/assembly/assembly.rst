@@ -18,6 +18,11 @@ is to have the kmer length between 21 and 51. We'll then look at a few statistic
 on the assembly; if you're choice of kmer wasn't good, you might have to run another
 assembly (but this is very fast).
 
+Pick your kmer
+==============
+Fill in which kmer you want to do in the `Google doc`_. Later we will compare the results
+from the different kmers for each group.
+
 velveth
 =======
 Create the graph data structure with ``velveth``. First create a directory with symbolic links to the pairs that you
@@ -66,7 +71,25 @@ the most often used statistics in assembly length distribution comparisons is
 the *N50 length*, a weighted median of the length, where you weigh each contig by its
 length. This way, you assign more weight to larger contigs. Fifty per cent of all
 the bases in the assembly are contained in contigs shorter or equal to N50
-length.
+length. Add your results to the `Google doc`_.
 
 **Question: What are the important length statistics? Do we prefer sum over
 length? Should it be a combination?**
+
+(Optional) Ray
+==============
+Try to use the Ray assembler instead. Ray was made to play well with metagenomics. Furthermore it
+uses `MPI <http://en.wikipedia.org/wiki/Message_Passing_Interface>`_ to distribute the computation
+over multiple computational nodes and/or cores. You can run Ray on 16 cores with the command::
+    
+    mkdir -p ~/mg-workshop/results/assembly/ray/$SAMPLE/
+    module load openmpi-1.7.5
+    time mpiexec -n 16 -k N -p ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.{1,2}.fastq \
+        -o ~/mg-workshop/results/assembly/ray/$SAMPLE/${SAMPLE}_N
+    
+Replace N again with your chosen kmer. There is another `sheet`_ where you can add the Ray assembly results.
+
+**Question: How do Ray's results compare to those from Velvet?**
+
+.. _Google doc: https://docs.google.com/spreadsheets/d/10rOJKgCQct5jwupi_0L44WwgGxg3thYPQlnTJEpXBoY
+.. _sheet: https://docs.google.com/spreadsheets/d/10rOJKgCQct5jwupi_0L44WwgGxg3thYPQlnTJEpXBoY/edit#gid=864082853
