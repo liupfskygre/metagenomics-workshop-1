@@ -20,13 +20,8 @@ Now make a copy of the files you want to work on: gut, skin or teeth datasets. T
 files were originally taken from the `Human Microbiome Project <http://hmpdacc.org/>`_ and then subsampled
 to include only 1 million reads each. You can copy these files from the project directory::
 
-<<<<<<< HEAD
-	cp /proj/g2014180/nobackup/metagenomics-workshop/data/<sample>/reads/1M/*1.fastq reads/reads.1.fastq
-	cp /proj/g2014180/nobackup/metagenomics-workshop/data/<sample>/reads/1M/*2.fastq reads/reads.2.fastq
-=======
 	cp /proj/g2014180/nobackup/metagenomics-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq reads/1M/
 	cp /proj/g2014180/nobackup/metagenomics-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq reads/1M/
->>>>>>> 93ae12d583bfd3c483d23ad1cf418d4c46dfba41
 
 You will now have two files in your reads directory: one for the forward reads
 (\*_1.fastq) and one for the reverse reads (\*_2.fastq).
@@ -48,17 +43,12 @@ Now, run fastqc for each file::
 
 FastQC will generate two files for each input file, one compressed, and one not. To view
 your files, copy the html results into your local computer and open them with a browser.
-<<<<<<< HEAD
-From your own shell (not inside Uppmax!)::
 
-	scp -r username@milou.uppmax.uu.se:~/metagen/qc/*html .
-=======
 From **your own shell (not inside Uppmax!)**::
 
 	mkdir ~/mg-workshop/
 	cd ~/mg-workshop/
 	scp -r username@milou.uppmax.uu.se:~/mg-workshop/results/quality_check/*/*html .
->>>>>>> 93ae12d583bfd3c483d23ad1cf418d4c46dfba41
 
 Instead of username, type your own username!
 
