@@ -63,3 +63,4 @@ The <() in bash can be used for process substitution: http://tldp.org/LDP/abs/ht
 Copy the resulting file 16S.tax.html to your local computer with scp and open it a browser,
 like you did for the FastQC output.
 	
+**Question: What's the dominant type of organisms found in your sample?**
