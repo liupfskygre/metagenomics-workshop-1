@@ -82,5 +82,8 @@ Skin
     SAMPLE=skin
     SAMPLE_ID=SRS015381
 
-After you have chosen a sample you will create the file structure continuously throughout the workshop. `Here <https://drive.google.com/file/d/0B-ktNmaBM1yrMUZxbV9CZHdWLUU/view?usp=sharing>`_ you can see an overview of what this structure should look like at the end of the day (you will be creating the "results" part of this structure).
+After you have chosen a sample you will create the file structure continuously throughout the 
+workshop. `Here <https://drive.google.com/file/d/0B-ktNmaBM1yrMUZxbV9CZHdWLUU/view?usp=sharing>`_ you 
+can see an overview of what this structure should look like at the end of the day (the "results" part 
+of this structure).
 

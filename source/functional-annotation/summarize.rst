@@ -9,8 +9,8 @@ KRONA is a tool that takes as input a table of abundance values and several hier
 
 First we will create a new directory for the krona output and link to the necessary files::
 
-  mkdir -p ~/mg-workshop/results/functional_annotation/$SAMPLE/krona
-  cd ~/mg-workshop/results/functional_annotation/$SAMPLE/krona
+  mkdir -p ~/mg-workshop/results/functional_annotation/krona/$SAMPLE
+  cd ~/mg-workshop/results/functional_annotation/krona/$SAMPLE/
   ln -s ~/mg-workshop/results/functional_annotation/mapping/$SAMPLE/$SAMPLE.coverage
   ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.ec
   ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.cog
@@ -40,3 +40,7 @@ Then use the ktImportText script to generate the HTML files::
 
 Copy the resulting html files to your local computer with scp and open it a browser, 
 like you did for the FastQC output.
+
+**Question: What are the main differences between the databases you have worked with: COG, Metacyc and KEGG? Which one do you prefer and why?**
+
+**Question: What are the main differences between the different samples (gut, skin and teeth)? Compare with results from other groups. Can you for instance find differences in degradation of compounds?**

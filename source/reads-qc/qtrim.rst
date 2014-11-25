@@ -44,3 +44,10 @@ Run fastqc again
 We would like to see if sickle has done a good job, we do so by asserting the quality of the
 reads again with fastqc. Please refer to the FastQC exercise for instructions on how to do this.
 
+**Question: Does the quality improve much?**
+
+Trimming adapter sequence
+=========================
+To remove adapter sequences from your reads one can use `cutadapt <https://github.com/marcelm/cutadapt/>`_.
+We won't do that in this workshop.
+

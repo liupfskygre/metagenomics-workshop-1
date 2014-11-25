@@ -36,4 +36,5 @@ All of these files are interesting, but the most fun one is the html file, so le
     scp username@milou.uppmax.uu.se:~/mg-workshop/results/phylogeny/phylosift/phylosift_output/*.html ~/mg-workshop/
 
 
-**QUESTION: Are the results that phylosift produces comparable to the 16S results? Compare the two html result files. Would you expect these methods to differ?**
+**Question: Compare with the taxonomic results from the 16S analysis. Do the results match? If not, what could be the explanation for the differences?**
+

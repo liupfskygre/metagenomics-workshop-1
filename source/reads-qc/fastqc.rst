@@ -53,4 +53,5 @@ From **your own shell (not inside Uppmax - open a new terminal window)**::
 Instead of username, type your own username!
 
 Now open the reports. Make sure you understand the results. Do they look ok? Is there a 
-difference between forward and reverse? Are there any warnings or errors? What do they mean?
+difference between forward and reverse? Are there any warnings or errors? What do they mean? Do 
+you have adapter sequences in your reads?
