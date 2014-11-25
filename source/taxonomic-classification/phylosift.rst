@@ -15,7 +15,7 @@ Phylosift is software created for the purpose of determining the phylogenetic co
 You can run phylosift using the following command:: 
     
     cd ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE
-    phylosift all -f --output phylosift_output contigs.fa
+    phylosift all -f --output phylosift_output contigs.fa &
 
 You can check the progress of the phylosift run by running the following command (You can repeat this)::
     
