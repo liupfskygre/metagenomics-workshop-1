@@ -9,8 +9,8 @@ KRONA is a tool that takes as input a table of abundance values and several hier
 
 First we will create a new directory for the krona output and link to the necessary files::
 
-  mkdir -p ~/mg-workshop/results/functional_annotation/$SAMPLE/krona
-  cd ~/mg-workshop/results/functional_annotation/$SAMPLE/krona
+  mkdir -p ~/mg-workshop/results/functional_annotation/krona/$SAMPLE
+  cd ~/mg-workshop/results/functional_annotation/krona/$SAMPLE/
   ln -s ~/mg-workshop/results/functional_annotation/mapping/$SAMPLE/$SAMPLE.coverage
   ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.ec
   ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.cog
