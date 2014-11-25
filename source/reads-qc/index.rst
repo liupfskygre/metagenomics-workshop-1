@@ -17,7 +17,7 @@ The workshop has the following exercises:
    :maxdepth: 2
 
    fastqc
-   qtrim (optional)
+   qtrim
 
 At least a basic knowledge of how to work with the command line is required
 otherwise it will be very difficult to follow some of the examples. Have
