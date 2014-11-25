@@ -5,18 +5,23 @@ In this section investigate our contigs with Phylosift to see which species they
 
 Phylosift
 =========
-Phylosift is software created for the purpose of determining the phylogenetic composition of your metagenomic data. It uses a defined set of genes to predict the taxonomy of each sequence in your dataset. You can read more about how this works here: http://phylosift.wordpress.com. Running phylosift will take some time (roughly 45 min) so lets start running phylosift::
+Phylosift is software created for the purpose of determining the phylogenetic composition of your metagenomic data. It uses a defined set of genes to predict the taxonomy of each sequence in your dataset. You can read more about how this works here: http://phylosift.wordpress.com. Lets prepare for the phylosift run::
+
 
     mkdir -p ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE
     cd ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE
     ln -s ~/mg-workshop/results/assembly/$SAMPLE/${SAMPLE}_31/contigs.fa .
+
+You can run phylosift using the following command:: 
+    
+    cd ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE
     phylosift all -f --output phylosift_output contigs.fa
 
-You can check the progress of the phylosift run by browsing the file*::
+You can check the progress of the phylosift run by running the following command (You can repeat this)::
     
     cat ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output/run_info.txt
 
-*If the phylosift run is taking too long time*, copy the results from the project directory::
+*Unfortunately, the phylosift run is taking too long time.* So in order to have some nice results to study, we'll copy the results from the project directory::
 
     cp -r /proj/g2014180/nobackup/metagenomics-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE/
 
@@ -30,3 +35,5 @@ All of these files are interesting, but the most fun one is the html file, so le
     mkdir ~/mg-workshop/
     scp username@milou.uppmax.uu.se:~/mg-workshop/results/phylogeny/phylosift/phylosift_output/*.html ~/mg-workshop/
 
+
+**QUESTION: Are the results that phylosift produces comparable to the 16S results? Compare the two html result files. Would you expect these methods to differ?**
