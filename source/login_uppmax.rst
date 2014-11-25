@@ -59,7 +59,11 @@ The choices you have are three different sampling sites on or within the human b
     - Skin
     - Teeth
 
-**Run only *one* of these commands in the terminal**
+**Run only *one* of the following commands in the terminal**
+
+This will set the ``SAMPLE`` and ``SAMPLE_ID`` variables that will be used in the commands in the next steps
+of the tutorial. If for some reason you have to restart the terminal you will have to set these variable names
+again.
 
 Gut
 ^^^
