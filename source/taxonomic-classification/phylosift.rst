@@ -30,5 +30,6 @@ All of these files are interesting, but the most fun one is the html file, so le
     mkdir ~/mg-workshop/
     scp username@milou.uppmax.uu.se:~/mg-workshop/results/phylogeny/phylosift/phylosift_output/*.html ~/mg-workshop/
 
+**Question: Compare with the taxonomic results from the 16S analysis. Do the results match? If not, what could be the explanation for the differences?**
 
 
