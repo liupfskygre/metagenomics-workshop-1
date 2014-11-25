@@ -21,7 +21,7 @@ You can check the progress of the phylosift run by running the following command
     
     cat ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output/run_info.txt
 
-*Unfortunately, the phylosift run is taking too long time.* So in order to have some nice results to study, we'll copy the results from the project directory::
+*Unfortunately, the phylosift run is taking a long time.* So if you don't have time to wait for it, in order to have some nice results to study, we'll copy the results from the project directory::
 
     cp -r /proj/g2014180/nobackup/metagenomics-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE/
 
