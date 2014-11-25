@@ -46,9 +46,7 @@ environment for this workshop. Once you are logged in to the server run::
 
     source /proj/g2014180/metagenomics/virtenv/bin/activate
 
-You deactivate the virtual environment with::
-    
-    deactivate
+If you would have to, you deactivate the virtual environment with the command `deactivate`, but you don't have to do that yet.
 
 NOTE: This is a python virtual environment. The binary folder of the virtual
 environment has symbolic links to all programs used in this workshop so you
