@@ -10,7 +10,7 @@ Phylosift is software created for the purpose of determining the phylogenetic co
 
     mkdir -p ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE
     cd ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE
-    ln -s ~/mg-workshop/results/assembly/$SAMPLE/${SAMPLE}_31/contigs.fa .
+    ln -s /proj/g2014180/nobackup/metagenomics-workshop/results/assembly/$SAMPLE/${SAMPLE}_31/contigs.fa .
 
 You can run phylosift using the following command:: 
     
