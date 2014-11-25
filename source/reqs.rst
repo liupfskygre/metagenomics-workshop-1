@@ -77,16 +77,7 @@ http://www.linfo.org/path_env_var.html.
 Check all programs in one go with which
 ==================================================
 To check whether you have all programs installed in one go, you can use ``which``.
-    - Phylosift_
-    - Fastqc_
-    - Sortmerna_
-    - Rdp_Classifier_
-    - Krona_
-    - Prokka_
-    - MinPath_
-    - BedTools_
-
-In order to do so we will iterate over all the programs in calling ``which`` on each of them.
+In order to do so we will iterate over all the programs and call ``which`` on each of them.
 First make a variable containing all programs separated by whitespace::
 
     $ req_progs="bowtie2 bowtie2-build velveth velvetg parallel samtools interleave-reads.py phylosift fastqc sortmerna prokka MinPath1.2.py bedtools"
