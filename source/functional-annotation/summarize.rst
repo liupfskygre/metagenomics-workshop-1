@@ -40,3 +40,5 @@ Then use the ktImportText script to generate the HTML files::
 
 Copy the resulting html files to your local computer with scp and open it a browser, 
 like you did for the FastQC output.
+
+**Question: What are the main differences between the databases you have worked with: COG, Metacyc and KEGG? Which one do you prefer and why?**
