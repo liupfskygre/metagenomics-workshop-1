@@ -26,7 +26,7 @@ Now check which node you got (replace username with your uppmax user name) like 
 
   squeue -u username
 
-The nodelist column gives you the name of the node that has been reserved for you (starts with "q").
+The nodelist column gives you the name of the node that has been reserved for you (starts with "n").
 Connect to that node using::
 
   ssh -X nodename
