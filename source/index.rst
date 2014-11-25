@@ -11,31 +11,31 @@ and annotation of metagenomic samples.
 
 Program:
 
-* Session 0
+* Getting started
+    * :doc:`introduction`
+    * :doc:`login_uppmax`
     * :doc:`reqs`
-* Session 1
+* Sessions
     * :doc:`reads-qc/index`
-    * :doc:`sortmerna/index`
+    * :doc:`16S-analysis/index`
     * :doc:`assembly/index`
-    * :doc:`mapping/index`
     * :doc:`taxonomic-classification/index`
     * :doc:`functional-annotation/index`
-    * :doc:`sample-comparison/index` 
 
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
-   
+
+   introduction
+   login_uppmax
    reqs
    reads-qc/index
-   sortmerna/index
+   16S-analysis/index
    assembly/index
-   mapping/index
    taxonomic-classification/index
    functional-annotation/index
-   sample-comparison/index
 
 Enjoy!
 

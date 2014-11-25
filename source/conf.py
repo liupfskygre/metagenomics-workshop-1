@@ -44,7 +44,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Metagenomics Workshop SciLifeLab'
-copyright = u'2014, Johannes Alneberg, Johan Bengtsson-Palme, Ino de Bruijn, Luisa Hugerth, Mikael Huss, Thomas Svensson'
+copyright = u'2014, Johannes Alneberg, John Larsson, Ino de Bruijn, Luisa Hugerth, Anders Andersson'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -96,11 +96,28 @@ pygments_style = 'sphinx'
 
 # -- Options for HTML output ----------------------------------------------
 
+import sys
+import os
+
+# Add readthedocs.org theme
+# on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+
+if not on_rtd:  # only import and set the theme if we're building docs locally
+    import sphinx_rtd_theme
+    html_theme = 'sphinx_rtd_theme'
+    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+    
+    # Add any paths that contain custom themes here, relative to this directory.
+    #html_theme_path = []
+    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+
+
+# otherwise, readthedocs.org uses their theme by default, so no need to specify it
+
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-import sphinx_rtd_theme
 #html_theme = 'default'
-html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -109,7 +126,6 @@ html_theme = 'sphinx_rtd_theme'
 
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -200,7 +216,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   ('index', 'MetagenomicsWorkshopSciLifeLab.tex', u'Metagenomics Workshop SciLifeLab Documentation',
-   u'Johannes Alneberg, Johan Bengtsson-Palme, Ino de Bruijn, Luisa Hugerth, Mikael Huss, Thomas Svensson', 'manual'),
+   u'Johannes Alneberg, John Larsson, Ino de Bruijn, Luisa Hugerth, Anders Andersson', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -230,7 +246,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'metagenomicsworkshopscilifelab', u'Metagenomics Workshop SciLifeLab Documentation',
-     [u'Johannes Alneberg, Johan Bengtsson-Palme, Ino de Bruijn, Luisa Hugerth, Mikael Huss, Thomas Svensson'], 1)
+     [u'Johannes Alneberg, John Larsson, Ino de Bruijn, Luisa Hugerth, Anders Andersson'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -244,7 +260,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'MetagenomicsWorkshopSciLifeLab', u'Metagenomics Workshop SciLifeLab Documentation',
-   u'Johannes Alneberg, Johan Bengtsson-Palme, Ino de Bruijn, Luisa Hugerth, Mikael Huss, Thomas Svensson', 'MetagenomicsWorkshopSciLifeLab', 'One line description of project.',
+   u'Johannes Alneberg, John Larsson, Ino de Bruijn, Luisa Hugerth, Anders Andersson', 'MetagenomicsWorkshopSciLifeLab', 'One line description of project.',
    'Miscellaneous'),
 ]
 

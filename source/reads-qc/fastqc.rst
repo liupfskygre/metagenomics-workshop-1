@@ -4,45 +4,54 @@ Quality Control with fastqc
 In this excercise you will use fastqc to investigate the quality of your sequences 
 using a nice graphical summary output. 
 
-This file needs to be written
-============================
+Retrieving your data
+====================
+For the first step, make a workshop folder in your home directory and move into it::
 
+	mkdir -p ~/mg-workshop
+	cd ~/mg-workshop
 
-Downloading a test set
-======================
-Today we'll be working on a small metagenomic data set from the anterior nares
-(http://en.wikipedia.org/wiki/Anterior_nares).
+Inside it, make a folder for your input files::
 
-.. image:: https://raw.github.com/inodb/2013-metagenomics-workshop-gbg/master/images/nostril.jpg
+	mkdir -p ~/mg-workshop/data/$SAMPLE/reads/1M/
+	cd ~/mg-workshop/data/$SAMPLE/
 
+Now make a copy of the files you want to work on: gut, skin or teeth datasets. These
+files were originally taken from the `Human Microbiome Project <http://hmpdacc.org/>`_ and then subsampled
+to include only 1 million reads each. You can copy these files from the project directory::
 
-So get ready for your first smell of metagenomic assembly - pun intended. Run
-all these commands in your shell::
-    
-    # Download the reads and extract them
-    mkdir -p ~/asm-workshop
-    mkdir -p ~/asm-workshop/data
-    cd ~/asm-workshop/data
-    wget http://downloads.hmpdacc.org/data/Illumina/anterior_nares/SRS018585.tar.bz2
-    tar -xjf SRS018585.tar.bz2
+	cp /proj/g2014180/nobackup/metagenomics-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq ~/mg-workshop/data/$SAMPLE/reads/1M/
+	cp /proj/g2014180/nobackup/metagenomics-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq ~/mg-workshop/data/$SAMPLE/reads/1M/
 
-If successfull you should have the files::
-
-    $ ls -lh ~/asm-workshop/data/SRS018585/
-    -rw-rw-r-- 1 inod inod  36M Apr 18  2011 SRS018585.denovo_duplicates_marked.trimmed.1.fastq
-    -rw-rw-r-- 1 inod inod  36M Apr 18  2011 SRS018585.denovo_duplicates_marked.trimmed.2.fastq
-    -rw-rw-r-- 1 inod inod 6.4M Apr 18  2011 SRS018585.denovo_duplicates_marked.trimmed.singleton.fastq
-
-If not, try to find out if one of the previous commands gave an error.
-
-Look at the top of the one of the pairs::
-
-    cat ~/asm-workshop/data/SRS018585/SRS018585.denovo_duplicates_marked.trimmed.1.fastq | head
-
-**Question: Can you explain what the different parts of this header mean @HWI-EAS324_102408434:5:100:10055:13493/1?**
+You will now have two files in your reads directory: one for the forward reads
+``*_1.fastq`` and one for the reverse reads ``*_2.fastq``.
 
 Fastqc
 ======
+We will now use FastQC to generate a report about the quality of our sequencing reads.
+For most programs and scripts in this workshop, you can see their instructions by typing
+their name in the terminal followed by the flag -h. There are many options available,
+and we'll show you only a few of those.
 
+First, make a folder to keep your quality control results::
 
+	mkdir -p ~/mg-workshop/results/quality_check/$SAMPLE/
 
+Now, run fastqc for each file::
+
+	fastqc -o ~/mg-workshop/results/quality_check/$SAMPLE/ --nogroup reads/1M/${SAMPLE_ID}_1M.1.fastq reads/1M/${SAMPLE_ID}_1M.2.fastq
+
+FastQC will generate two files for each input file, one compressed, and one not. To view
+your files, copy the html results into your local computer and open them with a browser.
+
+From **your own shell (not inside Uppmax - open a new terminal window)**::
+
+	mkdir -p ~/mg-workshop/
+	cd ~/mg-workshop/
+	scp -r username@milou.uppmax.uu.se:~/mg-workshop/results/quality_check/*/*html .
+
+Instead of username, type your own username!
+
+Now open the reports. Make sure you understand the results. Do they look ok? Is there a 
+difference between forward and reverse? Are there any warnings or errors? What do they mean? Do 
+you have adapter sequences in your reads?

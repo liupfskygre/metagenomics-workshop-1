@@ -12,10 +12,16 @@ The following programs are used in this workshop:
     - Bowtie2_
     - Velvet_
     - samtools_
-    - sickle_
     - Picard_
-    - Ray_
-    
+    - Phylosift_
+    - Fastqc_
+    - Sortmerna_
+    - Rdp_Classifier_
+    - Krona_
+    - Prokka_
+    - MinPath_
+    - BedTools_
+        
 .. _Bowtie2: http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
 .. _Velvet: http://www.ebi.ac.uk/~zerbino/velvet/
 .. _xclip: http://sourceforge.net/projects/xclip/
@@ -26,11 +32,19 @@ The following programs are used in this workshop:
 .. _sickle: https://github.com/najoshi/sickle
 .. _Picard: http://picard.sourceforge.net/index.shtml
 .. _Ray: http://denovoassembler.sourceforge.net/
+.. _Phylosift: http://phylosift.wordpress.com/
+.. _Fastqc: http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+.. _Sortmerna: http://bioinfo.lifl.fr/RNA/sortmerna/
+.. _Rdp_Classifier: http://rdp.cme.msu.edu/
+.. _Krona: http://sourceforge.net/p/krona/home/krona/
+.. _Prokka: http://www.vicbioinformatics.com/software.prokka.shtml
+.. _MinPath: http://omics.informatics.indiana.edu/MinPath/
+.. _BedTools: http://bedtools.readthedocs.org/en/latest/
 
 All programs are already installed, all you have to do is load the virtual
 environment for this workshop. Once you are logged in to the server run::
 
-    source /proj/g2014113/metagenomics/virt-env/mg-workshop/bin/activate
+    source /proj/g2014180/metagenomics/virtenv/bin/activate
 
 You deactivate the virtual environment with::
     
@@ -63,34 +77,38 @@ http://www.linfo.org/path_env_var.html.
 Check all programs in one go with which
 ==================================================
 To check whether you have all programs installed in one go, you can use ``which``.
+    - Phylosift_
+    - Fastqc_
+    - Sortmerna_
+    - Rdp_Classifier_
+    - Krona_
+    - Prokka_
+    - MinPath_
+    - BedTools_
 
-    bowtie2
-    bowtie2-build
-    velveth
-    velvetg
-    shuffleSequences_fastq.pl
-    parallel
-    samtools
-    Ray
-
-
-We will now iterate over all the programs in calling ``which`` on each of them.
+In order to do so we will iterate over all the programs in calling ``which`` on each of them.
 First make a variable containing all programs separated by whitespace::
 
-    $ req_progs="bowtie2 bowtie2-build velveth velvetg parallel samtools shuffleSequences_fastq.pl Ray"
+    $ req_progs="bowtie2 bowtie2-build velveth velvetg parallel samtools interleave-reads.py phylosift fastqc sortmerna prokka MinPath1.2.py bedtools"
     $ echo $req_progs
-    bowtie2 bowtie2-build velveth velvetg parallel samtools shuffleSequences_fastq.pl
+    bowtie2 bowtie2-build velveth velvetg parallel samtools interleave-reads.py phylosift fastqc sortmerna prokka MinPath1.2.py bedtools 
 
 Now iterate over the variable ``req_progs`` and call which::
 
     $ for p in $req_progs; do which $p || echo $p not in PATH; done
-    /proj/g2014113/metagenomics/virt-env/mg-workshop/bin/bowtie2
-    /proj/g2014113/metagenomics/virt-env/mg-workshop/bin/bowtie2-build
-    /proj/g2014113/metagenomics/virt-env/mg-workshop/bin/velveth
-    /proj/g2014113/metagenomics/virt-env/mg-workshop/bin/velvetg
-    /proj/g2014113/metagenomics/virt-env/mg-workshop/bin/parallel
-    /proj/g2014113/metagenomics/virt-env/mg-workshop/bin/samtools
-    /proj/g2014113/metagenomics/virt-env/mg-workshop/bin/shuffleSequences_fastq.pl
+    /proj/g2014180/metagenomics/virtenv/bin/bowtie2
+    /proj/g2014180/metagenomics/virtenv/bin/bowtie2-build
+    /proj/g2014180/metagenomics/virtenv/bin/velveth
+    /proj/g2014180/metagenomics/virtenv/bin/velvetg
+    /sw/parallel/gnuparallel/20140222/bin/parallel
+    /proj/g2014180/metagenomics/virtenv/bin/samtools
+    /proj/g2014180/metagenomics/virtenv/bin/interleave-reads.py
+    /proj/g2014180/metagenomics/phylosift_v1.0.1/phylosift
+    /sw/apps/bioinfo/fastqc/0.11.2/milou/fastqc
+    /proj/g2014180/metagenomics/virtenv/bin/sortmerna
+    /proj/g2014180/metagenomics/virtenv/bin/prokka
+    /proj/g2014180/metagenomics/virtenv/bin/MinPath1.2.py
+    /proj/g2014180/metagenomics/virtenv/bin/bedtools
 
 In Unix-like systems a program that sucessfully completes it tasks should
 return a zero exit status. For the program ``which`` that is the case if the

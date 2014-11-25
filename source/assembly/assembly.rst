@@ -1,7 +1,7 @@
-==========================================
+============================
 Assembling reads with Velvet
-==========================================
-In this exercise we will learn how to perform an assembly with Velvet. Velvet
+============================
+In this exercise you will learn how to perform an assembly with Velvet. Velvet
 takes your reads as input and turns them into contigs. It consists of two
 steps. In the first step, ``velveth``, the de Bruijn graph is created.
 Afterwards the graph is traversed and contigs are created with ``velvetg``.
@@ -10,37 +10,40 @@ cut up into pieces of length *k*, each representing a node in the graph, edges
 represent an overlap (some de Bruijn graph assemblers do this differently, but
 the idea is the same). The advantage of using kmer overlap instead of read
 overlap is that the computational requirements grow with the number of unique
-kmers instead of unique reads. A more detailled explanation can be found at
-http://www.nature.com/nbt/journal/v29/n11/full/nbt.2023.html.
+kmers instead of unique reads. A more detailed explanation can be found in
+`this paper <http://www.nature.com/nbt/journal/v29/n11/full/nbt.2023.html>`_.
 
+You can test different kmer lengths, as long as they're odd numbers. A good margin
+is to have the kmer length between 21 and 51. We'll then look at a few statistics
+on the assembly; if you're choice of kmer wasn't good, you might have to run another
+assembly (but this is very fast).
 
-Pick a kmer
-===========
-Please work in pairs for this assignment. Every group can select a kmer of
-their likings - pick a random one if you haven't developed a preference yet.
-Write you and your partner's name down at a kmer on the
-Google doc_ for this workshop.
-
-.. _doc: https://drive.google.com/open?id=0AvprCMxfYyv7dERlb0llbTJKbTJQZlYtUV9yWFhuVWc&authuser=0
+Pick your kmer
+==============
+Fill in which kmer you want to do in the `Google doc`_. Later we will compare the results
+from the different kmers for each group.
 
 velveth
 =======
-Create the graph data structure with ``velveth``. Again like we did with
-``sickle``, first create a directory with symbolic links to the pairs that you
+Create the graph data structure with ``velveth``. First create a directory with symbolic links to the pairs that you
 want to use::
 
-    mkdir -p ~/asm-workshop/velvet
-    cd ~/asm-workshop/velvet
-    ln -s ../sickle/qtrim1.fastq pair1.fastq
-    ln -s ../sickle/qtrim2.fastq pair2.fastq
+    mkdir -p ~/mg-workshop/results/assembly/$SAMPLE/
+    cd ~/mg-workshop/results/assembly/$SAMPLE/
+    ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq pair1.fastq
+    ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq pair2.fastq
+
+Create a directory for the kmer of your choice. **Replace N with the kmer length below**::
+
+    mkdir ${SAMPLE}_N
 
 The reads need to be interleaved for ``velveth``::
 
-    shuffleSequences_fastq.pl pair1.fastq pair2.fastq pair.fastq
+    interleave-reads.py -o pair.fastq pair1.fastq pair2.fastq
 
-Run velveth over the kmer you picked (21 in this example)::
+Run velveth, **replacing N with the kmer length you chose**::
 
-    velveth out_21 21 -fastq -shortPaired pair.fastq
+    velveth ${SAMPLE}_N N -fastq -shortPaired pair.fastq
 
 Check what directories have been created::
 
@@ -51,9 +54,9 @@ velvetg
 To get the actual contigs you will have to run ``velvetg`` on the created
 graph. You can vary options such expected coverage and the coverage cut-off if
 you want, but we do not do that in this tutorial. We only choose not to do
-scaffolding::
+scaffolding. Again **replace N for your current kmer length**::
 
-    velvetg out_21 -scaffolding no
+    velvetg ${SAMPLE}_N -scaffolding no
 
 
 assemstats
@@ -61,56 +64,37 @@ assemstats
 After the assembly one wants to look at the length distributions of the
 resulting assemblies. You can use the ``assemstats`` script for that::
 
-    assemstats 100 out_*/contigs.fa
+    assemstats 100 ${SAMPLE}_N/contigs.fa
 
-Try to find-out what each of the stats represent by varying the cut-off. One of
+Try to find out what each of the stats represent by varying the cut-off. One of
 the most often used statistics in assembly length distribution comparisons is
-the *N50 length*, a weighted median, where you weight each contig by it's
-length. This way you assign more weight to larger contigs. Fifty procent of all
+the *N50 length*, a weighted median of the length, where you weigh each contig by its
+length. This way, you assign more weight to larger contigs. Fifty per cent of all
 the bases in the assembly are contained in contigs shorter or equal to N50
-length. Once you have gotten an idea of what it all the stats mean, it is time
-to compare your results with the other attendees of this workshop. Generate the results and copy them to the doc_::
-
-    assemstats 100 out_*/contigs.fa
-
-Do the same for the cut-off at 1000 and add it to the doc_. Compare your kmer
-against the others. If there are very little available yet, this would be an
-ideal time to help out some other attendees or do the same exercise for a kmer
-that has not been picked by somebody else yet. Please write down you and your
-partners name again at the doc_ in that case.
-
+length. Add your results to the `Google doc`_.
 
 **Question: What are the important length statistics? Do we prefer sum over
 length? Should it be a combination?**
 
-Think of a formula that could indicate the best preferred
-length distribution where you express the optimization function in terms of the
-column names from the doc_. For instance only ``n50_len`` or ``sum *
-n50_len``.
+(Optional) Ray
+==============
+Try to use the Ray assembler instead. Ray was made to play well with metagenomics. Furthermore it
+uses `MPI <http://en.wikipedia.org/wiki/Message_Passing_Interface>`_ to distribute the computation
+over multiple computational nodes and/or cores. You can run Ray on 16 cores with the command::
+    
+    mkdir -p ~/mg-workshop/results/assembly/ray/$SAMPLE/
+    module unload intel
+    module load gcc openmpi/1.7.5
+    rm -rf ~/mg-workshop/results/assembly/ray/$SAMPLE/${SAMPLE}_N
+    time mpiexec -n 16 Ray -k N -p ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.{1,2}.fastq \
+        -o ~/mg-workshop/results/assembly/ray/$SAMPLE/${SAMPLE}_N
+    module unload gcc
+    module load intel
+    
 
+Replace N again with your chosen kmer. There is another `sheet`_ where you can add the Ray assembly results.
 
-(Optional exercise) Ray
-=======================
-Try to create an assembly with Ray over the same kmer. Ray is an assembler that
-uses MPI to distribute the assembly over multiple cores and nodes. The latest
-version of Ray was made to work well with metagenomics data as well::
+**Question: How do Ray's results compare to those from Velvet?**
 
-    mkdir -p ~/asm-workshop/ray
-    cd ~/asm-workshop/ray
-    ln -s ../sickle/qtrim1.fastq pair1.fastq
-    ln -s ../sickle/qtrim2.fastq pair2.fastq
-    mpiexec -n 1 Ray -k 21 -p pair1.fastq pair2.fastq -o out_21
-
-Add the ``assemstats`` results to the doc_ as you did for Velvet. There is a
-separate tab for the Ray assemblies, compare the results with Velvet.
-
-(Optional exercise) VelvetOptimiser
-===================================
-VelvetOptimiser_ is a script that runs Velvet multiple times and follows the
-optimization function you give it. Use VelvetOptimiser_ to find the assembly
-that gets the best score for the optimization function you designed in
-`assemstats`_. It requires ``BioPerl``, which you can get on uppmax with
-``module load BioPerl``.
-
-.. _VelvetOptimiser: https://github.com/Victorian-Bioinformatics-Consortium/VelvetOptimiser
-
+.. _Google doc: https://docs.google.com/spreadsheets/d/10rOJKgCQct5jwupi_0L44WwgGxg3thYPQlnTJEpXBoY
+.. _sheet: https://docs.google.com/spreadsheets/d/10rOJKgCQct5jwupi_0L44WwgGxg3thYPQlnTJEpXBoY/edit#gid=864082853
