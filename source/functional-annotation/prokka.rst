@@ -9,7 +9,7 @@ Set up the necessary files and run PROKKA::
     
     mkdir -p ~/mg-workshop/results/functional_annotation/prokka/
     cd ~/mg-workshop/results/functional_annotation/prokka/
-    ln -s ~/mg-workshop/results/assembly/$SAMPLE/${SAMPLE}_31/contigs.fa
+    ln -s /proj/g2014180/nobackup/metagenomics-workshop/results/assembly/$SAMPLE/${SAMPLE}_31/contigs.fa
     prokka contigs.fa --outdir $SAMPLE --norrna --notrna --metagenome --cpus 16
     cd $SAMPLE
 
