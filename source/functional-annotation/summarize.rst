@@ -42,3 +42,4 @@ Copy the resulting html files to your local computer with scp and open it a brow
 like you did for the FastQC output.
 
 **Question: What are the main differences between the databases you have worked with: COG, Metacyc and KEGG? Which one do you prefer and why?**
+**Question: What are the main differences between the different samples (gut, skin and teeth)? Compare with results from other groups. Can you for instance find differences in degradation of compounds?**
