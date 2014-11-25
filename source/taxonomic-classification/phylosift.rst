@@ -30,13 +30,5 @@ All of these files are interesting, but the most fun one is the html file, so le
     mkdir ~/mg-workshop/
     scp username@milou.uppmax.uu.se:~/mg-workshop/results/phylogeny/phylosift/phylosift_output/*.html ~/mg-workshop/
 
-As you hopefully see, this phylosift result file is quite neat, but it doesn't show its full potential using a pure cluster, so to display the results for a more diverse input file we have prepared a run for the complete dataset::
 
-    ls /proj/g2014113/nobackup/concoct-workshop/phylosift_output/all/
-
-And download this (running it on your own terminal again)::
-
-    scp username@milou.uppmax.uu.se:/proj/g2014113/nobackup/concoct-workshop/phylosift_output/all/Contigs_gt1000.fa.html ~/Desktop/
-
-Can you "find your bin" within this result file?
 
