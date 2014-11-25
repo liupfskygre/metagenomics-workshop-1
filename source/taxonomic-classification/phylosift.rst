@@ -12,7 +12,7 @@ Phylosift is software created for the purpose of determining the phylogenetic co
     ln -s ~/mg-workshop/results/assembly/$SAMPLE/${SAMPLE}_31/contigs.fa .
     phylosift all -f --output phylosift_output contigs.fa
 
-You can check the progress of the phylosift run by browsing the file*::
+You can check the progress of the phylosift run by browsing the file::
     
     cat ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output/run_info.txt
 
@@ -29,4 +29,6 @@ All of these files are interesting, but the most fun one is the html file, so le
 
     mkdir ~/mg-workshop/
     scp username@milou.uppmax.uu.se:~/mg-workshop/results/phylogeny/phylosift/phylosift_output/*.html ~/mg-workshop/
+
+
 
