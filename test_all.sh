@@ -4,10 +4,14 @@
 rst_to_code() {
     awk 'BEGIN {code=0}
     {
+        non_edited = $0
+        gsub(" +","", $0)
+        no_ws = $0
+        $0 = non_edited
         if ($0 ~ "::") { code=1; lines=0; }
         else {
             if (code) {
-                if (length($0) == 0 && lines > 0) { code=0 }
+                if (length(no_ws) == 0 && lines > 0) { code=0 }
             else { print $0; lines +=1; }
             }
         }
@@ -38,11 +42,11 @@ for i in 0; do #$(seq 0 $((${#SAMPLES[@]}-1))); do
     #echo "taxonomic-classification/phylosift"
     #rst_to_code source/taxonomic-classification/phylosift.rst | grep -v scp | bash -x
     echo "functional-annotation/prokka"
-    rst_to_code source/functional-annotation/prokka.rst | grep -v scp | bash -x
+    rst_to_code source/functional-annotation/prokka.rst | grep -v scp | sed 's/PROKKA_11252014/PROKKA_*/g' | bash -x
     echo "functional-annotation/minpath"
-    rst_to_code source/functional-annotation/minpath.rst | grep -v scp | bash -x
+    rst_to_code source/functional-annotation/minpath.rst | grep -v scp | sed 's/PROKKA_11252014/PROKKA_*/g' | bash -x
     echo "functional-annotation/read mapping"
-    rst_to_code source/functional-annotation/read_mapping.rst | grep -v scp | bash -x
+    rst_to_code source/functional-annotation/read_mapping.rst | grep -v scp | sed 's/PROKKA_11252014/PROKKA_*/g' | bash -x
     echo "functional-annotation/summarize"
-    rst_to_code source/functional-annotation/summarize.rst | grep -v scp | bash -x
+    rst_to_code source/functional-annotation/summarize.rst | grep -v scp | sed | sed 's/PROKKA_11252014/PROKKA_*/g' | bash -x
 done
