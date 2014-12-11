@@ -58,8 +58,6 @@ and that the two input files should be treated as only one (-c)::
 
 	ktImportRDP -o 16S.tax.html -m 50 -c reads.1.fastq_rrna.fastq.class.tsv  reads.2.fastq_rrna.fastq.class.tsv
 
-The <() in bash can be used for process substitution: http://tldp.org/LDP/abs/html/process-sub.html.
-
 Copy the resulting file 16S.tax.html to your local computer with scp and open it a browser,
 like you did for the FastQC output.
 	
