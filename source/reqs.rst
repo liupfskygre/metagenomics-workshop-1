@@ -44,7 +44,7 @@ The following programs are used in this workshop:
 All programs are already installed, all you have to do is load the virtual
 environment for this workshop. Once you are logged in to the server run::
 
-    source /proj/g2014180/metagenomics/virtenv/bin/activate
+    source /proj/g2015028/metagenomics/virtenv/bin/activate
 
 If you would have to, you deactivate the virtual environment with the command `deactivate`, but you don't have to do that yet.
 
@@ -85,19 +85,19 @@ First make a variable containing all programs separated by whitespace::
 Now iterate over the variable ``req_progs`` and call which::
 
     $ for p in $req_progs; do which $p || echo $p not in PATH; done
-    /proj/g2014180/metagenomics/virtenv/bin/bowtie2
-    /proj/g2014180/metagenomics/virtenv/bin/bowtie2-build
-    /proj/g2014180/metagenomics/virtenv/bin/velveth
-    /proj/g2014180/metagenomics/virtenv/bin/velvetg
+    /proj/g2015028/metagenomics/virtenv/bin/bowtie2
+    /proj/g2015028/metagenomics/virtenv/bin/bowtie2-build
+    /proj/g2015028/metagenomics/virtenv/bin/velveth
+    /proj/g2015028/metagenomics/virtenv/bin/velvetg
     /sw/parallel/gnuparallel/20140222/bin/parallel
-    /proj/g2014180/metagenomics/virtenv/bin/samtools
-    /proj/g2014180/metagenomics/virtenv/bin/interleave-reads.py
-    /proj/g2014180/metagenomics/phylosift_v1.0.1/phylosift
+    /proj/g2015028/metagenomics/virtenv/bin/samtools
+    /proj/g2015028/metagenomics/virtenv/bin/interleave-reads.py
+    /proj/g2015028/metagenomics/phylosift_v1.0.1/phylosift
     /sw/apps/bioinfo/fastqc/0.11.2/milou/fastqc
-    /proj/g2014180/metagenomics/virtenv/bin/sortmerna
-    /proj/g2014180/metagenomics/virtenv/bin/prokka
-    /proj/g2014180/metagenomics/virtenv/bin/MinPath1.2.py
-    /proj/g2014180/metagenomics/virtenv/bin/bedtools
+    /proj/g2015028/metagenomics/virtenv/bin/sortmerna
+    /proj/g2015028/metagenomics/virtenv/bin/prokka
+    /proj/g2015028/metagenomics/virtenv/bin/MinPath1.2.py
+    /proj/g2015028/metagenomics/virtenv/bin/bedtools
 
 In Unix-like systems a program that sucessfully completes it tasks should
 return a zero exit status. For the program ``which`` that is the case if the

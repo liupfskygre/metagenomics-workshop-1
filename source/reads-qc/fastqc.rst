@@ -20,8 +20,8 @@ Now make a copy of the files you want to work on: gut, skin or teeth datasets. T
 files were originally taken from the `Human Microbiome Project <http://hmpdacc.org/>`_ and then subsampled
 to include only 1 million reads each. You can copy these files from the project directory::
 
-	cp /proj/g2014180/nobackup/metagenomics-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq ~/mg-workshop/data/$SAMPLE/reads/1M/
-	cp /proj/g2014180/nobackup/metagenomics-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq ~/mg-workshop/data/$SAMPLE/reads/1M/
+	cp /proj/g2015028/nobackup/metagenomics-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq ~/mg-workshop/data/$SAMPLE/reads/1M/
+	cp /proj/g2015028/nobackup/metagenomics-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq ~/mg-workshop/data/$SAMPLE/reads/1M/
 
 You will now have two files in your reads directory: one for the forward reads
 ``*_1.fastq`` and one for the reverse reads ``*_2.fastq``.

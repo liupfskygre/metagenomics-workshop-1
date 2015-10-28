@@ -10,7 +10,7 @@ Phylosift is software created for the purpose of determining the phylogenetic co
 
     mkdir -p ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE
     cd ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE
-    ln -s /proj/g2014180/nobackup/metagenomics-workshop/results/assembly/$SAMPLE/${SAMPLE}_31/contigs.fa .
+    ln -s /proj/g2015028/nobackup/metagenomics-workshop/results/assembly/$SAMPLE/${SAMPLE}_31/contigs.fa .
 
 You can run phylosift using the following command:: 
     
@@ -23,7 +23,7 @@ You can check the progress of the phylosift run by running the following command
 
 *Unfortunately, the phylosift run is taking a long time.* So if you don't have time to wait for it, in order to have some nice results to study, we'll copy the results from the project directory::
 
-    cp -r /proj/g2014180/nobackup/metagenomics-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE/
+    cp -r /proj/g2015028/nobackup/metagenomics-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE/
 
 When the phylosift run is completed, browse the output directory::
 

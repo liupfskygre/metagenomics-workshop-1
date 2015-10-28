@@ -16,7 +16,7 @@ We start by making the necessary folders and assigning all necessary databases t
 	cd ~/mg-workshop/results/phylogeny/16S/$SAMPLE
 	ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq reads.1.fastq
 	ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq reads.2.fastq
-	DB=/proj/g2013206/metagenomics/src/sortmerna-1.9/rRNA_databases/silva-arc-16s-database-id95.fasta,/proj/g2014180/nobackup/metagenomics-workshop/reference_db/sortmerna/silva-arc-16s-database-id95.fasta.index:/proj/g2013206/metagenomics/src/sortmerna-1.9/rRNA_databases/silva-bac-16s-database-id85.fasta,/proj/g2014180/nobackup/metagenomics-workshop/reference_db/sortmerna/silva-bac-16s-database-id85.fasta.index:/proj/g2013206/metagenomics/src/sortmerna-1.9/rRNA_databases/silva-euk-18s-database-id95.fasta,/proj/g2014180/nobackup/metagenomics-workshop/reference_db/sortmerna/silva-euk-18s-database-id95.fasta.index
+	DB=/proj/g2013206/metagenomics/src/sortmerna-1.9/rRNA_databases/silva-arc-16s-database-id95.fasta,/proj/g2015028/nobackup/metagenomics-workshop/reference_db/sortmerna/silva-arc-16s-database-id95.fasta.index:/proj/g2013206/metagenomics/src/sortmerna-1.9/rRNA_databases/silva-bac-16s-database-id85.fasta,/proj/g2015028/nobackup/metagenomics-workshop/reference_db/sortmerna/silva-bac-16s-database-id85.fasta.index:/proj/g2013206/metagenomics/src/sortmerna-1.9/rRNA_databases/silva-euk-18s-database-id95.fasta,/proj/g2015028/nobackup/metagenomics-workshop/reference_db/sortmerna/silva-euk-18s-database-id95.fasta.index
 
 SortMeRNA has built-in multithreading support that we will use for parallelization (-a).
 We still have to launch one sample at a time, though::
@@ -40,7 +40,7 @@ classifier like this::
 
     for file in *_rrna*.fastq; 
     do name=$(basename $file);
-    java -Xmx1g -jar /proj/g2014180/metagenomics/virtenv/rdp_classifier_2.6/dist/classifier.jar classify -g 16srrna -b $name.bootstrap -h $name.hier.tsv -o $name.class.tsv $file;
+    java -Xmx1g -jar /proj/g2015028/metagenomics/virtenv/rdp_classifier_2.6/dist/classifier.jar classify -g 16srrna -b $name.bootstrap -h $name.hier.tsv -o $name.class.tsv $file;
     done
 
 .. _RDP: http://rdp.cme.msu.edu/
