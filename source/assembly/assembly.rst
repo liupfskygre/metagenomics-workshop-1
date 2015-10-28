@@ -96,5 +96,5 @@ Replace N again with your chosen kmer. There is another `sheet`_ where you can a
 
 **Question: How do Ray's results compare to those from Velvet?**
 
-.. _Google doc: https://docs.google.com/spreadsheets/d/10rOJKgCQct5jwupi_0L44WwgGxg3thYPQlnTJEpXBoY
-.. _sheet: https://docs.google.com/spreadsheets/d/10rOJKgCQct5jwupi_0L44WwgGxg3thYPQlnTJEpXBoY/edit#gid=864082853
+.. _Google doc: https://docs.google.com/spreadsheets/d/1Cu5de351swo7G1ZGYn8Dy0jKnHvTP1l4mGdslVaCwLg/edit?usp=sharing
+.. _sheet: https://docs.google.com/spreadsheets/d/1Cu5de351swo7G1ZGYn8Dy0jKnHvTP1l4mGdslVaCwLg/edit?usp=sharing
