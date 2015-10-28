@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 ###################################
+import gzip as gz, csv, sys
 
 def GetFilelist(i):
     import os
@@ -37,7 +38,6 @@ def WriteStat(cover, houtcsv):
         houtcsv.writerow([sample,mean_cov,median_cov,max_cov,min_cov])
 
 def CalcCov(files):
-    import gzip as gz, csv, sys
     samples = {}
     genes = {}
     cover = {}
@@ -62,7 +62,7 @@ def CalcCov(files):
                 gene = row[3]
                 cov = 0.0
             genes[gene] = ""
-            depth = float(row[4])
+            depth = float(row[-4])
             depth_f = float(row[-1])
             cov += depth*depth_f
         hin.close()
