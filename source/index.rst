@@ -9,6 +9,10 @@ Welcome to the Metagenomics Workshop in Uppsala
 This is a one day metagenomics workshop. We will discuss quality checking, assembly, taxonomic classification, binning
 and annotation of metagenomic samples.
 
+Here is a link_ to the official homepage for the SciLifeLab workshop in metagenomics.
+
+A presentation for this workshop is available here_.
+
 Program:
 
 * Getting started
@@ -39,3 +43,5 @@ Contents:
 
 Enjoy!
 
+.. _here: https://docs.google.com/presentation/d/1zKQtiErPjH9qA5EBjWGH5QhNhxpUxksex16__H0DB8g/edit?usp=sharing
+.. _link: http://uppnex.se/twiki/do/view/Courses/Metagenomics1411/WebHome
