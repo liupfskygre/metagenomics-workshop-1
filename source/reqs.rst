@@ -40,6 +40,7 @@ The following programs are used in this workshop:
 .. _Prokka: http://www.vicbioinformatics.com/software.prokka.shtml
 .. _MinPath: http://omics.informatics.indiana.edu/MinPath/
 .. _BedTools: http://bedtools.readthedocs.org/en/latest/
+.. _Sickle: https://github.com/najoshi/sickle
 
 All programs are already installed, all you have to do is load the virtual
 environment for this workshop. Once you are logged in to the server run::
