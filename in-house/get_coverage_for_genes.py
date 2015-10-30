@@ -53,7 +53,7 @@ def CalcCov(files):
         gene = ""
         cov = 0.0
         for i,row in enumerate(hincsv):
-            if len(row)<8: break
+            #if len(row)<8: break
             if gene != row[3]:
                 if len(files)==1:
                     if i==0:houtcsv.writerow(["Gene",sample])
