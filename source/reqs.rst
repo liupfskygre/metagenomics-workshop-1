@@ -79,26 +79,12 @@ To check whether you have all programs installed in one go, you can use ``which`
 In order to do so we will iterate over all the programs and call ``which`` on each of them.
 First make a variable containing all programs separated by whitespace::
 
-    $ req_progs="bowtie2 bowtie2-build velveth velvetg parallel samtools interleave-reads.py phylosift fastqc sortmerna prokka MinPath1.2.py bedtools"
-    $ echo $req_progs
-    bowtie2 bowtie2-build velveth velvetg parallel samtools interleave-reads.py phylosift fastqc sortmerna prokka MinPath1.2.py bedtools 
+    req_progs="bowtie2 bowtie2-build velveth velvetg parallel samtools interleave-reads.py phylosift fastqc sortmerna prokka MinPath1.2.py bedtools"
+    echo $req_progs 
 
 Now iterate over the variable ``req_progs`` and call which::
 
-    $ for p in $req_progs; do which $p || echo $p not in PATH; done
-    /proj/g2015028/metagenomics/virtenv/bin/bowtie2
-    /proj/g2015028/metagenomics/virtenv/bin/bowtie2-build
-    /proj/g2015028/metagenomics/virtenv/bin/velveth
-    /proj/g2015028/metagenomics/virtenv/bin/velvetg
-    /sw/parallel/gnuparallel/20140222/bin/parallel
-    /proj/g2015028/metagenomics/virtenv/bin/samtools
-    /proj/g2015028/metagenomics/virtenv/bin/interleave-reads.py
-    /proj/g2015028/metagenomics/phylosift_v1.0.1/phylosift
-    /sw/apps/bioinfo/fastqc/0.11.2/milou/fastqc
-    /proj/g2015028/metagenomics/virtenv/bin/sortmerna
-    /proj/g2015028/metagenomics/virtenv/bin/prokka
-    /proj/g2015028/metagenomics/virtenv/bin/MinPath1.2.py
-    /proj/g2015028/metagenomics/virtenv/bin/bedtools
+    for p in $req_progs; do which $p || echo $p not in PATH; done
 
 In Unix-like systems a program that sucessfully completes it tasks should
 return a zero exit status. For the program ``which`` that is the case if the
