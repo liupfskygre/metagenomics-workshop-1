@@ -25,7 +25,7 @@ http://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html
 
 When your dataset has been annotated you can view the annotations directly in the GFF file by doing::
     
-    less -S PROKKA_11252014.gff
+    less -S PROKKA_11242015.gff
 
 **Question: How many coding regions were found by Prodigal? Hint: use grep -c**
 
@@ -36,10 +36,10 @@ Some genes in your dataset should now contain annotations from several databases
 In the downstream analyses we will quantify and compare the abundance of enzymes and metabolic pathways, as well as COGs in the different samples. To do this, we will first extract lists of the genes with enzyme and COG IDs from the GFF file that was produced by PROKKA.
 First we extract enzyme numbers for genes using pattern matching::
     
-    grep "eC_number=" PROKKA_11252014.gff | cut -f9 | cut -f1,2 -d ';'| sed 's/ID=//g'| sed 's/;eC_number=/\t/g' > PROKKA.$SAMPLE.ec
+    grep "eC_number=" PROKKA_11242015.gff | cut -f9 | cut -f1,2 -d ';'| sed 's/ID=//g'| sed 's/;eC_number=/\t/g' > PROKKA.$SAMPLE.ec
 
 Then we do the same for COG identifiers::
     
-    egrep "COG[0-9]{4}" PROKKA_11252014.gff | cut -f9 | sed 's/.\+COG\([0-9]\+\);locus_tag=\(PROKKA_[0-9]\+\);.\+/\2\tCOG\1/g' > PROKKA.$SAMPLE.cog
+    egrep "COG[0-9]{4}" PROKKA_11242015.gff | cut -f9 | sed 's/.\+COG\([0-9]\+\);locus_tag=\(PROKKA_[0-9]\+\);.\+/\2\tCOG\1/g' > PROKKA.$SAMPLE.cog
 
 The COG table we will save for later. Next up is to predict pathways in the sample based on the enzymes annotated by PROKKA.
