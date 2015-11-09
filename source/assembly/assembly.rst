@@ -39,11 +39,11 @@ Create a directory for the kmer of your choice. **Replace N with the kmer length
 
 The reads need to be interleaved for ``velveth``::
 
-    interleave-reads.py -o pair.fastq pair1.fastq pair2.fastq
+    interleave-reads.py -o pair.fasta pair1.fastq pair2.fastq
 
 Run velveth, **replacing N with the kmer length you chose**::
 
-    velveth ${SAMPLE}_N N -fastq -shortPaired pair.fastq
+    velveth ${SAMPLE}_N N -fasta -shortPaired pair.fasta
 
 Check what directories have been created::
 
