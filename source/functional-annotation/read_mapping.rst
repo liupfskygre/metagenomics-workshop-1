@@ -54,12 +54,14 @@ Then the SAM file is converted to BAM format (``view``), sorted by left most ali
     samtools index $SAMPLE.map.sorted.bam
 
 Removing duplicates
-============================
+==========================
 We will now use **MarkDuplicates** from the Picard tool kit to identify and remove duplicates in the sorted and indexed BAM file::
 
     java -Xms2g -Xmx32g -jar $MRKDUP INPUT=$SAMPLE.map.sorted.bam OUTPUT=$SAMPLE.map.markdup.bam \
-    METRICS_FILE=$SAMPLE.map.markdup.metrics AS=TRUE VALIDATION_STRINGENCY=LENIEN \
+    METRICS_FILE=$SAMPLE.map.markdup.metrics AS=TRUE VALIDATION_STRINGENCY=LENIENT \
     MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=1000 REMOVE_DUPLICATES=TRUE
+
+Here the $MRKDUP variable points to the java archive for MarkDuplicates.
 
 Picard's documentation also exists! Two bioinformatics programs in a row with
 decent documentation! Take a moment to celebrate, then have a look here:
@@ -69,22 +71,33 @@ http://sourceforge.net/apps/mediawiki/picard/index.php
 and then removing them?**
 
 **Question: What is the difference between samtools rmdup and Picard MarkDuplicates?**
-   
-Then run the script that performs the mapping::
-    
-    map-bowtie2-markduplicates.sh -t 16 -c pair1.fastq pair2.fastq $SAMPLE contigs.fa all map > map.log 2>map.err
 
 Calculating coverage
 ==========================
-We have now mapped reads back to the assembly and have information on how much of the assembly that is covered by the reads in the sample. What we are interested in is the coverage of the genes annotated in the previous steps by the PROKKA pipeline. To extract this information from the BAM file we first need to define the regions to calculate coverage for. This we will do by creating a custom BED file defining the regions of interest (the PROKKA genes)::
+We have now mapped reads back to the assembly and have information on how much of the assembly that is covered by the reads in the sample. 
+What we are interested in is the coverage of the genes annotated in the previous steps by the PROKKA pipeline. 
+To extract this information from the BAM file we first need to define the regions to calculate coverage for. 
+This we will do by creating a custom BED file defining the regions of interest (the PROKKA genes).
+Here we use an in-house bash script called ``prokkagff2bed.sh`` that searches for the gene regions in the PROKKA output and then prints them in a suitable format::
 
     prokkagff2bed.sh ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA_11242015.gff > $SAMPLE.map.bed
     
-Next we extract coverage information from the BAM file for each gene in the GFF file we just created. We will use the bedtools coverage command within the BEDTools suite (https://code.google.com/p/bedtools/) that can parse a SAM/BAM file and a gff file to extract coverage information for every gene::
+We then use the ``bedtools coverage`` command within the BEDTools suite (https://code.google.com/p/bedtools/) to extract coverage information from the BAM file
+for the regions defined in the BED file we just created ::
 
-    bedtools coverage -hist -abam map/all_$SAMPLE-smds.bam -b $SAMPLE.map.bed > $SAMPLE.map.hist
+    bedtools coverage -hist -abam $SAMPLE.map.markdup.bam -b $SAMPLE.map.bed > $SAMPLE.map.hist
 
-Have a look at the output file with less again. The final four columns give you the histogram i.e. coverage, number of bases with that coverage, length of the contig/feature/gene, bases with that coverage expressed as a ratio of the length of the contig/feature/gene.
+Have a look at the output file with less again. The final four columns give you the histogram i.e. coverage, number of bases with that coverage, 
+length of the contig/feature/gene, bases with that coverage expressed as a ratio of the length of the contig/feature/gene. For each gene, we calculate coverage as
+
+math.rst::
+    .. role:: raw-latex(raw)
+        : format: latex html
+
+    .. raw:: html
+        <script type="text/javascript" src="http://localhost/mathjax/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    :raw-latex: `\(cov_g = \sum{depth*fraction_at_depth}\)
 
 To summarize the coverage for each gene we will use a script that calculates coverage from the histogram file you just produced::
 
