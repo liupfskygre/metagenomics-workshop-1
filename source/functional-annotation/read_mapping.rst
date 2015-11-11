@@ -11,36 +11,17 @@ assemblies. Usually they result in a SAM or BAM file
 (http://genome.sph.umich.edu/wiki/SAM). Those are formats that contain the
 alignment information, where BAM is the binary version of the plain text SAM
 format. In this tutorial we will be using bowtie2
-(http://bowtie-bio.sourceforge.net/bowtie2/index.shtml).
+(http://bowtie-bio.sourceforge.net/bowtie2/index.shtml). You can take a look at the Bowtie2 documentation at: http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml.
 
 
 The SAM/BAM file can afterwards be processed with Picard
-(http://picard.sourceforge.net/) to remove duplicate reads. Those are likely to
+(http://broadinstitute.github.io/picard/) to remove duplicate reads. Those are likely to
 be reads that come from a PCR duplicate (http://www.biostars.org/p/15818/).
 
 
 BEDTools (http://code.google.com/p/bedtools/) can then be used to retrieve
 coverage statistics.
 
-
-There is a script available that does it all at once. Read it and try to
-understand what happens in each step::
-    
-    less `which map-bowtie2-markduplicates.sh`
-    map-bowtie2-markduplicates.sh -h
-
-Bowtie2 has some nice documentation: http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
-
-**Question: what does bowtie2-build do?**
-
-Picard's documentation also exists! Two bioinformatics programs in a row with
-decent documentation! Take a moment to celebrate, then have a look here:
-http://sourceforge.net/apps/mediawiki/picard/index.php 
-
-**Question: Why not just remove all identitical pairs instead of mapping them
-and then removing them?**
-
-**Question: What is the difference between samtools rmdup and Picard MarkDuplicates?**
 
 Mapping reads with bowtie2
 ==========================
@@ -51,7 +32,42 @@ First set up the files needed for mapping::
     ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq pair1.fastq
     ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq pair2.fastq
     ln -s /proj/g2015028/nobackup/metagenomics-workshop/results/assembly/$SAMPLE/${SAMPLE}_31/contigs.fa
+
+Then run the ``bowtie2-build`` program on your assembly::
+
+    bowtie2-build contigs.fa contigs.fa
+
+**Question: What does bowtie2-build do? (Refer to the documentation)**
+
+Next we run the actual mapping using ``bowtie2``::
+
+    bowtie2 -p 16 -x contigs.fa -1 pair1.fastq -2 pair2.fastq -S $SAMPLE.map.sam
+
+The output SAM file needs to be converted to BAM format. For this we will use ``samtools``. First we create an index of the assembly for samtools::
+
+    samtools faidx contigs.fa
+
+Then the SAM file is converted to BAM format (``view``), sorted by left most alignment coordinate (``sort``) and indexed (``index``) for fast random access in these steps::
     
+    samtools view -bt contigs.fa.fai $SAMPLE.map.sam > $SAMPLE.map.bam
+    samtools sort $SAMPLE.map.bam $SAMPLE.map.sorted
+    samtools index $SAMPLE.map.sorted.bam
+
+We will now use **MarkDuplicates** from the Picard tool kit to identify and remove duplicates in the sorted and indexed BAM file::
+
+    java -Xms2g -Xmx32g -jar $MRKDUP INPUT=$SAMPLE.map.sorted.bam OUTPUT=$SAMPLE.map.markdup.bam \
+    METRICS_FILE=$SAMPLE.map.markdup.metrics AS=TRUE VALIDATION_STRINGENCY=LENIEN \
+    MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=1000 REMOVE_DUPLICATES=TRUE
+
+Picard's documentation also exists! Two bioinformatics programs in a row with
+decent documentation! Take a moment to celebrate, then have a look here:
+http://sourceforge.net/apps/mediawiki/picard/index.php 
+
+**Question: Why not just remove all identical pairs instead of mapping them
+and then removing them?**
+
+**Question: What is the difference between samtools rmdup and Picard MarkDuplicates?**
+   
 Then run the script that performs the mapping::
     
     map-bowtie2-markduplicates.sh -t 16 -c pair1.fastq pair2.fastq $SAMPLE contigs.fa all map > map.log 2>map.err
