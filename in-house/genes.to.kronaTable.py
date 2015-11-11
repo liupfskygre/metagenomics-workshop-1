@@ -80,7 +80,7 @@ def Calculate(hier_c, operation):
         hier_sdev[hier] = np.std(l)
     return (hier_sdev,hier_c)
 
-def CalcHierarchy(mapping, annotations, coverage, operation, limit):
+def CalcHierarchy(mapping, annotations, coverage, operation, limit, verbose):
     ## Iterate annotations, and sum coverage if available
     ann_c = {}
     if len(coverage.keys()) > 0: cov = True
@@ -100,11 +100,11 @@ def CalcHierarchy(mapping, annotations, coverage, operation, limit):
         
         try: parents = mapping[annotation]
         except KeyError: 
-            if args.verbose: sys.stderr.write("WARNING: Could not find hierarchy parent for "+annotation+"\n")
+            if verbose: sys.stderr.write("WARNING: Could not find hierarchy parent for "+annotation+"\n")
             continue
         for parent in parents: 
             if limit and not parent in limit: 
-                if args.verbose: sys.stderr.write("Skipping parent "+ parent+"\n")
+                if verbose: sys.stderr.write("Skipping parent "+ parent+"\n")
                 continue
             try: hier_c[parent].append(count)
             except KeyError: hier_c[parent] = [count]
@@ -153,7 +153,7 @@ def main():
     annotations = ReadMap(args.infile) ## Read annotations the same way as above, then get length of the list for counts
     coverage = ReadCoverage(args.coverage, lengths) 
     (max_hier, hierarchy) = ReadHierarchy(args.hierarchy)
-    (hier_sdev, hier_counts) = CalcHierarchy(mapping, annotations, coverage, args.operation, limit)
+    (hier_sdev, hier_counts) = CalcHierarchy(mapping, annotations, coverage, args.operation, limit, args.verbose)
 
     if args.outfile: hout = open(args.outfile, 'w')
     else: hout = sys.stdout
