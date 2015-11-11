@@ -27,16 +27,22 @@ When your dataset has been annotated you can view the annotations directly in th
     
     less -S PROKKA_11242015.gff
 
+You will notice that the first lines in the GFF file show the annotated sequence regions. To skip these and get directly to the annotations you can do::
+
+    grep -v "^#" PROKKA_11242015.gff | less -S
+
+The caret (^) symbol tells grep to match at the beginning of each line and the '-v' flag means that these lines are skipped. The remaining lines are then piped to ``less``.
+
 **Question: How many coding regions were found by Prodigal? Hint: use grep -c**
-
 Some genes in your dataset should now contain annotations from several databases, for instance enzyme and COG (Clusters of Orthologous Groups) identifiers. 
-
 **Question: How many of the coding regions were given an enzyme identifier? How many were given a COG identifier?**
 
 In the downstream analyses we will quantify and compare the abundance of enzymes and metabolic pathways, as well as COGs in the different samples. To do this, we will first extract lists of the genes with enzyme and COG IDs from the GFF file that was produced by PROKKA.
-First we extract enzyme numbers for genes using pattern matching::
+First we find lines containing enzyme numbers using pattern matching with grep and then reformat the output using a combination of ``cut`` and ``sed`` ::
     
     grep "eC_number=" PROKKA_11242015.gff | cut -f9 | cut -f1,2 -d ';'| sed 's/ID=//g'| sed 's/;eC_number=/\t/g' > PROKKA.$SAMPLE.ec
+
+**Make sure you understand what the different parts of this line of code does. Try removing parts between the pipe ('|') symbols and see how this changes the output.**
 
 Then we do the same for COG identifiers::
     
