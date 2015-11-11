@@ -89,7 +89,7 @@ for the regions defined in the BED file we just created ::
 
 Have a look at the output file with less again. The final four columns give you the histogram i.e. coverage, number of bases with that coverage, 
 length of the contig/feature/gene, bases with that coverage expressed as a ratio of the length of the contig/feature/gene.
-For each gene, we calculate coverage as :math:`\(cov_g = \sum{depth*fraction_at_depth}\)`
+For each gene, we calculate coverage as :math:`cov_g = \sum{depth*fraction_at_depth}`
 
 To summarize the coverage for each gene we will use a script that calculates coverage from the histogram file you just produced::
 
