@@ -88,16 +88,8 @@ for the regions defined in the BED file we just created ::
     bedtools coverage -hist -abam $SAMPLE.map.markdup.bam -b $SAMPLE.map.bed > $SAMPLE.map.hist
 
 Have a look at the output file with less again. The final four columns give you the histogram i.e. coverage, number of bases with that coverage, 
-length of the contig/feature/gene, bases with that coverage expressed as a ratio of the length of the contig/feature/gene. For each gene, we calculate coverage as
-
-math.rst::
-    .. role:: raw-latex(raw)
-        : format: latex html
-
-    .. raw:: html
-        <script type="text/javascript" src="http://localhost/mathjax/MathJax.js?config=TeX-AMS_HTML"></script>
-
-    :raw-latex: `\(cov_g = \sum{depth*fraction_at_depth}\)
+length of the contig/feature/gene, bases with that coverage expressed as a ratio of the length of the contig/feature/gene.
+For each gene, we calculate coverage as :math:`\(cov_g = \sum{depth*fraction_at_depth}\)`
 
 To summarize the coverage for each gene we will use a script that calculates coverage from the histogram file you just produced::
 
