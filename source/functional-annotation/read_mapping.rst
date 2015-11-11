@@ -53,6 +53,8 @@ Then the SAM file is converted to BAM format (``view``), sorted by left most ali
     samtools sort $SAMPLE.map.bam $SAMPLE.map.sorted
     samtools index $SAMPLE.map.sorted.bam
 
+Removing duplicates
+============================
 We will now use **MarkDuplicates** from the Picard tool kit to identify and remove duplicates in the sorted and indexed BAM file::
 
     java -Xms2g -Xmx32g -jar $MRKDUP INPUT=$SAMPLE.map.sorted.bam OUTPUT=$SAMPLE.map.markdup.bam \
