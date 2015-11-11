@@ -34,7 +34,9 @@ You will notice that the first lines in the GFF file show the annotated sequence
 The caret (^) symbol tells grep to match at the beginning of each line and the '-v' flag means that these lines are skipped. The remaining lines are then piped to ``less``.
 
 **Question: How many coding regions were found by Prodigal? Hint: use grep -c**
+
 Some genes in your dataset should now contain annotations from several databases, for instance enzyme and COG (Clusters of Orthologous Groups) identifiers. 
+
 **Question: How many of the coding regions were given an enzyme identifier? How many were given a COG identifier?**
 
 In the downstream analyses we will quantify and compare the abundance of enzymes and metabolic pathways, as well as COGs in the different samples. To do this, we will first extract lists of the genes with enzyme and COG IDs from the GFF file that was produced by PROKKA.
@@ -42,10 +44,10 @@ First we find lines containing enzyme numbers using pattern matching with grep a
     
     grep "eC_number=" PROKKA_11242015.gff | cut -f9 | cut -f1,2 -d ';'| sed 's/ID=//g'| sed 's/;eC_number=/\t/g' > PROKKA.$SAMPLE.ec
 
-**Make sure you understand what the different parts of this line of code does. Try removing parts between the pipe ('|') symbols and see how this changes the output.**
-
-Then we do the same for COG identifiers::
+Then we extract COG identifiers::
     
     egrep "COG[0-9]{4}" PROKKA_11242015.gff | cut -f9 | sed 's/.\+COG\([0-9]\+\);locus_tag=\(PROKKA_[0-9]\+\);.\+/\2\tCOG\1/g' > PROKKA.$SAMPLE.cog
+
+**Make sure you understand what the different parts of these lines of code does. Try removing parts between the pipe ('|') symbols and see how this changes the output.**
 
 The COG table we will save for later. Next up is to predict pathways in the sample based on the enzymes annotated by PROKKA.
