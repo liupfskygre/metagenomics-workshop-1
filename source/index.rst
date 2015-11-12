@@ -44,4 +44,4 @@ Contents:
 Enjoy!
 
 .. _here: https://docs.google.com/presentation/d/1zKQtiErPjH9qA5EBjWGH5QhNhxpUxksex16__H0DB8g/edit?usp=sharing
-.. _link: http://uppnex.se/twiki/do/view/Courses/Metagenomics1411/WebHome
+.. _link: http://scilifelab.github.io/courses/Metagenomics/1511/
