@@ -42,18 +42,6 @@ The following programs are used in this workshop:
 .. _BedTools: http://bedtools.readthedocs.org/en/latest/
 .. _Sickle: https://github.com/najoshi/sickle
 
-All programs are already installed, all you have to do is load the virtual
-environment for this workshop. Once you are logged in to the server run::
-
-    source /proj/g2015028/metagenomics/virtenv/bin/activate
-
-If you would have to, you deactivate the virtual environment with the command `deactivate`, but you don't have to do that yet.
-
-NOTE: This is a python virtual environment. The binary folder of the virtual
-environment has symbolic links to all programs used in this workshop so you
-should be able to run those without problems.
-
-
 Using which to locate a program
 ===============================
 An easy way to determine whether you have have a certain program installed is
