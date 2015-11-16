@@ -17,7 +17,7 @@ First we will create a new directory for the krona output and link to the necess
   ln -s ~/mg-workshop/results/functional_annotation/minpath/$SAMPLE/PROKKA.$SAMPLE.kegg.minpath
   ln -s ~/mg-workshop/results/functional_annotation/minpath/$SAMPLE/PROKKA.$SAMPLE.metacyc.minpath
   
-Next, use the genes.to.kronaTable.py script to produce the tabular output needed for KRONA.
+Next, use the in-house genes.to.kronaTable.py_ script to produce the tabular output needed for KRONA.
 
 For Metacyc pathways (from enzymes, only considering pathways predicted by MinPath)::
 
@@ -43,3 +43,5 @@ like you did for the FastQC output.
 **Question: What are the main differences between the databases you have worked with: COG, Metacyc and KEGG? Which one do you prefer and why?**
 
 **Question: What are the main differences between the different samples (gut, skin and teeth)? Compare with results from other groups. Can you for instance find differences in degradation of compounds?**
+
+.. _genes.to.kronaTable.py: https://github.com/EnvGen/metagenomics-workshop/blob/master/in-house/genes.to.kronaTable.py
