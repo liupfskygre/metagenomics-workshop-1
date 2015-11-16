@@ -43,7 +43,7 @@ Then run the ``bowtie2-build`` program on your assembly::
 
 Next we run the actual mapping using ``bowtie2``::
 
-    bowtie2 -p 16 -x contigs.fa -1 pair1.fastq -2 pair2.fastq -S $SAMPLE.map.sam
+    bowtie2 -p 8 -x contigs.fa -1 pair1.fastq -2 pair2.fastq -S $SAMPLE.map.sam
 
 The output SAM file needs to be converted to BAM format. For this we will use ``samtools``. First we create an index of the assembly for samtools::
 
