@@ -80,7 +80,7 @@ We have now mapped reads back to the assembly and have information on how much o
 We are interested in the coverage of each of the genes annotated in the previous steps by the PROKKA pipeline. 
 To extract this information from the BAM file we first need to define the regions to calculate coverage for. 
 This we will do by creating a custom BED file defining the regions of interest (the PROKKA genes).
-Here we use an in-house bash script called ``prokkagff2bed.sh`` that searches for the gene regions in the PROKKA output
+Here we use an in-house bash script called prokkagff2bed.sh_ that searches for the gene regions in the PROKKA output
 and then prints them in a suitable format::
 
     prokkagff2bed.sh ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA_11242015.gff > $SAMPLE.map.bed
@@ -94,10 +94,13 @@ Have a look at the output file with less again. The final four columns give you 
 length of the contig/feature/gene, bases with that coverage expressed as a ratio of the length of the contig/feature/gene.
 For each gene, we calculate coverage as c_gene = sum(depth*fraction_at_depth).
 
-This calculation is performed using the in-house script ``get_coverage_for_genes.py`` ::
+This calculation is performed using the in-house script get_coverage_for_genes.py_ ::
 
     get_coverage_for_genes.py -i <(echo $SAMPLE.map.hist) > $SAMPLE.coverage
 
 We now have coverage values for all genes predicted and annotated by the PROKKA pipeline. Next, we will use the annotations and coverage values to summarize annotations for the sample and produce interactive plots.
 
 **Question: Coverage can also be calculated for each contig. Do you expect the coverage to differ for a contig and for the genes encoded on the contig? When might it be a good idea to calculate the latter?**
+
+.. _get_coverage_for_genes.py: https://github.com/EnvGen/metagenomics-workshop/blob/master/in-house/get_coverage_for_genes.py
+.. _prokkagff2bed.sh: https://github.com/EnvGen/metagenomics-workshop/blob/master/in-house/prokkagff2bed.sh
