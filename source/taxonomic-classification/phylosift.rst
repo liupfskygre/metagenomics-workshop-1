@@ -16,7 +16,7 @@ Lets prepare for the phylosift run::
     ln -s ~/mg-workshop/results/assembly/$SAMPLE/${SAMPLE}_N/contigs.fa .
 
 Phylosift can be run using the raw sequencing reads directly. However, it also allows you to classify contigs. Classification is
-performed in several sequential steps, starting with a search for conserved marker genes in the data::
+performed in several sequential steps_, starting with a search for conserved marker genes in the data::
     
     phylosift search --threads 8 --debug --output phylosift_output contigs.fa > phylosift.log 2> phylosift.err &
 
@@ -52,3 +52,5 @@ All of these files are interesting, but the most fun one is the html file, so le
 
 
 **Question: Compare with the taxonomic results from the 16S analysis. Do the results match? If not, what could be the explanation for the differences?**
+
+.. _steps: https://docs.google.com/presentation/d/1zKQtiErPjH9qA5EBjWGH5QhNhxpUxksex16__H0DB8g/edit#slide=id.g438af782d_325
