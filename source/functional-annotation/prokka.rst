@@ -3,14 +3,21 @@ Annotating the assembly using the PROKKA pipeline
 ==================
 Now that you have assembled the data into contigs the next natural step to do is
 annotation of the data, i.e. finding the genes and doing functional annotation
-of those. A range of programs are available for these tasks but here we will use PROKKA, which is essentially a pipeline comprising several open source bioinformatic tools and databases. PROKKA automates the process of locating open reading frames (ORFs) and RNA regions on contigs, translating ORFs to protein sequences, searching for protein homologs and producing standard output files. For gene finding and translation, PROKKA makes use of the program Prodigal. Homology searching (BLAST, hmmscan) is then performed using the translated protein sequences as queries against a set of public databases (CDD, PFAM, TIGRFAM) as well as custom databases that come with PROKKA.
+of those. A range of programs are available for these tasks but here we will use PROKKA, 
+which is essentially a pipeline_ comprising several open source bioinformatic tools and databases. 
 
-Set up the necessary files and run PROKKA::
+PROKKA automates the process of locating open reading frames (ORFs) and RNA regions on contigs, 
+translating ORFs to protein sequences, searching for protein homologs and producing standard output files. 
+For gene finding and translation, PROKKA makes use of the program Prodigal. Homology searching (BLAST, hmmscan) 
+is then performed using the translated protein sequences as queries against a set of public databases (CDD, PFAM, TIGRFAM) 
+as well as custom databases that come with PROKKA.
+
+Set up the necessary files and run PROKKA, replace **N** below with the kmer you chose for the assembly step.::
     
-    mkdir -p ~/mg-workshop/results/functional_annotation/prokka/
+    mkdir -p ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/
     cd ~/mg-workshop/results/functional_annotation/prokka/
-    ln -s /proj/g2015028/nobackup/metagenomics-workshop/results/assembly/$SAMPLE/${SAMPLE}_31/contigs.fa
-    prokka contigs.fa --outdir $SAMPLE --norrna --notrna --metagenome --cpus 16
+    ln -s ~/mg-workshop/results/$SAMPLE/${SAMPLE}_N/contigs.fa .
+    prokka contigs.fa --outdir $SAMPLE --norrna --notrna --metagenome --cpus 8
     cd $SAMPLE
 
 PROKKA produces several types of output, such as:
@@ -51,3 +58,5 @@ Then we extract COG identifiers::
 **Make sure you understand what the different parts of these lines of code does. Try removing parts between the pipe ('|') symbols and see how this changes the output.**
 
 The COG table we will save for later. Next up is to predict pathways in the sample based on the enzymes annotated by PROKKA.
+
+.. _pipeline: https://docs.google.com/presentation/d/1zKQtiErPjH9qA5EBjWGH5QhNhxpUxksex16__H0DB8g/edit#slide=id.g438af782d_329
