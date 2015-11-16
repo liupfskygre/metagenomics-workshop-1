@@ -4,7 +4,9 @@ Mapping reads and quantifying genes
 
 Overview
 ======================
-So far we have only got the number of genes and annotations in the sample. Because these annotations are predicted from assembled reads we have lost the quantitatve information for the annotations. So to actually quantify the genes we will map the input reads back to the assembly.
+So far we have only got the number of genes and annotations in the sample. 
+Because these annotations are predicted from assembled reads we have lost the quantitatve information for the annotations. 
+So to actually quantify the genes we will map the input reads back to the assembly.
 
 There are many different mappers available to map your reads back to the
 assemblies. Usually they result in a SAM or BAM file
@@ -74,15 +76,16 @@ and then removing them?**
 
 Calculating coverage
 ==========================
-We have now mapped reads back to the assembly and have information on how much of the assembly that is covered by the reads in the sample. 
-What we are interested in is the coverage of the genes annotated in the previous steps by the PROKKA pipeline. 
+We have now mapped reads back to the assembly and have information on how much of the assembly that is covered by the reads in the sample.
+We are interested in the coverage of each of the genes annotated in the previous steps by the PROKKA pipeline. 
 To extract this information from the BAM file we first need to define the regions to calculate coverage for. 
 This we will do by creating a custom BED file defining the regions of interest (the PROKKA genes).
-Here we use an in-house bash script called ``prokkagff2bed.sh`` that searches for the gene regions in the PROKKA output and then prints them in a suitable format::
+Here we use an in-house bash script called ``prokkagff2bed.sh`` that searches for the gene regions in the PROKKA output
+and then prints them in a suitable format::
 
     prokkagff2bed.sh ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA_11242015.gff > $SAMPLE.map.bed
     
-We then use the ``bedtools coverage`` command within the BEDTools suite (https://code.google.com/p/bedtools/) to extract coverage information from the BAM file
+We then use ``bedtools`` (https://code.google.com/p/bedtools/) to extract coverage information from the BAM file
 for the regions defined in the BED file we just created ::
 
     bedtools coverage -hist -abam $SAMPLE.map.markdup.bam -b $SAMPLE.map.bed > $SAMPLE.map.hist
@@ -96,3 +99,5 @@ This calculation is performed using the in-house script ``get_coverage_for_genes
     get_coverage_for_genes.py -i <(echo $SAMPLE.map.hist) > $SAMPLE.coverage
 
 We now have coverage values for all genes predicted and annotated by the PROKKA pipeline. Next, we will use the annotations and coverage values to summarize annotations for the sample and produce interactive plots.
+
+**Question: Coverage can also be calculated for each contig. Do you expect the coverage to differ for a contig and for the genes encoded on the contig? When might it be a good idea to calculate the latter?**
