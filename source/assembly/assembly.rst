@@ -1,10 +1,9 @@
 ============================
 Assembling reads with Velvet
 ============================
-In this exercise you will learn how to perform an assembly with Velvet. Velvet
-takes your reads as input and turns them into contigs. It consists of two
+In this exercise you will learn how to perform an assembly with `Velvet <https://www.ebi.ac.uk/~zerbino/velvet/>`_. Velvet takes your reads as input and assembles them into contigs. It consists of two
 steps. In the first step, ``velveth``, the de Bruijn graph is created.
-Afterwards the graph is traversed and contigs are created with ``velvetg``.
+In the second one, the graph is traversed and contigs are created with ``velvetg``.
 When constructing the de Bruijn graph, a *kmer* has to be specified. Reads are
 cut up into pieces of length *k*, each representing a node in the graph, edges
 represent an overlap (some de Bruijn graph assemblers do this differently, but
@@ -37,7 +36,9 @@ Create a directory for the kmer of your choice. **Replace N with the kmer length
 
     mkdir ${SAMPLE}_N
 
-The reads need to be interleaved for ``velveth``::
+The reads need to be interleaved (forward and reverse read from the same fragment following each other in one file)
+for ``velveth``. There are many tools available for performing this simple task. We'll be using one borrowed from 
+`khmer <http://khmer.readthedocs.org/en/latest/>`_, but really anything will do::
 
     interleave-reads.py -o pair.fasta pair1.fastq pair2.fastq
 
@@ -52,7 +53,7 @@ Check what directories have been created::
 velvetg
 =======
 To get the actual contigs you will have to run ``velvetg`` on the created
-graph. You can vary options such expected coverage and the coverage cut-off if
+graph. You can vary options such as the expected coverage and the coverage cut-off if
 you want, but we do not do that in this tutorial. We only choose not to do
 scaffolding. Again **replace N for your current kmer length**::
 
@@ -61,13 +62,13 @@ scaffolding. Again **replace N for your current kmer length**::
 
 assemstats
 ==========
-After the assembly one wants to look at the length distributions of the
-resulting assemblies. You can use the ``assemstats`` script for that::
+After the assembly, one wants to look at the length distributions of the
+resulting assemblies. We have written the ``assemstats`` script for that::
 
     assemstats 100 ${SAMPLE}_N/contigs.fa
 
-Try to find out what each of the stats represent by varying the cut-off. One of
-the most often used statistics in assembly length distribution comparisons is
+Try to find out what each of the stats represent by trying other cut-off values than 100.
+One of the most often used statistics in assembly length distribution comparisons is
 the *N50 length*, a weighted median of the length, where you weigh each contig by its
 length. This way, you assign more weight to larger contigs. Fifty per cent of all
 the bases in the assembly are contained in contigs shorter or equal to N50
@@ -78,15 +79,15 @@ length? Should it be a combination?**
 
 (Optional) Ray
 ==============
-Try to use the Ray assembler instead. Ray was made to play well with metagenomics. Furthermore it
-uses `MPI <http://en.wikipedia.org/wiki/Message_Passing_Interface>`_ to distribute the computation
-over multiple computational nodes and/or cores. You can run Ray on 16 cores with the command::
+The `Ray <http://denovoassembler.sourceforge.net/>`_ assembler was made to play well with metagenomics. 
+Furthermore, it uses `MPI <http://en.wikipedia.org/wiki/Message_Passing_Interface>`_ to distribute the computation
+over multiple computational nodes and/or cores. You can run Ray on 8 cores with the command::
     
     mkdir -p ~/mg-workshop/results/assembly/ray/$SAMPLE/
     module unload intel
     module load gcc openmpi/1.7.5
     rm -rf ~/mg-workshop/results/assembly/ray/$SAMPLE/${SAMPLE}_N
-    time mpiexec -n 16 Ray -k N -p ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.{1,2}.fastq \
+    time mpiexec -n 8 Ray -k N -p ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.{1,2}.fastq \
         -o ~/mg-workshop/results/assembly/ray/$SAMPLE/${SAMPLE}_N
     module unload gcc
     module load intel
@@ -94,7 +95,7 @@ over multiple computational nodes and/or cores. You can run Ray on 16 cores with
 
 Replace N again with your chosen kmer. There is another `sheet`_ where you can add the Ray assembly results.
 
-**Question: How do Ray's results compare to those from Velvet?**
+**Question: How do Ray's results compare to those from Velvet? When would you choose one assembler over the other?**
 
 .. _Google doc: https://docs.google.com/spreadsheets/d/1Cu5de351swo7G1ZGYn8Dy0jKnHvTP1l4mGdslVaCwLg/edit?usp=sharing
 .. _sheet: https://docs.google.com/spreadsheets/d/1Cu5de351swo7G1ZGYn8Dy0jKnHvTP1l4mGdslVaCwLg/edit#gid=587968813
