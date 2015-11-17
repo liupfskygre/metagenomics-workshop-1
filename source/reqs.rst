@@ -3,7 +3,7 @@ Checking required software
 ==========================================
 An often occuring theme in bioinformatics is installing software. Here we wil
 go over some steps to help you check whether you actually have the right
-software installed. There's an optional excerise on how to install ``sickle``.
+software installed. There's an optional excerise on how to install the quality trimmer ``sickle``.
 
 Programs used in this workshop
 ==============================
@@ -95,7 +95,10 @@ Some bash resources:
 (Optional excercise) Install sickle by yourself
 ===============================================
 Follow these steps only if you want to install ``sickle`` by yourself.
-Installation procedures of research software often follow the same pattern.
+
+From the `sickle <https://github.com/najoshi/sickle>`_ project description: "Sickle is a tool that uses sliding windows along with quality and length thresholds to determine when quality is sufficiently low to trim the 3'-end of reads and also determines when the quality is sufficiently high enough to trim the 5'-end of reads. It will also discard reads based upon the length threshold."
+
+Installation procedures of research software often follow the same pattern, so it's useful to learn how to do this.
 Download the code, *compile* it and copy the binary to a location in your
 ``$PATH``.  The code for sickle is on https://github.com/najoshi/sickle. I
 prefer *compiling* my programs in ``~/src`` and then copying the resulting
