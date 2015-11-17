@@ -3,16 +3,19 @@ Annotating the assembly using the PROKKA pipeline
 ==================
 Now that you have assembled the data into contigs the next natural step to do is
 annotation of the data, i.e. finding the genes and doing functional annotation
-of those. A range of programs are available for these tasks but here we will use PROKKA, 
+of those. A range of programs are available for these tasks but here we will use
+`PROKKA <http://www.vicbioinformatics.com/software.prokka.shtml>`_, 
 which is essentially a pipeline_ comprising several open source bioinformatic tools and databases. 
 
 PROKKA automates the process of locating open reading frames (ORFs) and RNA regions on contigs, 
 translating ORFs to protein sequences, searching for protein homologs and producing standard output files. 
-For gene finding and translation, PROKKA makes use of the program Prodigal. Homology searching (BLAST, hmmscan) 
-is then performed using the translated protein sequences as queries against a set of public databases (CDD, PFAM, TIGRFAM) 
+For gene finding and translation, PROKKA makes use of the program `Prodigal <http://prodigal.ornl.gov/>`_.
+Homology searching (via BLAST and HMMER) is then performed using the translated protein sequences as queries 
+against a set of public databases (`CDD <http://www.ncbi.nlm.nih.gov/cdd/>´_, 
+`PFAM <pfam.xfam.org/`_, `TIGRFAM <http://www.jcvi.org/cgi-bin/tigrfams/index.cgi>`_)
 as well as custom databases that come with PROKKA.
 
-Set up the necessary files and run PROKKA, replace **N** below with the kmer you chose for the assembly step.::
+Set up the necessary files and run PROKKA, replacing **N** below with the kmer you chose for the assembly step.::
     
     mkdir -p ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/
     cd ~/mg-workshop/results/functional_annotation/prokka/
@@ -22,15 +25,13 @@ Set up the necessary files and run PROKKA, replace **N** below with the kmer you
 
 PROKKA produces several types of output, such as:
 
-- the **GFF** file, which is a standardised, tab delimited, file type for showing annotations
-- the Genbank (**GBK**) file, which is a more detailed description of nucleotide sequences and the genes encoded on these.
-An explanation of the gff format can be found at
-http://genome.ucsc.edu/FAQ/FAQformat.html.
+- a `GFF <http://genome.ucsc.edu/FAQ/FAQformat.html>`_ file, which is a standardised, tab-delimited, 
+format for genome annotations
+- a `Genbank <http://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html>`_ (**GBK**) file, 
+which is a more detailed description of nucleotide sequences and the genes encoded in these.
 
-An explanation of the Genbank format can be found at
-http://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html
 
-When your dataset has been annotated you can view the annotations directly in the GFF file by doing::
+When your dataset has been annotated you can view the annotations directly in the GFF file by typing::
     
     less -S PROKKA_11242015.gff
 
@@ -40,9 +41,11 @@ You will notice that the first lines in the GFF file show the annotated sequence
 
 The caret (^) symbol tells grep to match at the beginning of each line and the '-v' flag means that these lines are skipped. The remaining lines are then piped to ``less``.
 
-**Question: How many coding regions were found by Prodigal? Hint: use grep -c**
+**Question: How many coding regions were found by Prodigal? Hint: use grep -c to count lines**
 
-Some genes in your dataset should now contain annotations from several databases, for instance enzyme and COG (Clusters of Orthologous Groups) identifiers. 
+Some genes in your dataset should now contain annotations from several databases, such as
+`enzyme comission <enzyme.expasy.org/>`_ and `COG <http://www.ncbi.nlm.nih.gov/COG/>`_ 
+(Clusters of Orthologous Groups) identifiers. 
 
 **Question: How many of the coding regions were given an enzyme identifier? How many were given a COG identifier?**
 
