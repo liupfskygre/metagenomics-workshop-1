@@ -11,8 +11,8 @@ PROKKA automates the process of locating open reading frames (ORFs) and RNA regi
 translating ORFs to protein sequences, searching for protein homologs and producing standard output files. 
 For gene finding and translation, PROKKA makes use of the program `Prodigal <http://prodigal.ornl.gov/>`_.
 Homology searching (via BLAST and HMMER) is then performed using the translated protein sequences as queries 
-against a set of public databases (`CDD <http://www.ncbi.nlm.nih.gov/cdd/>´_, 
-`PFAM <pfam.xfam.org/`_, `TIGRFAM <http://www.jcvi.org/cgi-bin/tigrfams/index.cgi>`_)
+against a set of public databases (`CDD <http://www.ncbi.nlm.nih.gov/cdd/>`_, 
+`PFAM <pfam.xfam.org/>`_, `TIGRFAM <http://www.jcvi.org/cgi-bin/tigrfams/index.cgi>`_)
 as well as custom databases that come with PROKKA.
 
 Set up the necessary files and run PROKKA, replacing **N** below with the kmer you chose for the assembly step.::
@@ -44,7 +44,7 @@ The caret (^) symbol tells grep to match at the beginning of each line and the '
 **Question: How many coding regions were found by Prodigal? Hint: use grep -c to count lines**
 
 Some genes in your dataset should now contain annotations from several databases, such as
-`enzyme comission <enzyme.expasy.org/>`_ and `COG <http://www.ncbi.nlm.nih.gov/COG/>`_ 
+`enzyme comission <http://enzyme.expasy.org/>`_ and `COG <http://www.ncbi.nlm.nih.gov/COG/>`_ 
 (Clusters of Orthologous Groups) identifiers. 
 
 **Question: How many of the coding regions were given an enzyme identifier? How many were given a COG identifier?**
