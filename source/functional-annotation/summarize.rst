@@ -31,17 +31,17 @@ For COG annotations::
 
   genes.to.kronaTable.py -i PROKKA.$SAMPLE.cog -m ~/mg-workshop/reference_db/cog/cog.to.cat -H ~/mg-workshop/reference_db/cog/cat.hierarchy -n $SAMPLE -c $SAMPLE.coverage -o $SAMPLE.krona.COG.tab
   
-Then use the ktImportText script to generate the HTML files::
+Finally, use Kronatools ktImportText script to generate the HTML files::
 
   ktImportText -o $SAMPLE.krona.metacyc.minpath.html $SAMPLE.krona.metacyc.minpath.tab
   ktImportText -o $SAMPLE.krona.kegg.minpath.html $SAMPLE.krona.kegg.minpath.tab
   ktImportText -o $SAMPLE.krona.COG.html $SAMPLE.krona.COG.tab
 
-Copy the resulting html files to your local computer with scp and open it a browser, 
+Copy the resulting html files to your local computer with scp as before and open it a browser, 
 like you did for the FastQC output.
 
 **Question: What are the main differences between the databases you have worked with: COG, Metacyc and KEGG? Which one do you prefer and why?**
 
-**Question: What are the main differences between the different samples (gut, skin and teeth)? Compare with results from other groups. Can you for instance find differences in degradation of compounds?**
+**Question: What are the main differences between the different samples (gut, skin and teeth)? Compare with results from other groups. Can you, for instance, find differences in degradation of compounds?**
 
 .. _genes.to.kronaTable.py: https://github.com/EnvGen/metagenomics-workshop/blob/master/in-house/genes.to.kronaTable.py
