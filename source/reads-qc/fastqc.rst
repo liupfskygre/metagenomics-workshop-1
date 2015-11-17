@@ -1,7 +1,7 @@
 ==========================================
-Quality Control with fastqc
+Quality Control with FastQC
 ==========================================
-In this excercise you will use fastqc to investigate the quality of your sequences 
+In this excercise you will use `FastQC <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/>`_ to investigate the quality of your sequences 
 using a nice graphical summary output. 
 
 Retrieving your data
@@ -26,7 +26,7 @@ to include only 1 million reads each. You can copy these files from the project 
 You will now have two files in your reads directory: one for the forward reads
 ``*_1.fastq`` and one for the reverse reads ``*_2.fastq``.
 
-Fastqc
+FastQC
 ======
 We will now use FastQC to generate a report about the quality of our sequencing reads.
 For most programs and scripts in this workshop, you can see their instructions by typing
@@ -54,4 +54,4 @@ Instead of username, type your own username!
 
 Now open the reports. Make sure you understand the results. Do they look ok? Is there a 
 difference between forward and reverse? Are there any warnings or errors? What do they mean? Do 
-you have adapter sequences in your reads?
+you have adapter sequences in your reads? The FastQC project includes an ugly, but useful, `tutorial <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/>`_.

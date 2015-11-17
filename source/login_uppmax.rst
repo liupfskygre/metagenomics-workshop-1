@@ -3,8 +3,7 @@ Connecting to UPPMAX
 
 Connecting to UPPMAX
 -------------------------------
-The first step of this lab is to open a ssh connection to UPPMAX. If you have a Mac, start the terminal 
-(black screen icon). If you work on a PC, download and start MobaXterm (http://mobaxterm.mobatek.net).
+The first step of this lab is to open a ssh connection to the computer cluster Milou on `UPPMAX <http://www.uppmax.uu.se//milou-user-guide>`_. If you have a Mac, start the terminal (black screen icon). If you work on a PC, download and start MobaXterm (http://mobaxterm.mobatek.net).
 Now type (change username to your own username)::
 
   ssh -X username@milou.uppmax.uu.se
@@ -45,9 +44,7 @@ environment for this workshop. Once you are logged in to the server run::
 
 If you would have to, you deactivate the virtual environment with the command `deactivate`, but you don’t have to do that yet.
 
-NOTE: This is a python virtual environment. The binary folder of the virtual
-environment has symbolic links to all programs used in this workshop so you
-should be able to run those without problems.
+NOTE: This is a `python virtual environment <http://www.sitepoint.com/virtual-environments-python-made-easy/>`_. The binary folder of the virtual environment has symbolic links to all programs used in this workshop so you should be able to run those without problems.
 
 Set sample variables
 ----------------------------
