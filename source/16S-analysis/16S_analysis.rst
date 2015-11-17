@@ -1,10 +1,9 @@
 ========================================
 Community analysis using rRNA gene reads
 ========================================
-In this exercise we will analyse the taxonomic composition of your sample by utilising 16S rRNA 
-encoding sequence reads. Partial 16S rRNA genes will be extracted from the reads using the program 
-sortmeRNA and these will subsequenctly be classified using the RDP classifier. Finally, the results 
-will be visualised with the interactive program KRONA.
+In this exercise we will analyse the taxonomic composition of your sample by utilising reads containing parts of 16S rRNA genes. Partial 16S rRNA genes will be extracted from the reads using the program 
+sortmeRNA_ and these will subsequenctly be classified using the RDP_ classifier. Finally, the results 
+will be visualised with the interactive program KRONA_.
 
 
 SortmeRNA
@@ -49,14 +48,13 @@ Krona
 =======
 To get a graphical representation of the taxonomic classifications you can use Krona_, which is an 
 excellent program for exploring data with hierarchical structures in general. The output file is an 
-html file that can be viewed in a browser. Again make a directory for Krona
-
-.. _KRONA: http://sourceforge.net/p/krona/home/krona/
-
-And run Krona, specifycing the name of the output file (-o), the minimum bootstrap support to use (-m)
+html file that can be viewed in a browser. Again make a directory for Krona and run it, specifycing the name of the output file (-o), the minimum bootstrap support to use (-m)
 and that the two input files should be treated as only one (-c)::
 
 	ktImportRDP -o 16S.tax.html -m 50 -c reads.1.fastq_rrna.fastq.class.tsv  reads.2.fastq_rrna.fastq.class.tsv
+
+.. _KRONA: http://sourceforge.net/p/krona/home/krona/
+
 
 Copy the resulting file 16S.tax.html to your local computer with scp and open it a browser,
 like you did for the FastQC output.
