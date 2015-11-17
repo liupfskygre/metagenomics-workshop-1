@@ -17,11 +17,11 @@ Let's prepare for the phylosift run in the usual way::
 
 Phylosift can be run using raw sequencing reads directly, but it excels at classifying contigs.
 Classification is performed in several sequential steps_, starting with a search for conserved 
-marker genes in the data. We will run phylosift in parallel (8 cores), in the background::
+marker genes in the data. We will run phylosift in parallel (8 cores)::
     
     phylosift search --threads 8 --debug --output phylosift_output contigs.fa > phylosift.log 2> phylosift.err 
 
-You can check the progress of the run by having a look at the file **phylosift_output/run_info.txt** or, if you want more detailed info, **phylosift.log**. 
+The progress of the run is stored in the file **phylosift_output/run_info.txt**, but if you want more detailed info you can have a look at **phylosift.log**. 
     
 When the run finishes you will have a directory called 'blastDir' inside the main phylosift
 output directory. Phylosift uses a program called `LAST <http://last.cbrc.jp/>`_, which is similar to 
