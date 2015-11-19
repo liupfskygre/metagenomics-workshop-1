@@ -35,6 +35,10 @@ squeue that you can use as well ( $ jobinfo -u username). You are now logged in 
 and there is no need for you to use the SLURM queuing system. You can now continue with the specific 
 exercise instructions.
 
+**IMPORTANT:** If it happens that you are logged out from your Uppmax session during the course
+(for instance during lunch) you **should not** run the ``salloc`` command. Instead **just login to the 
+same node** using ``ssh``.
+
 Load virtual environment
 ----------------------------
 We have already installed all programs for you, all you have to do is load the virtual
