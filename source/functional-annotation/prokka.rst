@@ -17,7 +17,7 @@ as well as custom databases that come with PROKKA.
 
 Set up the necessary files and run PROKKA, replacing **N** below with the kmer you chose for the assembly step.::
     
-    mkdir -p ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/
+    mkdir -p ~/mg-workshop/results/functional_annotation/prokka/
     cd ~/mg-workshop/results/functional_annotation/prokka/
     ln -s ~/mg-workshop/results/assembly/$SAMPLE/${SAMPLE}_N/contigs.fa .
     prokka contigs.fa --outdir $SAMPLE --norrna --notrna --metagenome --cpus 8
