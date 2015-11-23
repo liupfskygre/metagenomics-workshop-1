@@ -3,7 +3,7 @@ Connecting to UPPMAX
 
 Connecting to UPPMAX
 -------------------------------
-The first step of this lab is to open a ssh connection to the computer cluster Milou on `UPPMAX <http://www.uppmax.uu.se//milou-user-guide>`_. If you have a Mac, start the terminal (black screen icon). If you work on a PC, download and start MobaXterm (http://mobaxterm.mobatek.net).
+The first step of this lab is to open a ssh connection to the computer cluster Milou on `UPPMAX <http://www.uppmax.uu.se//milou-user-guide>`_. If you have a Mac or a PC running Linux, start the terminal (black screen icon). If you work on a PC running Windows, download and start MobaXterm (http://mobaxterm.mobatek.net).
 Now type (change username to your own username)::
 
   ssh -X username@milou.uppmax.uu.se
