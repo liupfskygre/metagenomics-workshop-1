@@ -19,7 +19,7 @@ assembly (but this is very fast).
 
 Pick your kmer
 ==============
-Fill in which kmer you want to do in the `Google doc`_. Later we will compare the results
+Fill in which value for k you want to do in the `Google doc`_. The value should be odd and somewhere in the range between maybe 19 and 99. Later we will compare the results
 from the different kmers for each group.
 
 velveth
