@@ -86,7 +86,7 @@ It runs on a single node and runs multiple values for k in a predefined or custo
     mkdir -p ~/mg-workshop/results/assembly/megahit/$SAMPLE/
     rm -rf ~/mg-workshop/results/assembly/megahit/$SAMPLE/megahit_output
     time megahit -1 ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq \
-        -2 ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq -t 8 -m 0.5 \
+        -2 ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq -t 8 -m 0.5 \
         -o ~/mg-workshop/results/assembly/megahit/$SAMPLE/megahit_output/ --k-list 21,41,61,81,99
     
 There is another `sheet_megahit`_ where you can add the Megahit assembly results.
