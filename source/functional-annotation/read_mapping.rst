@@ -25,13 +25,13 @@ coverage statistics.
 
 Mapping reads with bowtie2
 ==========================
-First set up the files needed for mapping::
+First set up the files needed for mapping. **Replace 'N' with the kmer you used for the velet assembly**::
     
     mkdir -p ~/mg-workshop/results/functional_annotation/mapping/$SAMPLE/
     cd ~/mg-workshop/results/functional_annotation/mapping/$SAMPLE/
     ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq pair1.fastq
     ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq pair2.fastq
-    ln -s /proj/g2015028/nobackup/metagenomics-workshop/results/assembly/$SAMPLE/${SAMPLE}_31/contigs.fa
+    ln -s ~/mg-workshop/results/assembly/$SAMPLE/${SAMPLE}_N/contigs.fa
 
 Then run the ``bowtie2-build`` program on your assembly::
 
