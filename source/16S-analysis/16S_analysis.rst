@@ -53,7 +53,7 @@ and that the two input files should be treated as only one (-c)::
 
 	ktImportRDP -o 16S.tax.html -m 50 -c reads.1.fastq_rrna.fastq.class.tsv  reads.2.fastq_rrna.fastq.class.tsv
 
-.. _KRONA: http://sourceforge.net/p/krona/home/krona/
+.. _KRONA: https://github.com/marbl/Krona/wiki
 
 
 Copy the resulting file 16S.tax.html to your local computer with scp and open it a browser,
