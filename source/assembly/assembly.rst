@@ -77,6 +77,20 @@ length. Add your results to the `Google doc`_.
 **Question: What are the important length statistics? Do we prefer sum over
 length? Should it be a combination?**
 
+
+(Optional) Megahit
+==================
+The `Megahit <https://github.com/voutcn/megahit>`_ is a recent improvement to assembly algorithms that can assemble large and complex metagenomes in an efficient manner.
+It runs on a single node and runs multiple values for k in a predefined or custom sequence. The default sequence is 21, 41, 61, 81 and 99. Here is how to run megahit for a specified list of kmer lengths, using up to 8 cores (threads) and maximum half the available memory on the node. ::
+    
+    mkdir -p ~/mg-workshop/results/assembly/megahit/$SAMPLE/
+    rm -rf ~/mg-workshop/results/assembly/megahit/$SAMPLE/megahit_output
+    time megahit -1 ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq -2 ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq -t 8 -m 0.5 -o ~/mg-workshop/results/assembly/megahit/$SAMPLE/megahit_output/ --k-list 21,41,61,81,99
+    
+There is another `sheet_megahit`_ where you can add the Megahit assembly results.
+
+**Question: How do Megahit's results compare to those from Velvet? When would you choose one assembler over the other?**
+
 (Optional) Ray
 ==============
 The `Ray <http://denovoassembler.sourceforge.net/>`_ assembler was made to play well with metagenomics. 
@@ -93,9 +107,10 @@ over multiple computational nodes and/or cores. You can run Ray on 8 cores with 
     module load intel
     
 
-Replace N again with your chosen kmer. There is another `sheet`_ where you can add the Ray assembly results.
+Replace N again with your chosen kmer. There is another `sheet_ray`_ where you can add the Ray assembly results.
 
 **Question: How do Ray's results compare to those from Velvet? When would you choose one assembler over the other?**
 
 .. _Google doc: https://docs.google.com/spreadsheets/d/1Cu5de351swo7G1ZGYn8Dy0jKnHvTP1l4mGdslVaCwLg/edit?usp=sharing
-.. _sheet: https://docs.google.com/spreadsheets/d/1Cu5de351swo7G1ZGYn8Dy0jKnHvTP1l4mGdslVaCwLg/edit#gid=587968813
+.. _sheet_ray: https://docs.google.com/spreadsheets/d/1Cu5de351swo7G1ZGYn8Dy0jKnHvTP1l4mGdslVaCwLg/edit#gid=587968813
+.. _sheet_megahit: https://docs.google.com/spreadsheets/d/1Cu5de351swo7G1ZGYn8Dy0jKnHvTP1l4mGdslVaCwLg/edit#gid=1744332060
