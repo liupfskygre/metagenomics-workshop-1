@@ -39,7 +39,7 @@ First, make a folder to keep your quality control results::
 
 Now, run fastqc for each file::
 
-	fastqc -o ~/mg-workshop/results/quality_check/$SAMPLE/ --nogroup ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq ~/mg-workshop/data/$SAMPLE/reads/1M/reads/1M/${SAMPLE_ID}_1M.2.fastq
+	fastqc -o ~/mg-workshop/results/quality_check/$SAMPLE/ --nogroup ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq
 
 FastQC will generate two files for each input file, one compressed, and one not. To view
 your files, copy the html results into your local computer and open them with a browser.
