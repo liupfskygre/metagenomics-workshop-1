@@ -4,9 +4,9 @@ Mapping reads and quantifying genes
 
 Overview
 ======================
-So far we have only got the number of genes and annotations in the sample. 
-Because these annotations are predicted from assembled reads we have lost the quantitatve 
-information for the annotations. So to actually **quantify** the genes, we will map the input 
+So far we have only got the number of genes and annotations in the sample.
+Because these annotations are predicted from assembled reads we have lost the quantitatve
+information for the annotations. So to actually **quantify** the genes, we will map the input
 reads back to the assembly.
 
 There are many different mappers available to map your reads back to the
@@ -26,7 +26,7 @@ coverage statistics.
 Mapping reads with bowtie2
 ==========================
 First set up the files needed for mapping. **Replace 'N' with the kmer you used for the velet assembly**::
-    
+
     mkdir -p ~/mg-workshop/results/functional_annotation/mapping/$SAMPLE/
     cd ~/mg-workshop/results/functional_annotation/mapping/$SAMPLE/
     ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq pair1.fastq
@@ -49,16 +49,16 @@ First we create an index of the assembly for samtools::
 
     samtools faidx contigs.fa
 
-Then the SAM file is converted to BAM format (``view``), sorted by left most alignment 
+Then the SAM file is converted to BAM format (``view``), sorted by left most alignment
 coordinate (``sort``) and indexed (``index``) for fast random access in these steps::
-    
+
     samtools view -bt contigs.fa.fai $SAMPLE.map.sam > $SAMPLE.map.bam
     samtools sort $SAMPLE.map.bam $SAMPLE.map.sorted
     samtools index $SAMPLE.map.sorted.bam
 
 Removing duplicates
 ==========================
-We will now use **MarkDuplicates** from the Picard tool kit to identify and remove 
+We will now use **MarkDuplicates** from the Picard tool kit to identify and remove
 duplicates in the sorted and indexed BAM file::
 
     java -Xms2g -Xmx32g -jar /sw/apps/bioinfo/picard/1.92/milou/MarkDuplicates.jar INPUT=$SAMPLE.map.sorted.bam OUTPUT=$SAMPLE.map.markdup.bam \
@@ -66,7 +66,7 @@ duplicates in the sorted and indexed BAM file::
     MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=1000 REMOVE_DUPLICATES=TRUE
 
 Picard's documentation also exists! Two bioinformatics programs in a row with
-decent documentation! Take a moment to celebrate, then take a look `at it 
+decent documentation! Take a moment to celebrate, then take a look `at it
 <http://sourceforge.net/apps/mediawiki/picard/index.php>`_.
 
 **Question: Why not just remove all identical pairs instead of mapping them
@@ -77,21 +77,25 @@ and then removing them?**
 Calculating coverage
 ==========================
 We have now mapped reads back to the assembly and have information on how much of the assembly that is covered by the reads in the sample.
-We are interested in the coverage of each of the genes annotated in the previous steps by the PROKKA pipeline. 
-To extract this information from the BAM file we first need to define the regions to calculate coverage for. 
+We are interested in the coverage of each of the genes annotated in the previous steps by the PROKKA pipeline.
+To extract this information from the BAM file we first need to define the regions to calculate coverage for.
 This we will do by creating a custom BED file defining the regions of interest (the PROKKA genes).
 Here we use an in-house bash script called prokkagff2bed.sh_ that searches for the gene regions in the PROKKA output
 and then prints them in a suitable format::
 
     prokkagff2bed.sh ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA_11242015.gff > $SAMPLE.map.bed
-    
+
 We then use `bedtools <https://code.google.com/p/bedtools/>`_ to extract coverage information from the BAM file
-for the regions defined in the BED file we just created ::
+for the regions defined in the BED file we just created::
 
     bedtools coverage -hist -abam $SAMPLE.map.markdup.bam -b $SAMPLE.map.bed > $SAMPLE.map.hist
 
-Have a look at the output file with ``less`` again. The final four columns give you the 
-histogram i.e. coverage, number of bases with that coverage, 
+*Note: When using bedtools 2.24.0 or later, the `A` and the `B` files are switched as follows::
+
+    bedtools coverage -hist -a $SAMPLE.map.bed -b $SAMPLE.map.markdup.bam > $SAMPLE.map.hist
+
+Have a look at the output file with ``less`` again. The final four columns give you the
+histogram i.e. coverage, number of bases with that coverage,
 length of the contig/feature/gene, bases with that coverage expressed as a ratio of the
 length of the contig/feature/gene.
 For each gene, we calculate coverage as c_gene = sum(depth*fraction_at_depth).
