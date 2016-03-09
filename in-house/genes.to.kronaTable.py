@@ -26,7 +26,7 @@ def ReadMap(f):
     d = {}
     hin = open(f)
     hincsv = csv.reader(hin, delimiter = '\t')
-    for row in hincsv: 
+    for row in hincsv:
         ann = row[1]
         parent = row[0]
         try: d[ann].append(parent)
@@ -39,7 +39,7 @@ def ReadCoverage(f, lengths):
     try: hin = open(f, 'r')
     except TypeError: return {}
     hincsv = csv.reader(hin, delimiter = '\t')
-    for row in hincsv: 
+    for row in hincsv:
         g = row[0]
         try: c = float(row[1])
         except ValueError: continue
@@ -71,7 +71,7 @@ def Calculate(hier_c, operation):
     hier_sdev = {}
     if operation == "sum": function = np.sum
     elif operation == "mean" or operation == "meanhalf": function = np.mean
-    for hier, l in hier_c.iteritems(): 
+    for hier, l in hier_c.iteritems():
         hier_sdev[hier] = 0.0
         if operation == "meanhalf":
             l.sort()
@@ -97,13 +97,13 @@ def CalcHierarchy(mapping, annotations, coverage, operation, limit, verbose):
     ## Transfer annotation sums to nearest parent in mapping, if limit is supplied skip parents in limit
     hier_c = {}
     for annotation, count in ann_c.iteritems():
-        
+
         try: parents = mapping[annotation]
-        except KeyError: 
+        except KeyError:
             if verbose: sys.stderr.write("WARNING: Could not find hierarchy parent for "+annotation+"\n")
             continue
-        for parent in parents: 
-            if limit and not parent in limit: 
+        for parent in parents:
+            if limit and not parent in limit:
                 if verbose: sys.stderr.write("Skipping parent "+ parent+"\n")
                 continue
             try: hier_c[parent].append(count)
@@ -136,9 +136,13 @@ def main():
         help="Write only one annotation column for the first parent hierarchy (e.g. pathway)")
     parser.add_argument("-d", "--sdev", type=str,
         help="Write the standard deviation of each first parent hierarchy level to this file")
-    parser.add_argument("-L", "--lengthnorm", type=str, 
+    parser.add_argument("-L", "--lengthnorm", type=str,
         help="Provide file with lengths for genes to normalize coverage by")
+    parser.add_argument("-g", "--missing", type=str, default="missing_pathways.txt",
+                        help="File name for missing pathways in heirarchy file")
     args = parser.parse_args()
+
+    err_f = open(args.missing, "w")
 
     if not args.infile or not args.mapfile or not args.hierarchy: sys.exit(parser.print_help())
 
@@ -147,29 +151,29 @@ def main():
 
     if args.lengthnorm: lengths = ReadLengths(args.lengthnorm)
     else: lengths = {}
-    
+
     ## Read the mapping of hierarchies
     mapping = ReadMap(args.mapfile)
     annotations = ReadMap(args.infile) ## Read annotations the same way as above, then get length of the list for counts
-    coverage = ReadCoverage(args.coverage, lengths) 
+    coverage = ReadCoverage(args.coverage, lengths)
     (max_hier, hierarchy) = ReadHierarchy(args.hierarchy)
     (hier_sdev, hier_counts) = CalcHierarchy(mapping, annotations, coverage, args.operation, limit, args.verbose)
 
     if args.outfile: hout = open(args.outfile, 'w')
     else: hout = sys.stdout
     houtcsv = csv.writer(hout, delimiter = '\t')
-    
+
     ## Set name for sample, if not specified use the basename of the input file
     if args.name: name = args.name
     else: name = (args.infile).split("/")[-1]
-    
+
     out = [name]
     if args.singlecol:out.insert(0,"X")
     else:
         for i in range(1,max_hier+1): out.append("Level"+str(i))
     houtcsv.writerow(out)
 
-    if args.sdev: 
+    if args.sdev:
         sdevout = open(args.sdev, 'w')
         sdevout.write("X.sdev\t"+name+"\n")
 
@@ -178,7 +182,12 @@ def main():
         try: h = hierarchy[hier]
         except KeyError: h = ["Unknown"]
         if args.singlecol: out.insert(0,hier)
-        else: out+=hierarchy[hier]
+        else:
+            try:
+                out+=hierarchy[hier]
+            except KeyError:
+                err_f.write("%s\n" % hier)
+
         try: sdevout.write(hier+"\t"+str(hier_sdev[hier])+"\n")
         except NameError: pass
         houtcsv.writerow(out)
