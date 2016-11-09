@@ -43,7 +43,7 @@ When this step is complete the main output directory will contain an 'alignDir' 
 *Unfortunately, the phylosift takes a failry long time.* So if you can't afford to wait for it, 
 you can choose to copy the results from the project directory::
 
-    cp -r /proj/g2015028/nobackup/metagenomics-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output/ ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output_prepared
+    cp -r /sw/courses/metagenomicsAndSingleCellAnalysis/nobackup/metagenomics-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output/ ~/mg-workshop/results/phylogeny/phylosift/$SAMPLE/phylosift_output_prepared
 
 When all phylosift runs are completed (or copied), browse the output directory::
 
