@@ -44,7 +44,7 @@ Load virtual environment
 We have already installed all programs for you, all you have to do is load the virtual
 environment for this workshop. Once you are logged in to the server run::
 
-    source /proj/g2015028/metagenomics/virtenv/bin/activate
+    source /sw/courses/metagenomicsAndSingleCellAnalysis/metagenomics/virtenv/bin/activate
 
 If you would have to, you deactivate the virtual environment with the command `deactivate`, but you don’t have to do that yet.
 
