@@ -1,0 +1,6 @@
+Taxonomic annotation
+===================================
+
+.. toctree::
+    
+    diamond
