@@ -1,6 +1,10 @@
 Connecting to UPPMAX
 ================================
 
+**IMPORTANT: ** If it happens that you are logged out from your Uppmax session during the course
+(for instance during lunch) you need to rerun all of the commands following on this page, **except** the ``salloc``
+command.
+
 Connecting to UPPMAX
 -------------------------------
 The first step of this lab is to open a ssh connection to the computer cluster Milou on `UPPMAX <http://www.uppmax.uu.se//milou-user-guide>`_. If you have a Mac or a PC running Linux, start the terminal (black screen icon). If you work on a PC running Windows, download and start MobaXterm (http://mobaxterm.mobatek.net).
@@ -34,10 +38,6 @@ Note: there is a uppmax specific tool called jobinfo that supplies the same kind
 squeue that you can use as well ( $ jobinfo -u username). You are now logged in to your reserved node, 
 and there is no need for you to use the SLURM queuing system. You can now continue with the specific 
 exercise instructions.
-
-**IMPORTANT:** If it happens that you are logged out from your Uppmax session during the course
-(for instance during lunch) you **should not** run the ``salloc`` command. Instead **just login to the 
-same node** using ``ssh``.
 
 Load virtual environment
 ----------------------------
