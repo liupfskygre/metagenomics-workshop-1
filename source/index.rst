@@ -24,8 +24,6 @@ Program:
     * :doc:`16S-analysis/index`
     * :doc:`assembly/index`
     * :doc:`annotation/index`
-    * :doc:`taxonomic-classification/index`
-    * :doc:`functional-annotation/index`
 
 
 Contents:
