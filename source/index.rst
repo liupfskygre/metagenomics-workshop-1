@@ -7,7 +7,7 @@ Welcome to the Metagenomics Workshop in Uppsala
 ===============================================
 
 This is a one day metagenomics workshop. We will discuss quality checking, assembly, taxonomic classification, binning
-and annotation of metagenomic samples.
+and annotation of metagenomic samples. This workshop is developed by the 'Environmental Genomics group'_ at KTH / SciLifeLab. 
 
 Here is a link_ to the official homepage for the SciLifeLab workshop in metagenomics.
 
@@ -44,4 +44,5 @@ Contents:
 Enjoy!
 
 .. _here: https://docs.google.com/presentation/d/1zKQtiErPjH9qA5EBjWGH5QhNhxpUxksex16__H0DB8g/edit?usp=sharing
-.. _link: http://scilifelab.github.io/courses/Metagenomics/1511/
+.. _link: http://scilifelab.github.io/courses/Metagenomics/
+.. 'Environmental Genomics group'_: http://envgen.github.io/
