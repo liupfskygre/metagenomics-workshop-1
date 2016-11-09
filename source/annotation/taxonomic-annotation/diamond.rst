@@ -1,4 +1,0 @@
-==================
-Taxonomic annotation using DIAMOND
-==================
-

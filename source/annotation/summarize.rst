@@ -1,6 +1,6 @@
-==============
-Summarize and explore the functional annotation
-==============
+========================================
+Summarize and explore the annotation
+========================================
 Now that we have annotated genes and quantified them in the sample using read mapping we will summarize and explore the annotations. This we will do by producing interactive plots detailing the proportion of functional categories such as metabolic pathways and orthologous gene families.
 
 KRONA interactive plots
