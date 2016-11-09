@@ -23,6 +23,7 @@ Program:
     * :doc:`reads-qc/index`
     * :doc:`16S-analysis/index`
     * :doc:`assembly/index`
+    * :doc:`annotation/index`
     * :doc:`taxonomic-classification/index`
     * :doc:`functional-annotation/index`
 
