@@ -1,7 +1,7 @@
 Connecting to UPPMAX
 ================================
 
-**IMPORTANT: ** If it happens that you are logged out from your Uppmax session during the course
+**IMPORTANT:** If it happens that you are logged out from your Uppmax session during the course
 (for instance during lunch) you need to rerun all of the commands following on this page, **except** the ``salloc``
 command.
 
