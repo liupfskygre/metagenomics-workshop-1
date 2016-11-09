@@ -7,4 +7,6 @@ Here you will learn how to annotate your assemblies.
     
     functional_annotation
     taxonomic_annotation
+    quantification
+    summarize
     
