@@ -45,4 +45,4 @@ Enjoy!
 
 .. _here: https://docs.google.com/presentation/d/1zKQtiErPjH9qA5EBjWGH5QhNhxpUxksex16__H0DB8g/edit?usp=sharing
 .. _link: http://scilifelab.github.io/courses/Metagenomics/
-.. 'Environmental Genomics group'_: http://envgen.github.io/
+.. _'Environmental Genomics group:: http://envgen.github.io/
