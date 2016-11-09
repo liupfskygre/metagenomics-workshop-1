@@ -13,7 +13,8 @@ The following programs are used in this workshop:
     - Velvet_
     - samtools_
     - Picard_
-    - Phylosift_
+    - Diamond_
+    - Megan_
     - Fastqc_
     - Sortmerna_
     - Rdp_Classifier_
@@ -32,6 +33,8 @@ The following programs are used in this workshop:
 .. _sickle: https://github.com/najoshi/sickle
 .. _Picard: http://picard.sourceforge.net/index.shtml
 .. _Ray: http://denovoassembler.sourceforge.net/
+.. _Diamond: https://github.com/bbuchfink/diamond
+.. _Megan: http://ab.inf.uni-tuebingen.de/software/megan5/
 .. _Phylosift: http://phylosift.wordpress.com/
 .. _Fastqc: http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 .. _Sortmerna: http://bioinfo.lifl.fr/RNA/sortmerna/
@@ -67,7 +70,7 @@ To check whether you have all programs installed in one go, you can use ``which`
 In order to do so we will iterate over all the programs and call ``which`` on each of them.
 First make a variable containing all programs separated by whitespace::
 
-    req_progs="bowtie2 bowtie2-build velveth velvetg parallel samtools interleave-reads.py phylosift fastqc sortmerna prokka MinPath1.2.py bedtools"
+    req_progs="bowtie2 bowtie2-build velveth velvetg parallel samtools interleave-reads.py diamond MEGAN fastqc sortmerna prokka MinPath1.2.py bedtools"
     echo $req_progs 
 
 Now iterate over the variable ``req_progs`` and call which::
