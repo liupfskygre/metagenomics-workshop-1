@@ -37,8 +37,7 @@ Contents:
    reads-qc/index
    16S-analysis/index
    assembly/index
-   taxonomic-classification/index
-   functional-annotation/index
+   annotation/index
 
 Enjoy!
 
