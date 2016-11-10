@@ -49,5 +49,5 @@ reads again with fastqc. Please refer to the FastQC exercise for instructions on
 Trimming adapter sequence
 =========================
 To remove adapter sequences from your reads you can use `cutadapt <https://github.com/marcelm/cutadapt/>`_.
-This is a crucial step to guarantee the quality of your assembly, but we'll skip that in this workshop.
+This is a crucial step to guarantee the quality of your assembly, but we'll skip that in this workshop. Cutadapt can also remove low-quality bases at the 3'-end of a read, reads containing too many N-bases along their length, and more.
 
