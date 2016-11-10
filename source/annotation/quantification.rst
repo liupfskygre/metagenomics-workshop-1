@@ -71,30 +71,22 @@ Calculating coverage
 We have now mapped reads back to the assembly and have information on how much of the assembly that is covered by the reads in the sample.
 We are interested in the coverage of each of the genes annotated in the previous steps by the PROKKA pipeline.
 To extract this information from the BAM file we first need to define the regions to calculate coverage for.
-This we will do by creating a custom BED file defining the regions of interest (the PROKKA genes).
-Here we use an in-house bash script called prokkagff2bed.sh_ that searches for the gene regions in the PROKKA output
+This we will do by creating a custom GFF file (actually a GTF file) defining the regions of interest (the PROKKA genes).
+Here we use an in-house bash script called prokkagff2gtf.sh_ that searches for the gene regions in the PROKKA output
 and then prints them in a suitable format::
 
-    prokkagff2bed.sh ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA_11242015.gff > $SAMPLE.map.bed
+    prokkagff2gtf.sh ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA_11222016.gff > $SAMPLE.map.gtf
 
-We then use `bedtools <https://code.google.com/p/bedtools/>`_ to extract coverage information from the BAM file
-for the regions defined in the BED file we just created::
+We then use htseq_ to count the number of reads mapped to each gene.::
 
-    bedtools coverage -hist -abam $SAMPLE.map.markdup.bam -b $SAMPLE.map.bed > $SAMPLE.map.hist
+    htseq-count -t CDS -f bam $SAMPLE.map.sorted.bam $SAMPLE.map.gtf > $SAMPLE.count
 
-*Note: When using bedtools 2.24.0 or later, the `A` and the `B` files are switched as follows::
+The output file has two columns, the first contains the gene names and the second the number of reads mapped to each gene. 
+The last 5 lines gives you some summary information from htseq.
 
-    bedtools coverage -hist -a $SAMPLE.map.bed -b $SAMPLE.map.markdup.bam > $SAMPLE.map.hist
+Finally we will normalize the read counts using **RPKM/TPM**?
 
-Have a look at the output file with ``less`` again. The final four columns give you the
-histogram i.e. coverage, number of bases with that coverage,
-length of the contig/feature/gene, bases with that coverage expressed as a ratio of the
-length of the contig/feature/gene.
-For each gene, we calculate coverage as c_gene = sum(depth*fraction_at_depth).
-
-This calculation is performed using the in-house script get_coverage_for_genes.py_ ::
-
-    get_coverage_for_genes.py -i <(echo $SAMPLE.map.hist) > $SAMPLE.coverage
+**ADD SCRIPT FOR RPKM/TMP**
 
 We now have coverage values for all genes predicted and annotated by the PROKKA pipeline. Next, we will use the annotations and coverage values to summarize annotations for the sample and produce interactive plots.
 
@@ -102,4 +94,6 @@ We now have coverage values for all genes predicted and annotated by the PROKKA 
 
 .. _get_coverage_for_genes.py: https://github.com/EnvGen/metagenomics-workshop/blob/master/in-house/get_coverage_for_genes.py
 .. _prokkagff2bed.sh: https://github.com/EnvGen/metagenomics-workshop/blob/master/in-house/prokkagff2bed.sh
+.. _prokkagff2gtf.sh: https://github.com/EnvGen/metagenomics-workshop/blob/master/in-house/prokkagff2gtf.sh
+
 
