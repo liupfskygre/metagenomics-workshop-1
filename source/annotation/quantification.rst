@@ -44,7 +44,8 @@ Next we run the actual mapping using ``bowtie2``::
     bowtie2 -p 8 -x contigs.fa -1 pair1.fastq -2 pair2.fastq -S $SAMPLE.map.sam
 
 The output SAM file needs to be converted to BAM format and be sorted, either by read name or by leftmost alignment coordinate. We'll sort by read name (-n). For this we will use
-`samtools <http://samtools.sourceforge.net/>`_.
+`samtools <http://samtools.sourceforge.net/>`_.::
+    
     samtools sort -o $SAMPLE.map.sorted.bam -O bam -n $SAMPLE.map.sam
 
 Removing duplicates
