@@ -113,6 +113,6 @@ Replace N again with your chosen kmer. There is another `sheet_ray`_ where you c
 
 **Question: How do Ray's results compare to those from Velvet? When would you choose one assembler over the other?**
 
-.. _Google doc: https://docs.google.com/spreadsheets/d/1t2omtuDUGFdm4-V_W2GWOrJaf34_6scYyVxI7SHl2AE/edit?usp=sharing
-.. _sheet_ray: https://docs.google.com/spreadsheets/d/1Cu5de351swo7G1ZGYn8Dy0jKnHvTP1l4mGdslVaCwLg/edit#gid=587968813
-.. _sheet_megahit: https://docs.google.com/spreadsheets/d/1Cu5de351swo7G1ZGYn8Dy0jKnHvTP1l4mGdslVaCwLg/edit#gid=1744332060
+.. _Google doc: https://docs.google.com/spreadsheets/d/1t2omtuDUGFdm4-V_W2GWOrJaf34_6scYyVxI7SHl2AE/edit#gid=0
+.. _sheet_ray: https://docs.google.com/spreadsheets/d/1t2omtuDUGFdm4-V_W2GWOrJaf34_6scYyVxI7SHl2AE/edit#gid=587968813
+.. _sheet_megahit: https://docs.google.com/spreadsheets/d/1t2omtuDUGFdm4-V_W2GWOrJaf34_6scYyVxI7SHl2AE/edit#gid=1744332060
