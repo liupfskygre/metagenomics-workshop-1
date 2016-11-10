@@ -61,7 +61,7 @@ Removing duplicates
 We will now use **MarkDuplicates** from the Picard tool kit to identify and remove
 duplicates in the sorted and indexed BAM file::
 
-    java -Xms2g -Xmx32g -jar /sw/apps/bioinfo/picard/1.92/milou/MarkDuplicates.jar INPUT=$SAMPLE.map.sorted.bam OUTPUT=$SAMPLE.map.markdup.bam \
+    java -Xms2g -Xmx32g -jar $PICARD_HOME/MarkDuplicates.jar INPUT=$SAMPLE.map.sorted.bam OUTPUT=$SAMPLE.map.markdup.bam \
     METRICS_FILE=$SAMPLE.map.markdup.metrics AS=TRUE VALIDATION_STRINGENCY=LENIENT \
     MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=1000 REMOVE_DUPLICATES=TRUE
 
