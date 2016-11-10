@@ -32,9 +32,13 @@ want to use::
     ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq pair1.fastq
     ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq pair2.fastq
 
-Create a directory for the kmer of your choice. **Replace N with the kmer length below**::
+Make a dummy variable for your kmer, replacing _N_ in the command below with your choice of kmer. **You'll have to run this again if you get loggedd off Uppmax**
 
-    mkdir ${SAMPLE}_N
+    kmer=N
+
+Create a directory for the kmer of your choice::
+
+    mkdir ${SAMPLE}_${kmer}
 
 The reads need to be interleaved (forward and reverse read from the same fragment following each other in one file)
 for ``velveth``. There are many tools available for performing this simple task. We'll be using one borrowed from 
@@ -42,9 +46,9 @@ for ``velveth``. There are many tools available for performing this simple task.
 
     interleave-reads.py -o pair.fasta pair1.fastq pair2.fastq
 
-Run velveth, **replacing N with the kmer length you chose**::
+Run velveth::
 
-    velveth ${SAMPLE}_N N -fasta -shortPaired pair.fasta
+    velveth ${SAMPLE}_${kmer} $kmer -fasta -shortPaired pair.fasta
 
 Check what directories have been created::
 
@@ -55,9 +59,9 @@ velvetg
 To get the actual contigs you will have to run ``velvetg`` on the created
 graph. You can vary options such as the expected coverage and the coverage cut-off if
 you want, but we do not do that in this tutorial. We only choose not to do
-scaffolding. Again **replace N for your current kmer length**::
+scaffolding::
 
-    velvetg ${SAMPLE}_N -scaffolding no
+    velvetg ${SAMPLE}_${kmer} -scaffolding no
 
 
 assemstats
@@ -65,7 +69,7 @@ assemstats
 After the assembly, one wants to look at the length distributions of the
 resulting assemblies. We have written the ``assemstats`` script for that::
 
-    assemstats 100 ${SAMPLE}_N/contigs.fa
+    assemstats 100 ${SAMPLE}_${kmer}/contigs.fa
 
 Try to find out what each of the stats represent by trying other cut-off values than 100.
 One of the most often used statistics in assembly length distribution comparisons is
@@ -102,14 +106,14 @@ over multiple computational nodes and/or cores. You can run Ray on 8 cores with 
     mkdir -p ~/mg-workshop/results/assembly/ray/$SAMPLE/
     module unload intel
     module load gcc openmpi/1.7.5
-    rm -rf ~/mg-workshop/results/assembly/ray/$SAMPLE/${SAMPLE}_N
-    time mpiexec -n 8 Ray -k N -p ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.{1,2}.fastq \
-        -o ~/mg-workshop/results/assembly/ray/$SAMPLE/${SAMPLE}_N
+    rm -rf ~/mg-workshop/results/assembly/ray/$SAMPLE/${SAMPLE}_${kmer}
+    time mpiexec -n 8 Ray -k $kmer -p ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.{1,2}.fastq \
+        -o ~/mg-workshop/results/assembly/ray/$SAMPLE/${SAMPLE}_${kmer}
     module unload gcc
     module load intel
     
 
-Replace N again with your chosen kmer. There is another `sheet_ray`_ where you can add the Ray assembly results.
+There is another `sheet_ray`_ where you can add the Ray assembly results.
 
 **Question: How do Ray's results compare to those from Velvet? When would you choose one assembler over the other?**
 
