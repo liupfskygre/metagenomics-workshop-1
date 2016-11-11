@@ -26,8 +26,8 @@ as well as custom databases that come with PROKKA.
 
 Set up the necessary files and run PROKKA. Remember the $kmer variable you set in the assembly chapter, and set it again if necessary.::
     
-    mkdir -p ~/mg-workshop/results/functional_annotation/prokka/
-    cd ~/mg-workshop/results/functional_annotation/prokka/
+    mkdir -p ~/mg-workshop/results/annotation/functional_annotation/prokka/
+    cd ~/mg-workshop/results/annotation/functional_annotation/prokka/
     ln -s ~/mg-workshop/results/assembly/$SAMPLE/${SAMPLE}_${kmer}/contigs.fa .
     prokka contigs.fa --outdir $SAMPLE --norrna --notrna --metagenome --cpus 8
     cd $SAMPLE
@@ -81,13 +81,13 @@ Here we will predict pathways using the program `MinPath`_ to get conservative e
 
 First we make sure that all the required files are available::
     
-    mkdir -p ~/mg-workshop/results/functional_annotation/minpath/$SAMPLE/
-    cd ~/mg-workshop/results/functional_annotation/minpath/$SAMPLE/
+    mkdir -p ~/mg-workshop/results/annotation/functional_annotation/minpath/$SAMPLE/
+    cd ~/mg-workshop/results/annotation/functional_annotation/minpath/$SAMPLE/
     mkdir -p ~/mg-workshop/reference_db/
     cp -r /sw/courses/metagenomicsAndSingleCellAnalysis/nobackup/metagenomics-workshop/reference_db/cog ~/mg-workshop/reference_db/
     cp -r /sw/courses/metagenomicsAndSingleCellAnalysis/nobackup/metagenomics-workshop/reference_db/kegg ~/mg-workshop/reference_db/
     cp -r /sw/courses/metagenomicsAndSingleCellAnalysis/nobackup/metagenomics-workshop/reference_db/metacyc ~/mg-workshop/reference_db/
-    ln -s ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.ec
+    ln -s ~/mg-workshop/results/annotation/functional_annotation/prokka/$SAMPLE/PROKKA.$SAMPLE.ec
     
 Run MinPath with this command to predict Metacyc pathways::
     
