@@ -17,8 +17,8 @@ The custom database is stored at /sw/courses/metagenomicsAndSingleCellAnalysis/n
 
 First get the files ready::
 
-    mkdir -p ~/mg-workshop/results/annotation/mapping/$SAMPLE/
-    cd ~/mg-workshop/results/annotation/mapping/$SAMPLE
+    mkdir -p ~/mg-workshop/results/annotation/taxonomic_annotation/$SAMPLE/
+    cd ~/mg-workshop/results/annotation/taxonomic_annotation/$SAMPLE
     ln -s ~/mg-workshop/results/annotation/functional_annotation/prokka/$SAMPLE/PROKKA_${date}.faa $SAMPLE.faa
 
 Run DIAMOND on your protein fasta file::
@@ -38,8 +38,26 @@ You'll find that the output format is identical to the Blast tabular output.
 
 MEGAN
 =========
-Assign taxonomy to sequences using MEGAN_.
+MEGAN_ is a toolbox for, among other things, taxonomic analysis of sequences. The program has a LCA-assignment algorithm where LCA stands for Lowest Common Ancestor. What this means is that MEGAN can read a Blast results file and for each query sequence identify all taxa for the subject sequences hit by the query. Then it finds the lowest (or, you could say, most specific) position in the NCBI taxonomy_ tree that encompasses all the hit taxa.
+
+So for instance, say that a query sequence has a match to a sequence from the genome of Nodularia spumigena CCY9414 as well as a sequence from the genome of Nostoc punctiforme PCC 73102. These are both cyanobacterial strains but one is from the genus Nodularia and the other from the genus Nostoc. The lowest node in the taxonomy tree that they share is 'Nostocales' (order level). So our query sequence would be assigned to superkingdom Bacteria, phylum Cyanobacteria, order Nostocales... and that's as specific the assignment would be.
+
+MEGAN is mainly accessed via a graphical user interface but we will make use of the command line. For this we need to specify a file that lists the commands we want MEGAN to run. Copy the commands.txt file to your directory and edit it to include your sample name (gut, teeth or skin)::
+
+    cp $MEGAN_COMMANDS .
+    sed -i "s/SAMPLENAME/$SAMPLE/g" commands.txt
+
+Have a look at the commands.txt file and see if you can figure out exactly what the commands tell MEGAN to do.
+
+To prevent MEGAN from opening windows we use the *virtual frame buffer* command xvfb-run::
+
+     xvfb-run --auto-servernum --server-num=1 MEGAN -L $MEGAN_LICENSE -g -E -c commands.txt
+
+The results from the LCA algorithm are stored in $SAMPLE.taxonomy_path.txt and $SAMPLE.taxonomy_id.txt.
+
+**Question: What are some inherent weaknesses of this taxonomic annotation method. What would you like to improve?**
 
 .. _DIAMOND: http://ab.inf.uni-tuebingen.de/software/diamond/
 .. _UniRef90: ftp://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref90/README
 .. _MEGAN: http://ab.inf.uni-tuebingen.de/software/megan6/
+.. _taxonomy: https://www.ncbi.nlm.nih.gov/taxonomy
