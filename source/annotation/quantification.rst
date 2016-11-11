@@ -94,6 +94,10 @@ To calculate transcripts per million (TPM) we normalize by sequencing depth and 
 
     cut -f4,5,9 $SAMPLE.map.gtf | sed 's/gene_id //g' | gawk '{print $3,$2-$1+1}' | tr ' ' '\t' > $SAMPLE.genelengths
 
+Then run tpm_table.py to calculate TPM for the sample::
+
+    tpm_table.py -n $SAMPLE -c $SAMPLE.count -i <(echo "$SAMPLE\t100") -l $SAMPLE.genelengths > $SAMPLE.coverage
+
 We now have coverage values for all genes predicted and annotated by the PROKKA pipeline. Next, we will use the annotations and coverage values to summarize annotations for the sample and produce interactive plots.
 
 **Question: Coverage can also be calculated for each contig. Do you expect the coverage to differ for a contig and for the genes encoded on the contig? When might it be a good idea to calculate the latter?**
