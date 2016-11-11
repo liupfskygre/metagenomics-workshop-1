@@ -31,7 +31,7 @@ First set up the files needed for mapping. **Replace 'N' with the kmer you used 
     cd ~/mg-workshop/results/functional_annotation/mapping/$SAMPLE/
     ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq pair1.fastq
     ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq pair2.fastq
-    ln -s ~/mg-workshop/results/assembly/$SAMPLE/${SAMPLE}_N/contigs.fa
+    ln -s ~/mg-workshop/results/assembly/$SAMPLE/${SAMPLE}_${kmer}/contigs.fa
 
 Then run the ``bowtie2-build`` program on your assembly::
 
@@ -75,7 +75,7 @@ This we will do by creating a custom GFF file (actually a GTF file) defining the
 Here we use an in-house bash script called prokkagff2gtf.sh_ that searches for the gene regions in the PROKKA output
 and then prints them in a suitable format::
 
-    prokkagff2gtf.sh ~/mg-workshop/results/functional_annotation/prokka/$SAMPLE/PROKKA_11222016.gff > $SAMPLE.map.gtf
+    prokkagff2gtf.sh ~/mg-workshop/results/annotation/functional_annotation/prokka/$SAMPLE/PROKKA_${date}.gff > $SAMPLE.map.gtf
 
 We then use htseq_ to count the number of reads mapped to each gene.::
 
