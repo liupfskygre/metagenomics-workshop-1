@@ -27,8 +27,8 @@ Mapping reads with bowtie2
 =========
 First set up the files needed for mapping. **Replace 'N' with the kmer you used for the velet assembly**::
 
-    mkdir -p ~/mg-workshop/results/functional_annotation/mapping/$SAMPLE/
-    cd ~/mg-workshop/results/functional_annotation/mapping/$SAMPLE/
+    mkdir -p ~/mg-workshop/results/annotation/mapping/$SAMPLE/
+    cd ~/mg-workshop/results/annotation/mapping/$SAMPLE/
     ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq pair1.fastq
     ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq pair2.fastq
     ln -s ~/mg-workshop/results/assembly/$SAMPLE/${SAMPLE}_${kmer}/contigs.fa
