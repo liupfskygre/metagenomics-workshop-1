@@ -66,7 +66,7 @@ and then removing them?**
 
 **Question: What is the difference between samtools rmdup and Picard MarkDuplicates?**
 
-Calculating coverage
+Counting mapped reads per gene
 ==========================
 We have now mapped reads back to the assembly and have information on how much of the assembly that is covered by the reads in the sample.
 We are interested in the coverage of each of the genes annotated in the previous steps by the PROKKA pipeline.
@@ -84,11 +84,14 @@ We then use htseq_ to count the number of reads mapped to each gene.::
 The output file has two columns, the first contains the gene names and the second the number of reads mapped to each gene. 
 The last 5 lines gives you some summary information from htseq.
 
-Finally we will normalize the read counts using **RPKM/TPM**?
+Normalizing to Transcripts Per Million (TPM)
+==========================
+We now have abundance values for genes in the assembly in the form of absolute read counts mapped to each gene. But we have not taken into account that reads will have a higher probability of mapping to longer genes than to shorter ones. Also, if we'd like to compare abundance values between several samples we would have to account for the fact that the total number of reads sequenced (the sequencing depth) may differ significantly between samples.
 
-**ADD SCRIPT FOR RPKM/TMP**
+There are several ways to normalize abundance values in metagenomes. Here we will use the TPM (Transcripts Per Million) method. TPM is calculated as:
+.. math::
 
-**Calculating TPM.**
+    TPM = (rg*rl*10^6)/(flg*T)
 
 To calculate transcripts per million (TPM) we normalize by sequencing depth and gene lengths. So first we extract gene lengths from the GTF file::
 
