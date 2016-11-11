@@ -88,16 +88,22 @@ Normalizing to Transcripts Per Million (TPM)
 ==========================
 We now have abundance values for genes in the assembly in the form of absolute read counts mapped to each gene. But we have not taken into account that reads will have a higher probability of mapping to longer genes than to shorter ones. Also, if we'd like to compare abundance values between several samples we would have to account for the fact that the total number of reads sequenced (the sequencing depth) may differ significantly between samples.
 
-There are several ways to normalize abundance values in metagenomes. Here we will use the TPM (Transcripts Per Million) method. TPM is calculated as:
-.. math::
+There are several ways to normalize abundance values in metagenomes. Here we will use the TPM (Transcripts Per Million) method. For information on TPM and how it relates to other ways to normalize, like RPKM, see this_ blog post.
 
-    TPM = (rg*rl*10^6)/(flg*T)
+In order to calculate TPM values we need to know:
 
-To calculate transcripts per million (TPM) we normalize by sequencing depth and gene lengths. So first we extract gene lengths from the GTF file::
+    - The average read length of the sample
+    - The length of all genes
+
+The average read length can be calculated from the fastq sequence file that you started with, but we'll save you the trouble and say it's ~100 bp. 
+
+The gene lengths we can get from the GTF file that you used with htseq::
 
     cut -f4,5,9 $SAMPLE.map.gtf | sed 's/gene_id //g' | gawk '{print $3,$2-$1+1}' | tr ' ' '\t' > $SAMPLE.genelengths
 
-Then run tpm_table.py to calculate TPM for the sample::
+Here we extract only the start, stop and gene name fields from the file, then remove the 'gene_id' string, print the gene name first followed by the length of the gene, change the separator to tab and store the results in the .genelengths file.
+
+Now we can calculate TPM values using the tpm_table.py_ script::
 
     tpm_table.py -n $SAMPLE -c $SAMPLE.count -i <(echo "$SAMPLE\t100") -l $SAMPLE.genelengths > $SAMPLE.coverage
 
@@ -108,5 +114,5 @@ We now have coverage values for all genes predicted and annotated by the PROKKA 
 .. _get_coverage_for_genes.py: https://github.com/EnvGen/metagenomics-workshop/blob/master/in-house/get_coverage_for_genes.py
 .. _prokkagff2bed.sh: https://github.com/EnvGen/metagenomics-workshop/blob/master/in-house/prokkagff2bed.sh
 .. _prokkagff2gtf.sh: https://github.com/EnvGen/metagenomics-workshop/blob/master/in-house/prokkagff2gtf.sh
-
-
+.. _this: http://www.rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/
+.. _tpm_table.py: https://github.com/EnvGen/metagenomics-workshop/blob/master/in-house/tpm_table.py
