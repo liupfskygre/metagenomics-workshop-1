@@ -86,7 +86,7 @@ The last 5 lines gives you some summary information from htseq.
 
 Normalizing to Transcripts Per Million (TPM)
 ==========================
-We now have abundance values for genes in the assembly in the form of absolute read counts mapped to each gene. But we have not taken into account that reads will have a higher probability of mapping to longer genes than to shorter ones. Also, if we'd like to compare abundance values between several samples we would have to account for the fact that the total number of reads sequenced (the sequencing depth) may differ significantly between samples.
+So now we have abundance values for genes in the assembly in the form of absolute read counts mapped to each gene. But we have not taken into account that longer genes will get more mapped reads than shorter genes just by being longer. Also, if we'd like to compare abundance values between several samples we would have to account for the fact that the total number of reads sequenced (the sequencing depth) may differ significantly between samples.
 
 There are several ways to normalize abundance values in metagenomes. Here we will use the TPM (Transcripts Per Million) method. For information on TPM and how it relates to other ways to normalize, like RPKM, see this_ blog post.
 
@@ -116,3 +116,4 @@ We now have coverage values for all genes predicted and annotated by the PROKKA 
 .. _prokkagff2gtf.sh: https://github.com/EnvGen/metagenomics-workshop/blob/master/in-house/prokkagff2gtf.sh
 .. _this: http://www.rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/
 .. _tpm_table.py: https://github.com/EnvGen/metagenomics-workshop/blob/master/in-house/tpm_table.py
+.. _htseq: http://www-huber.embl.de/HTSeq/doc/overview.html
