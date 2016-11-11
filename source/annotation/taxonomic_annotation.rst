@@ -11,7 +11,7 @@ First get the files ready::
 
     mkdir -p ~/mg-workshop/results/annotation/mapping/$SAMPLE/
     cd ~/mg-workshop/results/annotation/mapping/$SAMPLE
-    ln -s ~/mg-workshop/results/annotation/functional_annotation/$SAMPLE/PROKKA_${date}.faa $SAMPLE.faa
+    ln -s ~/mg-workshop/results/annotation/functional_annotation/prokka/$SAMPLE/PROKKA_${date}.faa $SAMPLE.faa
 
 
 Run DIAMOND on your protein fasta file::
