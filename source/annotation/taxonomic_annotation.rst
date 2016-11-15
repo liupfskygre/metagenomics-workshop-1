@@ -7,7 +7,9 @@ In this part we will add taxonomic information to the identified protein sequenc
 
 DIAMOND
 =========
-DIAMOND_ is a program for finding homologs of protein and DNA sequences in a reference database. It claims to be up to 20,000 times faster than Blast, especially when dealing with short reads such as those produced by Illumina sequencing. Like Blast, DIAMOND requires a formatted database. There are several pre-formatted databases available on Uppmax and you can access these directly with environmental variables such as:
+DIAMOND_ is a program for finding homologs of protein and DNA sequences in a reference database. It claims to be up to 20,000 times faster than Blast, especially when dealing with short reads such as those produced by Illumina sequencing. This speed is achieved through a series of clever tweaks to the standard seed-and-extend approach used by blast. This is very nicely explained in the original paper_.
+
+Like Blast, DIAMOND requires a formatted database. There are several pre-formatted databases available on Uppmax and you can access these directly with environmental variables such as:
 
     - $DIAMOND_NR           (/sw/data/uppnex/diamond_databases/Blast/latest/nr.dmnd)
 
@@ -62,3 +64,4 @@ The results from the LCA algorithm are stored in $SAMPLE.taxonomy_path.txt and $
 .. _UniRef90: ftp://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref90/README
 .. _MEGAN: http://ab.inf.uni-tuebingen.de/software/megan6/
 .. _taxonomy: https://www.ncbi.nlm.nih.gov/taxonomy
+.. _paper: http://www.nature.com/nmeth/journal/v12/n1/full/nmeth.3176.html#methods 
