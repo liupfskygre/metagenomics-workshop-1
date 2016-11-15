@@ -55,7 +55,8 @@ To prevent MEGAN from opening windows we use the *virtual frame buffer* command 
 
 The results from the LCA algorithm are stored in $SAMPLE.taxonomy_path.txt and $SAMPLE.taxonomy_id.txt.
 
-**Question: What are some inherent weaknesses of this taxonomic annotation method. What would you like to improve?**
+**Question: What are some inherent weaknesses of this taxonomic annotation method? What would you like to improve?**
+**What happens when a protein only has one hit? Is that as expected?**
 
 .. _DIAMOND: http://ab.inf.uni-tuebingen.de/software/diamond/
 .. _UniRef90: ftp://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref90/README
