@@ -33,7 +33,7 @@ Make sure you understand the input parameters and then run sickle,::
 		-s ~/mg-workshop/results/quality_check/sickle/$SAMPLE/qtrim.unpaired.fastq \
 		-q 20 -l 20
 
-Chek what files have been generated. Do you understand each of them?
+Check what files have been generated. Do you understand each of them?
 
 **Question: How many paired reads are left after trimming? How many singletons?**
 
