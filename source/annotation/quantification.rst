@@ -43,10 +43,10 @@ Next we run the actual mapping using ``bowtie2``::
 
     bowtie2 -p 8 -x contigs.fa -1 pair1.fastq -2 pair2.fastq -S $SAMPLE.map.sam
 
-The output SAM file needs to be converted to BAM format and be sorted, either by read name or by leftmost alignment coordinate. We'll sort by read name (-n). For this we will use
-`samtools <http://samtools.sourceforge.net/>`_.::
+The output SAM file needs to be converted to BAM format and be sorted, either by read name or by leftmost alignment coordinate. We'll sort by coordinate which is the default. 
+For this we will use `samtools <http://samtools.sourceforge.net/>`_.::
     
-    samtools sort -o $SAMPLE.map.sorted.bam -O bam -n $SAMPLE.map.sam
+    samtools sort -o $SAMPLE.map.sorted.bam -O bam $SAMPLE.map.sam
 
 Removing duplicates
 =========
@@ -77,9 +77,9 @@ and then prints them in a suitable format::
 
     prokkagff2gtf.sh ~/mg-workshop/results/annotation/functional_annotation/prokka/$SAMPLE/PROKKA_${date}.gff > $SAMPLE.map.gtf
 
-We then use htseq_ to count the number of reads mapped to each gene.::
+We then use htseq_ to count the number of reads mapped to each gene. Here we have to tell htseq that the file is sorted by alignment coordinate `-r pos`::
 
-    htseq-count -t CDS -f bam $SAMPLE.map.sorted.bam $SAMPLE.map.gtf > $SAMPLE.count
+    htseq-count -r pos -t CDS -f bam $SAMPLE.map.sorted.bam $SAMPLE.map.gtf > $SAMPLE.count
 
 The output file has two columns, the first contains the gene names and the second the number of reads mapped to each gene. 
 The last 5 lines gives you some summary information from htseq.
