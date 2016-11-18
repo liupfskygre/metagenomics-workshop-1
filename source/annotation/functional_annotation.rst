@@ -38,7 +38,7 @@ PROKKA produces several types of output, such as:
 - a `Genbank <http://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html>`_ (**GBK**) file, which is a more detailed description of nucleotide sequences and the genes encoded in these.
 
 When your dataset has been annotated you can view the annotations directly in the GFF file. PROKKA names the resulting files according to the current date
-like so: ``PROKKA_mmddyyyy``. So set the date variable below. We give an example, but set the appropriate value!
+like so: ``PROKKA_mmddyyyy``. So set the date variable below. We give an example, but set the appropriate value!::
 
     date=11222016
 
