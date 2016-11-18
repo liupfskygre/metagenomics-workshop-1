@@ -105,7 +105,7 @@ Here we extract only the start, stop and gene name fields from the file, then re
 
 Now we can calculate TPM values using the tpm_table.py_ script::
 
-    tpm_table.py -n $SAMPLE -c $SAMPLE.count -i <(echo "$SAMPLE\t100") -l $SAMPLE.genelengths > $SAMPLE.coverage
+    tpm_table.py -n $SAMPLE -c $SAMPLE.count -i <(echo -e "$SAMPLE\t100") -l $SAMPLE.genelengths > $SAMPLE.coverage
 
 We now have coverage values for all genes predicted and annotated by the PROKKA pipeline. Next, we will use the annotations and coverage values to summarize annotations for the sample and produce interactive plots.
 
