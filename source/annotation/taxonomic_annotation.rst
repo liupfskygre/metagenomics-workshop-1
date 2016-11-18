@@ -57,6 +57,14 @@ To prevent MEGAN from opening windows we use the *virtual frame buffer* command 
 
 The results from the LCA algorithm are stored in $SAMPLE.taxonomy_path.txt and $SAMPLE.taxonomy_id.txt.
 
+Krona
+=========
+As for the 16S analysis we can summarize the taxonomic annotation of proteins using Krona. The ktImportTaxonomy can read output produced by MEGAN::
+
+    ktImportTaxonomy -o $SAMPLE.taxonomy.krona.html $SAMPLE.taxonomy_id.txt
+
+Again, transfer the file over to your own computer and open it in your browser. How does it compare with the 16S analysis? If you see a difference, why is that?
+
 **Question: What are some inherent weaknesses of this taxonomic annotation method? What would you like to improve?**
 **What happens when a protein only has one hit? Is that as expected?**
 
