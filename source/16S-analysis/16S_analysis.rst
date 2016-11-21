@@ -15,7 +15,8 @@ We start by making the necessary folders and assigning all necessary databases t
 	cd ~/mg-workshop/results/phylogeny/16S/$SAMPLE
 	ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.1.fastq reads.1.fastq
 	ln -s ~/mg-workshop/data/$SAMPLE/reads/1M/${SAMPLE_ID}_1M.2.fastq reads.2.fastq
-	DB="/sw/courses/metagenomicsAndSingleCellAnalysis/nobackup/metagenomics-workshop/reference_db/sortmerna/fasta/silva-arc-16s-database-id95.fasta,/sw/courses/metagenomicsAndSingleCellAnalysis/nobackup/metagenomics-workshop/reference_db/sortmerna/silva-arc-16s-database-id95.fasta.index:/sw/courses/metagenomicsAndSingleCellAnalysis/nobackup/metagenomics-workshop/reference_db/sortmerna/fasta/silva-bac-16s-database-id85.fasta,/sw/courses/metagenomicsAndSingleCellAnalysis/nobackup/metagenomics-workshop/reference_db/sortmerna/silva-bac-16s-database-id85.fasta.index:/sw/courses/metagenomicsAndSingleCellAnalysis/nobackup/metagenomics-workshop/reference_db/sortmerna/fasta/silva-euk-18s-database-id95.fasta,/sw/courses/metagenomicsAndSingleCellAnalysis/nobackup/metagenomics-workshop/reference_db/sortmerna/silva-euk-18s-database-id95.fasta.index"
+	DB_DIR=/sw/courses/metagenomicsAndSingleCellAnalysis/nobackup/metagenomics-workshop/reference_db/sortmerna
+	DB="$DB_DIR/silva-arc-16s-database-id95.fasta,$DB_DIR/silva-arc-16s-database-id95.fasta.index:$DB_DIR/fasta/silva-bac-16s-database-id85.fasta,$DB_DIR/silva-bac-16s-database-id85.fasta.index:$DB_DIR/fasta/silva-euk-18s-database-id95.fasta,$DB_DIR/silva-euk-18s-database-id95.fasta.index"
 
 SortMeRNA has built-in multithreading support that we will use for parallelization (-a).
 We still have to launch one sample at a time, though::
