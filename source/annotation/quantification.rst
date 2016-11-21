@@ -79,7 +79,7 @@ and then prints them in a suitable format::
 
 We then use htseq_ to count the number of reads mapped to each gene. Here we have to tell htseq that the file is sorted by alignment coordinate `-r pos`::
 
-    htseq-count -r pos -t CDS -f bam $SAMPLE.map.sorted.bam $SAMPLE.map.gtf > $SAMPLE.count
+    htseq-count -r pos -t CDS -f bam $SAMPLE.map.markdup.bam $SAMPLE.map.gtf > $SAMPLE.count
 
 The output file has two columns, the first contains the gene names and the second the number of reads mapped to each gene. 
 The last 5 lines gives you some summary information from htseq.
