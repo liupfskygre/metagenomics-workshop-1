@@ -72,7 +72,7 @@ assemstats
 After the assembly, one wants to look at the length distributions of the
 resulting assemblies. We have written the ``assemstats`` script for that::
 
-    assemstats 100 ${SAMPLE}_${kmer}/contigs.fa
+    assemstats 200 ${SAMPLE}_${kmer}/contigs.fa
 
 Try to find out what each of the stats represent by trying other cut-off values than 100.
 One of the most often used statistics in assembly length distribution comparisons is
