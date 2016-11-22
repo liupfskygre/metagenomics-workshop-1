@@ -1,5 +1,8 @@
 ============================
-Assembling reads with Velvet
+Assembling reads
+============================
+
+Velvet
 ============================
 In this exercise you will learn how to perform an assembly with `Velvet <https://www.ebi.ac.uk/~zerbino/velvet/>`_. Velvet takes your reads as input and assembles them into contigs. It consists of two
 steps. In the first step, ``velveth``, the de Bruijn graph is created.
