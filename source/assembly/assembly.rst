@@ -82,7 +82,7 @@ length. Add your results to the `Google doc`_.
 length? Should it be a combination?**
 
 
-(Optional) Megahit
+Megahit
 ==================
 The `Megahit <https://github.com/voutcn/megahit>`_ is a recent improvement to assembly algorithms that can assemble large and complex metagenomes in an efficient manner.
 It runs on a single node and runs multiple values for k in a predefined or custom sequence. The default sequence is 21, 41, 61, 81 and 99. Here is how to run megahit for a specified list of kmer lengths, using up to 8 cores (threads) and maximum half the available memory on the node. ::
